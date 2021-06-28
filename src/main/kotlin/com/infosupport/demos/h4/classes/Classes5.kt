@@ -1,0 +1,96 @@
+package com.infosupport.demos.h4.classes
+
+import javax.naming.Context
+import javax.naming.InitialContext
+import javax.print.attribute.AttributeSet
+import javax.print.attribute.HashAttributeSet
+import javax.print.attribute.HashDocAttributeSet
+
+// Nontrivial constructors or properties
+
+// TODO show: see Basics2
+
+fun main() {
+    // calling ctors:
+    val userVerbose = UserVerbose("BramBramBram") // Java style
+    val userVerboseNickname = userVerbose.getNickname()    // call getter function
+    userVerbose.setNickname("BramBram")                    // call setter function
+
+    val userLessVerbose = UserLessVerbose("BramBram")
+    val userLessVerboseNickname = userLessVerbose.nickname // call property
+    userLessVerbose.nickname = "Bram"
+
+    val userLesserVerbose = UserLesserVerbose("BramBr")
+    val userLesserVerboseNickname = userLesserVerbose.nickname
+    userLesserVerbose.nickname = "BramB"
+
+    val user = User("Bram")
+    val nickname = user.nickname
+    user.nickname = "Mark"
+
+    val jeff = TwitterUser("Jeff")
+    val besos = jeff.nickname
+
+    // calling subclass ctor
+    val radio = RadioButton()
+
+    // calling private ctor not allowed:
+    // val s = Secretive()
+
+    // calling ctor overloads:
+    val myView1 = MyView(InitialContext())
+    val myView2 = MyView(InitialContext(), HashAttributeSet())
+    val myButt1 = MyButton(InitialContext())
+    val myButt2 = MyButton(InitialContext(), HashDocAttributeSet())
+}
+
+// TODO tell
+
+// Java style
+open class UserVerbose constructor(nickname: String) { // primary ctor declaration
+
+    private var nickname: String // the internal (backing) field
+
+    init { // primary ctor implementation
+        this.nickname = nickname
+    }
+
+    fun getNickname() = nickname // the getter makes the internal field available, making it a property
+
+    fun setNickname(value: String) {
+        this.nickname = value
+    }
+}
+
+open class UserLessVerbose(_nickname: String) {
+    var nickname = _nickname // no private makes it a property
+        get() = field
+        set(value) {
+            field = value
+        }
+}
+
+open class UserLesserVerbose(_nickname: String) {
+    var nickname = _nickname
+}
+
+// least verbose, most concise:
+open class User(var nickname: String) // primary constructor
+
+// subclass
+class TwitterUser(nickname: String) : User(nickname) // primary constructor and call to super (required)
+
+open class OpenButton
+class RadioButton : OpenButton() // call to super (required)
+
+class Secretive private constructor() {} // private ctor
+
+open class MyView { // no primary constructor
+    constructor(ctx: Context) {} // two secondary constructors
+    constructor(ctx: Context, attr: AttributeSet) {}
+}
+
+class MyButton : MyView {
+    constructor(ctx: Context) : this(ctx, HashAttributeSet()) {} // delegate to this
+    constructor(ctx: Context, attr: AttributeSet) : super(ctx, attr) {} // delegate to super
+}

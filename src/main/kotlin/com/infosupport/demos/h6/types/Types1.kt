@@ -88,13 +88,13 @@ fun Person.countryName() = company?.address?.country ?: "Unknown"
 
 // another one:
 fun usingThrowWithElvis() {
-    printShippingLabel(person)
+    printShippingLabel(Person("Dmitry", jetbrains))
     printShippingLabel(Person("Alexey", null))
 }
 
 fun printShippingLabel(person: Person) {
-    val address = person.company?.address
-        ?: throw IllegalArgumentException("No address")
+    val address = person.company?.address ?: throw IllegalArgumentException("No address")
+
     with(address) {
         println(streetAddress)
         println("$zipCode $city, $country")

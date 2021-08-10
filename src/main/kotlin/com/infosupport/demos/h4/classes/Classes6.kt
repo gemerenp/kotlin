@@ -13,7 +13,7 @@ fun main(args: Array<String>) {
     println("Initializing objects...")
     val privateUser = PrivateUser("private")
     val subscribingUser = SubscribingUser("sub@kotlinlang.org")
-    val facebookUser = FacebookUser(2325675, "face@kotlinlang.org") // takes some time...
+    val facebookUser = FacebookUser("face@kotlinlang.org", 2325675) // takes some time...
     println("Proceeding...")
 
     println(privateUser.nickname)
@@ -38,7 +38,6 @@ fun main(args: Array<String>) {
     println(user.age) // 42
     repeat(88) { user.haveBirthday() }
     println(user.age) // 130
-
     try {
         user.haveBirthday() // 131 --> Person died
     } catch (e: Exception) {
@@ -60,12 +59,12 @@ class SubscribingUser(override val email: String) : IUser { // email has default
     override val nickname: String // nickname gets custom getter; called on every access.
         get() {
             println("Getting SubscribingUser's nickname... ")
-            sleep(Delay)
+            sleep(Delay) // expensive call
             return email.substringBefore('@')
         }
 }
 
-class FacebookUser(accountId: Int, override val email: String) : IUser {
+class FacebookUser(override val email: String, accountId: Int) : IUser {
     // property initializer, no custom getter: nickname is set only once since it's an expensive call;
     override val nickname = getFacebookNameFromWeb(accountId) // executed when ctor is called.
 }
@@ -76,13 +75,17 @@ fun getFacebookNameFromWeb(accountId: Int): String {
     return "fb:$accountId"
 }
 
+// Accessing a backing field from a getter or setter: --------------
 open class Person(val name: String) {
 
     // we want to log every change to address:
     var address: String = "unspecified"
-        set(value) { // custom setter
-            println("""Address was changed for $name: "$field" -> "$value".""".trimIndent()) // first: log
-            field = value // then: set the backing field (like normal)
+        set(newAddress) { // custom setter
+            // first: log
+            println("""Address was changed for $name: "$field" -> "$newAddress".""".trimIndent())
+
+            // then: set the backing field (like normal)
+            field = newAddress
         }
 
     var age: Int = 0

@@ -11,6 +11,10 @@ fun main() {
     val sum = numbersTo100.sum()
     println(sum)
 
+    // we can reuse a sequence:
+    val sum1 = numbersTo100.sum()
+    println(sum1)
+
     // use sequence {...}
     val fiboTo100 = fibonacci().takeWhile { it <= 100 }.toList()
     println(fiboTo100)

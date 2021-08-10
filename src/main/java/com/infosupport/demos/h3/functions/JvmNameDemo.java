@@ -9,5 +9,12 @@ public class JvmNameDemo {
         Util.performOperation();
         Util.performOperation();
         Util.reportOperationCount();
+
+        // top level properties will get a getter
+        Util.getI();
+        Util.getOpCount();
+
+        // top level const will not get a getter
+        var unixLineSeparator = Util.UNIX_LINE_SEPARATOR;
     }
 }

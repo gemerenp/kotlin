@@ -23,6 +23,7 @@ fun main() {
 }
 
 fun parsePath(path: String) {
+    // using String's functions
     val directory = path.substringBeforeLast("/")
     val fullFileName = path.substringAfterLast("/")
 
@@ -33,7 +34,9 @@ fun parsePath(path: String) {
 }
 
 fun parsePathRegEx(path: String) {
-    val regex = """(.+)/(.+)\.(.+)""".toRegex() // TODO tell: triple quoted string
+    // using regular expressions
+    val regexSQ = "(.+)/(.+)\\.(.+)".toRegex() // in a single quoted string you have to escape special chars
+    val regex = """(.+)/(.+)\.(.+)""".toRegex() // in a triple quoted string you don't have to escape special chars
     val matchResult = regex.matchEntire(path)
     if (matchResult != null) {
         val (directory, filename, extension) = matchResult.destructured
@@ -58,7 +61,7 @@ val aardVark = """
             |			,' /_) -.            `::.           `:.     |
             |		  ,'.:     `    `:.        `:.     .::.          \
             |	 __,-'   ___,..-''-.  `:.        `.   /::::.         |
-            |	|):'_,--'           `.    `::..       |::::::.      ::\
+            |	<):'_,--'           `.    `::..       |::::::.      ::\
             |	 `-'                 |`--.:_::::|_____\::::::::.__  ::|
             |						 |   _/|::::|      \::::::|::/\  :|
             |						 /:./  |:::/        \__:::):/  \  :\

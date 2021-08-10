@@ -49,16 +49,16 @@ fun main() {
 // Java style
 open class UserVerbose constructor(nickname: String) { // primary ctor declaration
 
-    private var nickname: String // the internal (backing) field
+    private var _nickname: String // the internal (backing) field
 
     init { // primary ctor implementation
-        this.nickname = nickname
+        this._nickname = nickname
     }
 
-    fun getNickname() = nickname // the getter makes the internal field available, making it a property
+    fun getNickname() = _nickname // the getter makes the internal field available, making it a property
 
     fun setNickname(value: String) {
-        this.nickname = value
+        this._nickname = value
     }
 }
 
@@ -68,6 +68,15 @@ open class UserLessVerbose(_nickname: String) {
         set(value) {
             field = value
         }
+
+    // In TS it would be:
+    // private _nickname: string
+
+    // get nickname(){
+    //    return this._nickname
+    // }
+
+
 }
 
 open class UserLesserVerbose(_nickname: String) {
@@ -85,12 +94,12 @@ class RadioButton : OpenButton() // call to super (required)
 
 class Secretive private constructor() {} // private ctor
 
-open class MyView { // no primary constructor
-    constructor(ctx: Context) {} // two secondary constructors
+open class MyView { // no primary constructor, two secondary constructors
+    constructor(ctx: Context) {}
     constructor(ctx: Context, attr: AttributeSet) {}
 }
 
-class MyButton : MyView {
+class MyButton : MyView { // no primary constructor, two secondary constructors
     constructor(ctx: Context) : this(ctx, HashAttributeSet()) {} // delegate to this
     constructor(ctx: Context, attr: AttributeSet) : super(ctx, attr) {} // delegate to super
 }

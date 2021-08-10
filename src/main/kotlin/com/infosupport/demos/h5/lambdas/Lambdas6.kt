@@ -39,10 +39,16 @@ fun alphabetUsingTheWithScopeFunctionVerboseStyle(): String {
 
 // more concise
 fun alphabetUsingTheWithScopeFunction() = with(StringBuilder()) {
-    for (letter in 'A'..'Z') {
-        append(letter)
-    }
+    // 'this' is the receiver here, i.e. StringBuilder()
+    ('A'..'Z').forEach { append(it) }
+
+    // ... is equal to:
+    // for (letter in 'A'..'Z') {
+    //     append(letter)
+    // }
+
     append("\nNow I know the alphabet!")
+
     // return whatever you want
     toString()
 }

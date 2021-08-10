@@ -18,6 +18,11 @@ val List<String>.headTail: Pair<String, String>
         else throw IllegalAccessException("Size must be >= 2.")
     }
 
+infix fun List<String>.headTail(other: List<String>): Pair<String, String> {
+    if (size >= 2) return first() to last()
+    else throw IllegalAccessException("Size must be >= 2.")
+}
+
 // c)
 infix fun List<String>.ans(list: List<String>): List<String> {
     return this.appendAndSort(list)

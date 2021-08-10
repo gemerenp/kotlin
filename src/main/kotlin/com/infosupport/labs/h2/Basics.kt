@@ -1,6 +1,5 @@
 package com.infosupport.labs.h2
 
-// TODO Lab
 // 1. Create and (unit)test the following functions. Try to use:
 // - string template with expression
 // - expression body
@@ -8,7 +7,7 @@ package com.infosupport.labs.h2
 // - default values
 // - named parameters
 
-// a) min - return the smallest of the two numbers; when only one argument is given, assumes the second argument is 10
+// a) min - returns the smallest of the two numbers; when only one argument is given, assumes the second argument is 10
 // b) add - adds two numbers if the sum is lower than 1000 and
 //          returns a string message displaying the result as ...
 //                                                            ... +

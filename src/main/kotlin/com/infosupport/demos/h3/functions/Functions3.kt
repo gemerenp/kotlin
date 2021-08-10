@@ -7,7 +7,9 @@ package com.infosupport.demos.h3.functions
 
 // TODO tell: top level properties.
 var opCount = 0                      // Java: private with getter/setter; decompile Util.class with external Java decompiler e.g. jd-gui.exe
-val i = 0                            // Java: private final with getter
+val i = 0                            // Java: private static final with getter
+    get() = field * 3
+
 const val UNIX_LINE_SEPARATOR = "\n" // Java: public static final
 
 // TODO tell: top level functions.

@@ -26,7 +26,7 @@ fun add(a: Int, b: Int = 0) =
             
         """.trimIndent()
     else
-        "Sum is bigger than 1000."
+        "Sum is greater than 1000."
 
 private fun pad(i: Int) = i.toString().padStart(5)
 

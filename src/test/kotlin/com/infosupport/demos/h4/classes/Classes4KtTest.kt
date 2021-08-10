@@ -12,7 +12,9 @@ internal class Classes4KtTest {
         val result = eval(
             Sum(
                 Sum(Num(1), Num(2)),     // 1 + 2
-                Num(4)))                 //       + 4
+                Num(4)
+            )
+        )                 //       + 4
 
         assertThat(result).isEqualTo(7); //           = 7
     }
@@ -22,7 +24,9 @@ internal class Classes4KtTest {
         val result = eval2(
             Sum2(
                 Sum2(Num2(1), Num2(2)), // 1 + 2
-                Num2(4)))               //       + 4
+                Num2(4)
+            )
+        )               //       + 4
 
         assertThat(result).isEqualTo(7); //           = 7
     }

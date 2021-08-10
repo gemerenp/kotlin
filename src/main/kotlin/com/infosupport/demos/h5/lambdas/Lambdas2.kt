@@ -26,6 +26,43 @@ fun main() {
     // map/flatten, flatMap
     // processing nested collections
     println(people.filter { it.age == 27 }.map { it.instruments }) // array of arrays: [[guitar, vocal], [keyboard, vocal], [vocal], [vocal]]
-    println(people.filter { it.age == 27 }.map { it.instruments }.flatten()) // array: [guitar, vocal, keyboard, vocal, vocal, vocal]
-    println(people.filter { it.age == 27 }.flatMap { it.instruments }) // flatMap = map + flatten!
+    println(people.filter { it.age == 27 }.map { p -> p.instruments }.flatten()) // array: [guitar, vocal, keyboard, vocal, vocal, vocal]
+    println(people.filter { it.age == 27 }.flatMap { p -> p.instruments }) // flatMap = map + flatten!
+
+    // Other highlights:
+    val numbers = listOf("one", "two", "three", "four", "five", "six")
+
+    println("partition")
+    val (match, rest) = numbers.partition { it.length > 3 }
+    println("$match $rest")
+
+    println("slice")
+    println(numbers.drop(1).take(3))
+    println(numbers.slice(1..3))
+    println(numbers.slice(0..4 step 2))
+    println(numbers.slice(setOf(3, 5, 0)))
+
+    println("take and drop")
+    println(numbers.take(3))
+    println(numbers.takeLast(3))
+    println(numbers.drop(1))
+    println(numbers.dropLast(5))
+    println(numbers.takeWhile { !it.startsWith('f') })
+    println(numbers.takeLastWhile { it != "three" })
+    println(numbers.dropWhile { it.length == 3 })
+    println(numbers.dropLastWhile { it.contains('i') })
+
+    println("chunked")
+    println(numbers.chunked(3))
+
+    println("windowed")
+    println(numbers.windowed(3))
+
+    println("zipWithNext")
+    println(numbers.zipWithNext())
+
+    println("ordering")
+    println(numbers.sorted())
+    println(numbers.shuffled())
+    println(numbers.reversed())
 }

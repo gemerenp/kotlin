@@ -21,6 +21,7 @@ fun main() { // main without args
     println(person.age)         // explicit default getter
     println(person.isFirst)     // explicit custom getter
     println(person.eyesColor)
+    println(person.firstLetter) // extension property
 
     person.age = 90 // setter call
 
@@ -43,10 +44,10 @@ fun main() { // main without args
 class A
 
 // simple class
-class B(val x: String) // primary ctor with one property
+class B constructor(val x: String) // primary ctor with one property
 
 // simple class like B but less concise
-class C constructor(anX: String) { // primary ctor with one param
+class C(anX: String) { // primary ctor with one param (If the primary constructor does not have any annotations or visibility modifiers, the constructor keyword can be omitted)
 
     val x: String // field
 
@@ -55,7 +56,8 @@ class C constructor(anX: String) { // primary ctor with one param
     }
 }
 
-class D(val anX: String) {
+// class with two properties, primary and secondary ctor
+class D(val x: String) {
 
     var anY: String = ""
 
@@ -135,7 +137,7 @@ class Person( // implicitly public final
             "unknown"
         }
 
-    fun smartWhen(a: Any): String =
+    fun smartWhen(a: Any) =
         when (a) {
             is Color -> a.name // single line
             is RGBColor -> { // block

@@ -3,6 +3,9 @@
 //  Your package hierarchy doesn’t need to follow the directory hierarchy
 package com.infosupport.demos.h2.something
 
+import com.infosupport.demos.h2.basics.Person
+import com.infosupport.demos.h2.basics.firstLetter
+
 // main function (first class citizen)
 fun main(args: Array<String>) {
     // if expression
@@ -10,7 +13,8 @@ fun main(args: Array<String>) {
 
     // string template
     println("Hello, $s!")
-    println("Hello, ${if (args.isNotEmpty()) args[0] else "world"}!") // string template with expression and unescaped quotes
+    // string template with expression and unescaped quotes
+    println("Hello, ${if (args.isNotEmpty()) args[0] else "world"}!")
 
     // val: immutable reference, must be initialized
     val max1 = max(1)        // b has default value; type inference
@@ -23,6 +27,9 @@ fun main(args: Array<String>) {
     y = 5.67e6 // with exp
     y += 1
 
+    val p = Person("A", true)
+    val firstLetter = p.firstLetter
+
     // See unit test for more
 }
 
@@ -32,4 +39,5 @@ fun max(a: Int, b: Int = 0): Int { // b has default value
 }
 
 // expression body
-fun maxExpressionBody(a: Int, b: Int) = if (a > b) a else b // return type is inferred
+fun maxExpressionBody(a: Int, b: Int) =
+    if (a > b) a else b // return type is inferred

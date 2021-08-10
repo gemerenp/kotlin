@@ -30,7 +30,10 @@ fun firstTaste() {
 
     // Kotlin
     val button = Button()
-    button.onClick { println("Click!") }
+
+    button.onClick {
+        println("Click!")
+    }
 
     button.click()
     button.click()
@@ -60,6 +63,7 @@ fun find(people: List<Person>) {
 fun syntax() {
     // Syntax: see https://drek4537l1klr.cloudfront.net/jemerov/Figures/05fig01.jpg
     val sum = { x: Int, y: Int -> x + y } // define
+
     val result = sum(1, 2) // call
     println(result)
 
@@ -71,6 +75,7 @@ fun syntax() {
     people.maxBy { it.age }
 
     people.joinToString(separator = ",", transform = { p: Person -> p.name }) // Passing a lambda outside parentheses
+    people.joinToString(",", transform = { it.name }) // Passing a lambda outside parentheses
     people.joinToString(",") { p: Person -> p.name }                          // apply steps from above
     people.joinToString(",") { it.name }
 

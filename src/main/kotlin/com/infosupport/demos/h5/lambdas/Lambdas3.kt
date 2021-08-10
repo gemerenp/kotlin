@@ -18,39 +18,4 @@ fun main() {
 
     // For a list of operations, see https://kotlinlang.org/docs/reference/collection-operations.html
 
-    // Highlights:
-    val numbers = listOf("one", "two", "three", "four", "five", "six")
-
-    println("partition")
-    val (match, rest) = numbers.partition { it.length > 3 }
-    println("$match $rest")
-
-    println("slice")
-    println(numbers.slice(1..3))
-    println(numbers.slice(0..4 step 2))
-    println(numbers.slice(setOf(3, 5, 0)))
-
-    println("take and drop")
-    println(numbers.take(3))
-    println(numbers.takeLast(3))
-    println(numbers.drop(1))
-    println(numbers.dropLast(5))
-    println(numbers.takeWhile { !it.startsWith('f') })
-    println(numbers.takeLastWhile { it != "three" })
-    println(numbers.dropWhile { it.length == 3 })
-    println(numbers.dropLastWhile { it.contains('i') })
-
-    println("chunked")
-    println(numbers.chunked(3))
-
-    println("windowed")
-    println(numbers.windowed(3))
-
-    println("zipWithNext")
-    println(numbers.zipWithNext())
-
-    println("ordering")
-    println(numbers.sorted())
-    println(numbers.shuffled())
-    println(numbers.reversed())
 }

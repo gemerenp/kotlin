@@ -39,7 +39,7 @@ fun main() {
 
     // or in a loop using .withIndex on collection:
     for ((index, i) in listOf(42, 43, 44).withIndex()) {
-        println("""list[$index] = $i.""")
+        println("list[$index] = $i.")
     }
 
     // TODO show and tell exceptions, try/catch

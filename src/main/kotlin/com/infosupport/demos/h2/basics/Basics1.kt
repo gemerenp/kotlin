@@ -5,6 +5,7 @@ package com.infosupport.demos.h2.something
 
 import com.infosupport.demos.h2.basics.Person
 import com.infosupport.demos.h2.basics.firstLetter
+import com.infosupport.demos.h2.basics.lastLetter
 
 // main function (first class citizen)
 fun main(args: Array<String>) {
@@ -29,6 +30,7 @@ fun main(args: Array<String>) {
 
     val p = Person("A", true)
     val firstLetter = p.firstLetter
+    val lastLetter = p.lastLetter()
 
     // See unit test for more
 }

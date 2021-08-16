@@ -31,7 +31,6 @@ fun main() { // main without args
     println("foo:")
     println("$foo1 $foo1") // run executed once
     println("$foo2 $foo2") // get executed each time
-
 }
 
 // CLASS --------------------------------------------------------------------
@@ -66,17 +65,6 @@ class D(val x: String) {
     }
 }
 
-val foo1 = run {
-    println("Calculating run ...")
-    42
-}
-
-val foo2: Int
-    get() {
-        println("Calculating get...")
-        return 42
-    }
-
 /* Java */
 /*
 public class Person {
@@ -98,7 +86,7 @@ class Person( // implicitly public final
 ) {
     var age: Int = 0 // mutable prop with explicit getter/setter; must be initialized
         get() {
-            return field // field is a keyword!
+            return field // field is a keyword! backing field.
         }
         set(value) {
             field = value
@@ -148,6 +136,15 @@ class Person( // implicitly public final
         }
 }
 
+// Extension property --------------------------------------------------------------------
+val Person.firstLetter: Char
+    get() = this.name[0]
+
+// Extension function --------------------------------------------------------------------
+fun Person.lastLetter(): Char {
+    return this.name.last()
+}
+
 // ENUMS --------------------------------------------------------------------
 
 // simple
@@ -162,8 +159,17 @@ enum class RGBColor(val r: Int, val g: Int, val b: Int) {
     fun rgb() = (r * 256 + g) * 256 + b
 }
 
-// extension property
-val Person.firstLetter: Char
-    get() = this.name[0]
+// Top level properties (standalone val with/without accessor) ---------------------------
+
+val foo1 = run {
+    println("Calculating run ...")
+    42
+}
+
+val foo2: Int
+    get() {
+        println("Calculating get...")
+        return 42
+    }
 
 // See Basics3 for more...

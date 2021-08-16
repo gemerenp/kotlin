@@ -6,7 +6,8 @@ package com.infosupport.labs.h3
 // b) Create an extension property 'headTail' on List<String> which returns a Pair containing
 //      the first and the last item. To create a Pair, use the infix notation '.. to ..'.
 //      If the size of the list is < 2, throw an IllegalAccessException.
-// c) Can you create and infix variant of 'headTail'?
+// c) Can you create an infix variant of 'appendAndSort'? (e.g.: listOf(4,3) ans listOf(2,1) = [1, 2, 3, 4])
+// c) Can you create an infix variant of 'headTail'? (on two lists, e.g.: listOf(1,2) headTail listOf(3,4) = [1, 4])
 
 // 2. Select some (or all) of the following exercises from Atomic Kotlin:
 //    Introduction to objects       Exercise

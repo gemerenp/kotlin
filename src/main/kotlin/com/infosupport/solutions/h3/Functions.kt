@@ -5,7 +5,7 @@ package com.infosupport.solutions.h3
 
 // 2.
 // a)
-fun List<String>.appendAndSort(other: List<String>) =
+fun <T> List<T>.appendAndSort(other: List<T>) where T : Comparable<T> =
     this.plus(other).sorted() //  or one of these ways:
 //  (this + other).sorted()
 //  listOf(this, other).flatten().sorted()
@@ -18,13 +18,13 @@ val List<String>.headTail: Pair<String, String>
         else throw IllegalAccessException("Size must be >= 2.")
     }
 
+// c)
 infix fun List<String>.headTail(other: List<String>): Pair<String, String> {
     if (size >= 2) return first() to last()
     else throw IllegalAccessException("Size must be >= 2.")
 }
 
-// c)
-infix fun List<String>.ans(list: List<String>): List<String> {
+infix fun <T> List<T>.ans(list: List<T>): List<T> where T : Comparable<T> {
     return this.appendAndSort(list)
 }
 
@@ -43,5 +43,9 @@ fun main() {
     }
 
     // 2c
-    println(listOf("p", "q", "r") ans listOf("f", "e", "d"))
+    println(listOf("z", "y", "x") ans listOf("c", "b", "a"))
+    println(listOf(4, 3) ans listOf(2, 1))
+
+    // 2d
+    println(listOf("p", "q", "r") headTail listOf("f", "e", "d"))
 }

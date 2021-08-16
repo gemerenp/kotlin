@@ -3,13 +3,14 @@ package com.infosupport.demos.h4.classes
 // Class delegation: using the “by” keyword.
 
 fun main() {
+    // Suppose we want to implement a collection but only override the contains method. Rest is same as arraylist.
     val list = listOf(4, 2, 42)
-    val delegatingCollectionClassicStyle = DelegatingCollectionClassicStyle(list)
-    val delegatingCollection = DelegatingCollection(list)
 
+    val delegatingCollectionClassicStyle = DelegatingCollectionClassicStyle(list)
     println(delegatingCollectionClassicStyle.isEmpty())
     println(delegatingCollectionClassicStyle.contains(42))
 
+    val delegatingCollection = DelegatingCollection(list)
     println(delegatingCollection.isEmpty())
     println(delegatingCollection.contains(42))
 }

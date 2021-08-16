@@ -79,7 +79,7 @@ internal class Classes9KtTest {
         assertThat(json).contains("salary: 3000")
         assertThat(json).contains("level: 4")
 
-        // or unnamed
+        // ... or unnamed
         val json2 = saveToJSON(t, TempEmployee)
         assertThat(json2).contains("salary: 3000")
         assertThat(json2).contains("level: 4")

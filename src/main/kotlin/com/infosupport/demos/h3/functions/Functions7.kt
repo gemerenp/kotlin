@@ -18,7 +18,7 @@ fun main() {
 
     // Destructuring with map in a loop
     for ((key, value) in map.entries) {
-        // what are index and element here?
+        // what are key and value here?
         print("[$key, $value] ")
     }
 
@@ -26,7 +26,7 @@ fun main() {
 
     for ((index, element) in map.entries.withIndex()) {
         // what are index and element here?
-        // print("[$index, $element] ")
+        print("[$index, $element] ")
 
         // no nested destructuring available, do it in a separate statement:
         val (k, v) = element

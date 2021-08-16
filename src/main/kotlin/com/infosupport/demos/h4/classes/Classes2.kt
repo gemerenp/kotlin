@@ -1,16 +1,10 @@
 package com.infosupport.demos.h4.classes
 
-// Open, final, and abstract modifiers: final by default
-// Visibility modifiers: public by default
+// Inheritance:
+// - Open, final, and abstract
 
-// TODO tell
-fun main(args: Array<String>) {
-    val richButton = RichButton(1)
-    richButton.disable() // from...?
-    richButton.animate() // from...?
-    richButton.click()   // from...?
-    richButton.showOff() // from...?
-}
+// Visibility modifiers: public by default
+//   See https://drek4537l1klr.cloudfront.net/jemerov/HighResolutionFigures/table_4-2.png
 
 // TODO tell
 open class RichButton(val x: Int) : Clickable {     // open: can be overridden
@@ -20,7 +14,7 @@ open class RichButton(val x: Int) : Clickable {     // open: can be overridden
 }
 
 class MyRichButton(myX: Int) : RichButton(myX) {
-    // override fun disable() {}
+    // override fun disable() {}        // not allowed
 }
 
 // TODO tell
@@ -30,15 +24,23 @@ abstract class Animated(val a: Int) {
     fun animateTwice() {}
 }
 
-class AnimatedSub(anA: Int) : Animated(anA) {
-    override fun animate() {
-        TODO("Not yet implemented")
+class Gif(anA: Int) : Animated(anA) {
+    override fun animate() {  // you have to implement abstract method, just as in Java
+        println("Animating...")
     }
+
+    // allowed: stopAnimating is open
+    override fun stopAnimating() {
+        println("Stopped")
+    }
+
+    // not allowed: animateTwice is not open but final by default
+    // override fun animateTwice() {}
 }
 
 // TODO tell
 // internal: visible in a module, not outside it
-open class TalkativeButton : Focusable {
+internal open class TalkativeButton : Focusable {
     private fun yell() = println("Hey!")             // private
     protected fun whisper() = println("Let's talk!") // protected
 
@@ -49,18 +51,35 @@ open class TalkativeButton : Focusable {
        Also note that extension functions (like below) of a class don’t get
        access to its private or protected members.
     */
-    fun giveSpeech() {
-        // not allowed:
+    fun speech() {
+        // allowed:
         yell()
         whisper()
     }
 }
 
-// Not allowed: reference the less-visible type TalkativeButton from the public function giveSpeech:
+// must be internal too, not allowed to reference internal TalkativeButton from public function giveSpeech:
+internal fun TalkativeButton.giveSpeech() {
+    // Not allowed: reference private or protected members from an internal function
+    // yell()
+    // whisper()
+    speech()
+}
 
-fun TalkativeButton.giveSpeechExtFn() {
-    // not allowed:
-    // this.yell()
-    // this.whisper()
-    giveSpeech()
+// TODO show
+fun main(args: Array<String>) {
+    val richButton = RichButton(1)
+    richButton.disable() // from...?
+    richButton.animate() // from...?
+    richButton.click()   // from...?
+    richButton.showOff() // from...?
+
+    val gif = Gif(2)
+    gif.animate()
+    gif.animateTwice()
+    gif.stopAnimating()
+
+    val talkativeButton = TalkativeButton()
+    talkativeButton.speech()
+    talkativeButton.giveSpeech()
 }

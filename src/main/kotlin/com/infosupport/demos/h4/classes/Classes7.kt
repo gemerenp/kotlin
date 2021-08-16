@@ -48,4 +48,7 @@ fun main(args: Array<String>) {
     println(dylan == al)
     println(dylan === al)
     println(dylanSet.contains(al))
+
+    // ... and componentN functions for destructuring
+    val (name, postalCode) = dylan
 }

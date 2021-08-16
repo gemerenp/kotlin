@@ -33,6 +33,10 @@ fun List<String>.myJoin(
     postfix: String = ""
 ): String = joinToStringClassic(this, separator, prefix, postfix)
 
+// TODO tell: the member function always takes precedence over extension function
+// See https://drek4537l1klr.cloudfront.net/jemerov/Figures/03fig02.jpg
+// Extensions aren't part of a class. They're declared externally as static methods.
+
 open class View {
     open fun click() = println("View clicked")
 }
@@ -41,8 +45,7 @@ class Button : View() {
     override fun click() = println("Button clicked")
 }
 
-// TODO tell: the member function always takes precedence over extension function
-fun Button.click() = println("Button EF clicked")
+// fun Button.click() = println("Button ext. fun clicked")
 
 fun View.showOff() = println("I'm a view!")
 fun Button.showOff() = println("I'm a button!")

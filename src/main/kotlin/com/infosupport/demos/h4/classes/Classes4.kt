@@ -26,7 +26,7 @@ fun eval(e: Expr): Int =
     }
 
 // Solution 2: as sealed classes -------------------------------
-// See Figure 4.2. Sealed classes can’t have inheritors defined outside of the class: https://livebook.manning.com/book/kotlin-in-action/chapter-4/98
+// See Figure 4.2. Sealed classes can’t have inheritors defined outside of the class: https://drek4537l1klr.cloudfront.net/jemerov/Figures/04fig02_alt.jpg
 sealed class ExprSealed {
     class Num(val value: Int) : ExprSealed()
     class Sum(val left: ExprSealed, val right: ExprSealed) : ExprSealed()

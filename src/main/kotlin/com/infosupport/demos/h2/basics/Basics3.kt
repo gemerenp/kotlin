@@ -1,13 +1,42 @@
 package com.infosupport.demos.h2.basics
 
+// loops, ranges and map
+// destructuring
+// tryCatch
+// nullableTypes
+
 import java.io.BufferedReader
 import java.io.StringReader
 import java.util.*
 
 fun main() {
-    val treeMap = TreeMap<String, Person>()
+    // loops, ranges and map
+    basics()
+    val treeMap = combined()
 
-    // TODO show loops, ranges and map
+    destructuring(treeMap)
+
+    tryCatch()
+
+    nullableTypes()
+}
+
+private fun basics() {
+    println(1..9)
+    println(1 until 9)
+    println(1 downTo 9)
+
+    for (i in 1..4) {
+        println(i)
+    }
+
+    println(1..9 step 2)
+    println((1..9 step 3).first)
+    println((1..9 step 5).last)
+}
+
+private fun combined(): TreeMap<String, Person> {
+    val treeMap = TreeMap<String, Person>()
     for (c in 'A'..'Z') // range of Char
         for (i in 6 downTo 1 step 2) { // range of Int
             // use in for range check
@@ -25,8 +54,10 @@ fun main() {
                 else -> println("It's something else.")
             }
         }
+    return treeMap
+}
 
-    // TODO show destructuring
+private fun destructuring(treeMap: TreeMap<String, Person>) {
     for (entry in treeMap) {
         val (c, person) = entry
         println("$c = $person")
@@ -41,8 +72,9 @@ fun main() {
     for ((index, i) in listOf(42, 43, 44).withIndex()) {
         println("list[$index] = $i.")
     }
+}
 
-    // TODO show and tell exceptions, try/catch
+private fun tryCatch() {
     // try as a statement, similar to Java:
     try {
         val n1 = readNumber(null)
@@ -52,16 +84,16 @@ fun main() {
     } finally {
         println("Done")
     }
+}
 
-    // TODO nullable types
+private fun nullableTypes() {
     val nullableNumber = readNumber(BufferedReader(StringReader("not a number"))) // param is a nullable BufferedReader
     val dec = nullableNumber?.dec() // safe de-referencing
     println(dec ?: "no number found...") // elvis operator
-
 }
 
 // Basically similar to Java
-fun readNumber(reader: BufferedReader?): Int? { // optional Int, i.e. nullable
+private fun readNumber(reader: BufferedReader?): Int? { // optional Int, i.e. nullable
     if (reader == null) {
         // how to throw an exception:
         throw IllegalArgumentException("reader cannot be null")

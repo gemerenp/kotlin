@@ -8,8 +8,6 @@ import javax.print.attribute.HashDocAttributeSet
 
 // Nontrivial constructors or properties
 
-// TODO show: see Basics2
-
 fun main() {
     // calling ctors:
     val userVerbose = UserVerbose("BramBramBram") // Java style

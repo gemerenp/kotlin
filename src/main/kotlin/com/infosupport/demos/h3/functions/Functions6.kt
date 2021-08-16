@@ -8,6 +8,8 @@ fun main() {
 
     // use vararg
     print(args, "A", "B", "C", "D")
+    print(args)
+    print(args, "A", "B")
 }
 
 fun print(args: Array<Int>, vararg letters: String) { // declare vararg parameter; in Java: String...letters

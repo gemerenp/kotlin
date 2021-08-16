@@ -47,10 +47,7 @@ class User2 private constructor(val nickname: String) {
 class TempEmployee(name: String, salary: Int, val level: Int) : Employee(name, salary) {
     companion object Loader : JSONFactory<TempEmployee> { // note the name and the implementation
         override fun toJSON(e: TempEmployee) =
-            """
-                {salary: ${e.salary}}},
-                {level: ${e.level}}}
-            """.trimIndent()
+            """{ salary: ${e.salary}, level: ${e.level} }"""
     }
 }
 
@@ -72,4 +69,8 @@ class PermEmployee(name: String, salary: Int, val scale: Int) : Employee(name, s
 fun PermEmployee.Companion.someExtFunction() = "Nice...!"
 
 // 3. Object expression is used instead of Java’s anonymous inner class -------------------
-// -
+val comp = object : Comparator<PermEmployee> {
+    override fun compare(p1: PermEmployee?, p2: PermEmployee?): Int {
+        return p1?.salary?.minus(p2?.salary ?: 0) ?: 1
+    }
+}

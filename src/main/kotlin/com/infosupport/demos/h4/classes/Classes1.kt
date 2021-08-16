@@ -1,6 +1,7 @@
 package com.infosupport.demos.h4.classes
 
-// Interfaces
+// Inheritance:
+// - Interfaces
 
 fun main(args: Array<String>) {
     val button = Button()
@@ -28,6 +29,7 @@ interface Focusable {
 
 class Button : Clickable, Focusable {
     // click has no default implementation, so you must implement it
+    // use the keyword override to explicitly indicate that you're overriding.
     override fun click() = println("I was clicked.")
 
     // setFocus has default implementation: no need to override it

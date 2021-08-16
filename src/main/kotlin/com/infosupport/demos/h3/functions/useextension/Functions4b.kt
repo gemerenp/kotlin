@@ -13,6 +13,5 @@ fun main() {
     println(s.lastChar())
     println(i)
 
-
     println(s.last()) // In Kotlin API! And a lot more...
 }

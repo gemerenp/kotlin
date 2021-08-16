@@ -5,18 +5,22 @@ import java.lang.Thread.sleep
 // Implementing properties declared in interfaces
 // Accessing a backing field from a getter or setter
 
-private val Delay = 1_000L
+private const val Delay = 1_000L
 
 // TODO show
 fun main(args: Array<String>) {
     // Implementing properties declared in interfaces: ---------------------------------
     println("Initializing objects...")
+    val regularUser = RegularUser("Elon", "elon@tesla.com")
     val privateUser = PrivateUser("private")
     val subscribingUser = SubscribingUser("sub@kotlinlang.org")
     val facebookUser = FacebookUser("face@kotlinlang.org", 2325675) // takes some time...
     println("Proceeding...")
 
-    println(privateUser.nickname)
+    println(regularUser.nickname)   // nothing special
+    println(regularUser.email)
+
+    println(privateUser.nickname)   // nothing special
     println(privateUser.email)
 
     println(subscribingUser.nickname) // takes long every call
@@ -51,6 +55,8 @@ interface IUser {
         get() = email.substringBefore('@')
 }
 
+class RegularUser(override val email: String, override val nickname: String) : IUser
+
 class PrivateUser(override val nickname: String) : IUser {
     override val email: String = "anonymous@mail.com"
 }
@@ -78,7 +84,7 @@ fun getFacebookNameFromWeb(accountId: Int): String {
 // Accessing a backing field from a getter or setter: --------------
 open class Person(val name: String) {
 
-    // we want to log every change to address:
+    // Suppose we want to log every change to address:
     var address: String = "unspecified"
         set(newAddress) { // custom setter
             // first: log

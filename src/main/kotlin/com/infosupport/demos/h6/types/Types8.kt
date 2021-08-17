@@ -9,13 +9,13 @@ fun main() {
 fun nullabilityAndCollections() {
     // type argument can also be nullable
     val numbers: List<Int?> = listOf(1, null, 42)
-    addValidNumbers(numbers)
+    sumOfNonNullNumbers(numbers)
 }
 
-fun addValidNumbers(numbers: List<Int?>) {
+fun sumOfNonNullNumbers(numbers: List<Int?>) {
     val validNumbers = numbers.filterNotNull() // convenience method
     println("Sum of valid numbers: ${validNumbers.sum()}")
-    println("Invalid numbers: ${numbers.size - validNumbers.size}")
+    println("Invalid number count: ${numbers.size - validNumbers.size}")
 }
 
 

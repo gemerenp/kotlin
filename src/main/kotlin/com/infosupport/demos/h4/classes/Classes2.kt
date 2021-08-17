@@ -15,6 +15,9 @@ open class RichButton(val x: Int) : Clickable {     // open: can be overridden
 
 class MyRichButton(myX: Int) : RichButton(myX) {
     // override fun disable() {}        // not allowed
+    override fun showOff() {
+        TODO("Not yet implemented")
+    }
 }
 
 // TODO tell

@@ -5,7 +5,7 @@ package com.infosupport.demos.h3.functions
 // TODO tell:
 //  - receiver type   = String
 //  - receiver object = this
-//  See https://livebook.manning.com/book/kotlin-in-action/chapter-3/98
+//  See https://drek4537l1klr.cloudfront.net/jemerov/Figures/03fig01_alt.jpg
 fun String.lastChar(): Char = this.get(this.length - 1) // you can omit 'this'
 
 // TODO show: see Functions4b.kt
@@ -49,7 +49,6 @@ class Button : View() {
 
 fun View.showOff() = println("I'm a view!")
 fun Button.showOff() = println("I'm a button!")
-
 
 
 

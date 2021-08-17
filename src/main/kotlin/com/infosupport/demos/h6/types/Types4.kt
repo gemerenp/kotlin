@@ -21,7 +21,7 @@ fun main() {
     val s = java.lang.String.valueOf("ABC"); // press Ctrl+Q on s
 
     // You can treat the parameter and its property as nonnull, but that's not safe.
-    // yellAtUnsafe(JavaPerson("null")) // ok
+    yellAtUnsafe(JavaPerson("null"))    // ok
     // yellAtUnsafe(JavaPerson(null))   // allowed but will throw an exception (which one?)
 
     yellAtSafe(JavaPerson("null"))      // ok

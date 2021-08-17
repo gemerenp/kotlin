@@ -13,7 +13,7 @@ fun main() {
 
     // captureLocalVariables()
 
-    // memberReferences()
+    // functionReferences()
 
     // creatingCollectionsRevisited()
 }
@@ -74,9 +74,8 @@ fun syntax() {
     people.maxBy { p -> p.age }             // remove parameter
     people.maxBy { it.age }
 
-    people.joinToString(separator = ",", transform = { p: Person -> p.name }) // Passing a lambda outside parentheses
-    people.joinToString(",", transform = { it.name }) // Passing a lambda outside parentheses
-    people.joinToString(",") { p: Person -> p.name }                          // apply steps from above
+    people.joinToString(",", transform = { p: Person -> p.name })
+    people.joinToString(",", transform = { it.name })
     people.joinToString(",") { it.name }
 
     // Multiline lambda body; last statement is return value; no {}-block needed
@@ -146,6 +145,10 @@ private fun trackClicks(button: Button): Int {
     var clicks = 0
     button.onClick { clicks++ }
     return clicks // why doesn't this work?
+    /* ANSWER
+        onClick is called AFTER this functions returns;
+        when this function returns, clicks is still 0
+     */
 }
 
 var clicks = 0
@@ -156,8 +159,8 @@ fun countButtonClicks(button: Button) {
     println(clicks) // 10?
 }
 
-fun memberReferences() {
-    // member function (i.e. getter)
+fun functionReferences() {
+    // member reference (i.e. getter)
     val getAge = { person: Person -> person.age }
     val getAgeRef = Person::age
 
@@ -186,7 +189,7 @@ fun memberReferences() {
     println(personsAgeFunction(dmitry))
 
     //  zero-argument function: returns dmitry's age
-    val dmitrysAgeFunction = dmitry::age
+    val dmitrysAgeFunction = dmitry::age // possible since kotlin 1.1
     println(dmitrysAgeFunction())
 }
 

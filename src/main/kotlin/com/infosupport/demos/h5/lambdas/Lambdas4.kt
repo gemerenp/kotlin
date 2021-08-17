@@ -18,6 +18,10 @@ fun main() {
     // use sequence {...}
     val fiboTo100 = fibonacci().takeWhile { it <= 100 }.toList()
     println(fiboTo100)
+
+    // or use its iterator manually
+    val iterator = fibonacci().iterator()
+    repeat(7) { println(iterator.next()) }
 }
 
 fun fibonacci() = sequence {

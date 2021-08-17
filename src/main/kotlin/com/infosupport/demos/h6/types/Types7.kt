@@ -22,14 +22,15 @@ private fun any() {
     // etc.
 
     // Any can be nullable
-    val j: Any? = 43
+    var j: Any? = null
+    j = 43
     val equals1 = j?.equals(42)
 }
 
 private fun unit() {
     // Unit is Java's void
     // Unit means: only one instance
-    fun returnNothing(): Unit {
+    fun returnUnit(): Unit {
         return Unit // Unit is the only value of type Unit;
     }
 
@@ -53,10 +54,10 @@ private fun nothing() {
     // Useful usage of Nothing:
     val addrNullable = person.company?.address
     val addrNonNullable = person.company?.address ?: fail("No address found")
-    // The last addr is nonnullable because either it is an Address, or an exception is thrown.
+    // The second val is nonnullable because either it is an Address, or Nothing.
 }
 
 // used in testing libraries
-fun fail(message: String): Nothing { // this function never returns
+fun fail(message: String): Nothing { // this function never returns anything
     throw IllegalStateException(message)
 }

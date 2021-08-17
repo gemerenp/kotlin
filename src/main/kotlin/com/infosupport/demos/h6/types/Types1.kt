@@ -20,6 +20,9 @@ fun printStrLen() {
     // println(strLen(null)) // compile time error (runtime error in Java)
 
     println(strLenSafe1("abc"))
+    println(strLenSafe1(null))
+
+    println(strLenSafe2("abc"))
     println(strLenSafe2(null))
 
     println(elvisDemo(null))
@@ -37,16 +40,7 @@ fun printStrLen() {
 fun strLen(s: String) = s.length
 // Safe: s can't be null
 
-// Not allowed
-// val len = strLen(null)
-
-// String? is nullable
-// fun strLenUnsafe(s: String?) = s.length
-
-// Allowed, but would crash
-// val len = strLenUnsafe(null)
-
-fun strLenSafe1(s: String?) = if (s != null) s.length else 0
+fun strLenSafe1(s: String?) = if (s != null) s.length else 0 // not idiomatic
 fun strLenSafe2(s: String?) = s?.length ?: 0 // Elvis and safe call combined
 
 fun elvisDemo(s: String?) {

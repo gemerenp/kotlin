@@ -13,12 +13,12 @@ fun main() {
 
     // You can always call methods on Ints:
     var h = i.dec()
-    println("""h=${h}""")
-    println("""i=${i}""")
+    println("h=${h}")
+    println("i=${i}")
 
     // You can pass an Int to a method:
     inc(i)
-    println("""i=${i}""") // passed by value???
+    println("i=${i}") // passed by value???
 
     repeat(42) { h = h.inc() }
     showProgress(h)
@@ -32,8 +32,8 @@ fun main() {
 
     // At runtime, the (non nullable) number types are represented in the most efficient way
     // possible:
-    // - most cases:    Int -> int
-    // - type argument: Int -> Integer
+    // - most cases:            Int -> int
+    // - generic type argument: Int -> Integer
 
     // These are the types corresponding to Java primitives:
     // Integer types                Byte, Short, Int, Long

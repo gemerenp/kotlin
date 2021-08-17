@@ -21,8 +21,8 @@ fun main() {
     letPrintPersonName(id = 1)
     letPrintPersonName(id = 2) // does nothing
 
-    findPerson(id = 1).printPersonNameSafeExt()
-    findPerson(id = 2).printPersonNameSafeExt() // no safe call need, even though getPerson is of type Person?
+    findPerson(id = 1).printPersonNameSafeExtFn()
+    findPerson(id = 2).printPersonNameSafeExtFn() // no safe call need, even though getPerson is of type Person?
 
     printHashcodeGeneric(person)
 }
@@ -38,15 +38,19 @@ fun printPersonNameUnsafe(p: Person?) {
     println(p!!.name) // !! is the not null assertion
 }
 
-fun Person?.printPersonNameSafeExt() {
-    println(this?.name ?: "Unknown")
-}
-
 fun findPerson(id: Int): Person? = if (id == 1) person else null // person or null, so Person?
 
 fun letPrintPersonName(id: Int) {
     val p = findPerson(id)
-    p?.let { printPersonNameUnsafe(it) } // executes only if p is not null
+    // when you want to execute a block of code if object is not null, use let
+    p?.let {
+        println("Printing person name...")
+        printPersonNameUnsafe(it)
+    } // executes only if p is not null
+}
+
+fun Person?.printPersonNameSafeExtFn() {
+    println(this?.name ?: "Unknown")
 }
 
 fun <T> printHashcodeGeneric(t: T) {

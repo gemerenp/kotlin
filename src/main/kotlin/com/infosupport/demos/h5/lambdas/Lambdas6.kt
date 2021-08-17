@@ -16,9 +16,7 @@ fun main(args: Array<String>) {
 
 fun alphabetVerboseStyle(): String {
     val result = StringBuilder() // the 'receiver'
-    for (letter in 'A'..'Z') {
-        result.append(letter)
-    }
+    ('A'..'Z').forEach { result.append(it) }    // repeat 'result' every time...
     result.append("\nNow I know the alphabet!")
     return result.toString()
 }
@@ -29,11 +27,9 @@ fun alphabetUsingTheWithScopeFunctionVerboseStyle(): String {
     // the 'receiver' is passed to with(...){...}
     return with(sb) {
         // 'this' is the receiver, i.e. sb
-        for (letter in 'A'..'Z') {
-            this.append(letter) // 'this' can be omitted of course
-        }
+        ('A'..'Z').forEach { append(it) }
         append("\nNow I know the alphabet!")
-        this.toString()
+        toString() // last line is return value
     }
 }
 
@@ -41,12 +37,6 @@ fun alphabetUsingTheWithScopeFunctionVerboseStyle(): String {
 fun alphabetUsingTheWithScopeFunction() = with(StringBuilder()) {
     // 'this' is the receiver here, i.e. StringBuilder()
     ('A'..'Z').forEach { append(it) }
-
-    // ... is equal to:
-    // for (letter in 'A'..'Z') {
-    //     append(letter)
-    // }
-
     append("\nNow I know the alphabet!")
 
     // return whatever you want
@@ -54,21 +44,23 @@ fun alphabetUsingTheWithScopeFunction() = with(StringBuilder()) {
 }
 
 // alternative to 'with' is 'apply'
+// the only difference is that apply returns 'this' by default
 fun alphabetUsingTheApplyScopeFunction() = StringBuilder().apply {
     // 'this' is the receiver, i.e. StringBuilder()
-    for (letter in 'A'..'Z') {
-        append(letter)
-    }
+    ('A'..'Z').forEach { append(it) }
     append("\nNow I know the alphabet!")
-    // 'apply' returns 'this' by default
 }.toString()
 
 // 'apply' acts as a builder: initialize an object during creation
 fun buildPerson(name: String) = Person(name).apply {
     // 'this' is the receiver object, i.e. Person(name)
-
     this.age = 42
     this.instruments = List(name.length) { Instrument(it.toString()) }
-
     // returns 'this', i.e. the built person
+}
+
+// There's also a convenience function to build strings, which is even more concise:
+fun alphabet() = buildString {
+    ('A'..'Z').forEach { append(it) }
+    append("\nNow I know the alphabet!")
 }

@@ -1,45 +1,103 @@
 package com.infosupport.demos.h4.classes
 
-// Inheritance:
-// - Interfaces
+import javax.naming.Context
+import javax.naming.InitialContext
+import javax.print.attribute.AttributeSet
+import javax.print.attribute.HashAttributeSet
+import javax.print.attribute.HashDocAttributeSet
 
-fun main(args: Array<String>) {
-    val button = Button()
-    button.showOff()        // from..?
-    button.setFocus(true)   // from..?
-    button.click()          // from..?
+// Nontrivial constructors or properties
+
+fun main() {
+    // calling ctors:
+    val userVerbose = UserVerbose("BramBramBram") // Java style
+    val userVerboseNickname = userVerbose.getNickname()    // call getter function
+    userVerbose.setNickname("BramBram")                    // call setter function
+
+    val userLessVerbose = UserLessVerbose("BramBram")
+    val userLessVerboseNickname = userLessVerbose.nickname // call property
+    userLessVerbose.nickname = "Bram"
+
+    val userLesserVerbose = UserLesserVerbose("BramBr")
+    val userLesserVerboseNickname = userLesserVerbose.nickname
+    userLesserVerbose.nickname = "BramB"
+
+    val user = User("Bram")
+    val nickname = user.nickname
+    user.nickname = "Mark"
+
+    val jeff = TwitterUser("Jeff")
+    val besos = jeff.nickname
+
+    // calling subclass ctor
+    val radio = RadioButton()
+
+    // calling private ctor not allowed:
+    // val s = Secretive()
+
+    // calling ctor overloads:
+    val myView1 = MyView(InitialContext())
+    val myView2 = MyView(InitialContext(), HashAttributeSet())
+    val myButt1 = MyButton(InitialContext())
+    val myButt2 = MyButton(InitialContext(), HashDocAttributeSet())
 }
 
-interface Clickable {
-    abstract open fun click() // abstract open by default, final not allowed
+// TODO tell
 
-    // default implementation
-    open fun showOff() = println("I'm clickable!") // open by default, final not allowed
+// Java style
+open class UserVerbose constructor(nickname: String) { // primary ctor declaration
 
-    // In interfaces, you don’t use final, open, or abstract.
-}
+    private var _nickname: String // the internal (backing) field
 
-interface Focusable {
-    // default implementation
-    fun setFocus(b: Boolean) = println("I ${if (b) "got" else "lost"} focus.")
+    init { // primary ctor implementation
+        this._nickname = nickname
+    }
 
-    // default implementation
-    fun showOff() = println("I'm focusable!")
-}
+    fun getNickname() = _nickname // the getter makes the internal field available, making it a property
 
-class Button : Clickable, Focusable {
-    // click has no default implementation, so you must implement it
-    // use the keyword override to explicitly indicate that you're overriding.
-    override fun click() = println("I was clicked.")
-
-    // setFocus has default implementation: no need to override it
-
-    // You MUST override default implementations here, since there are more than one.
-    override fun showOff() {
-        // e.g.:
-        super<Clickable>.showOff() // You MUST indicate which super method you want to call
-        super<Focusable>.showOff()
-        println("I'm ready!")
+    fun setNickname(value: String) {
+        this._nickname = value
     }
 }
 
+open class UserLessVerbose(_nickname: String) {
+    var nickname = _nickname // no private makes it a property
+        get() = field
+        set(value) {
+            field = value
+        }
+
+    // In TS it would be:
+    // private _nickname: string
+
+    // get nickname(){
+    //    return this._nickname
+    // }
+
+
+}
+
+open class UserLesserVerbose(_nickname: String) {
+    var nickname = _nickname
+}
+
+// least verbose, most concise:
+open class User(var nickname: String) // primary constructor
+
+// subclass
+class TwitterUser(nickname: String) : User(nickname) // primary constructor and call to super (required)
+
+open class OpenButton
+class RadioButton : OpenButton() // call to super (required)
+
+class Secretive private constructor() {} // private ctor
+
+open class MyView { // no primary constructor, two secondary constructors
+    constructor(ctx: Context) {}
+    constructor(ctx: Context, attr: AttributeSet) {}
+}
+
+class MyButton : MyView { // no primary constructor, two secondary constructors
+    constructor(ctx: Context) : this(ctx, HashAttributeSet()) {} // delegate to this
+    constructor(ctx: Context, attr: AttributeSet) : super(ctx, attr) {} // delegate to super
+}

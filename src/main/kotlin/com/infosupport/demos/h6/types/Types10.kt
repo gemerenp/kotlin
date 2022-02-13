@@ -2,20 +2,20 @@ package com.infosupport.demos.h6.types
 
 import java.io.File
 
+// If time permits ⏲⏲⏲
 // Collections and arrays: Collections as platform types
 
-// TODO if time permits tell
 
 /*
-When you’re overriding or implementing a Java method that has a collection type in its signature,
-you need to decide which Kotlin type you’re going to use to represent a Java type coming
-from the method you’re overriding or implementing.
+    When you’re overriding or implementing a Java method that has a collection type in its signature,
+    you need to decide which Kotlin type you’re going to use to represent a Java type coming
+    from the method you’re overriding or implementing.
 
-You need to make multiple choices in this situation, all of which will be reflected in
-the resulting parameter type in Kotlin:
-    - Is the collection nullable?
-    - Are the elements in the collection nullable?
-    - Will your method modify the collection?
+    You need to make multiple choices in this situation, all of which will be reflected in
+    the resulting parameter type in Kotlin:
+        - Is the collection nullable?
+        - Are the elements in the collection nullable?
+        - Will your method modify the collection?
 */
 
 class FileIndexer : FileContentProcessor { // note: FileContentProcessor.java can be found in src/main/java/...

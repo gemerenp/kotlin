@@ -7,6 +7,8 @@ import com.infosupport.demos.h5.lambdas.Instrument.Companion.vocal
 data class Person(val name: String = "", var age: Int = 0, var instruments: List<Instrument> = emptyList())
 
 data class Instrument(val name: String) {
+    constructor(i: Int) : this(i.toString())
+
     companion object {
         val keyboard = Instrument("Keyboard")
         val guitar = Instrument("Guitar")

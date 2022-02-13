@@ -2,8 +2,8 @@ package com.infosupport.demos.h6.types
 
 // Nullability: lateinit
 
-// TODO show and tell: see MyServiceTest
+// TODO show and tell: see LateinitTest
 
-class MyService {
+class Lateinit {
     fun performAction(): String = "foo"
 }

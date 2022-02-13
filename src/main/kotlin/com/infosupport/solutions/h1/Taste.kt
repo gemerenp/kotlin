@@ -19,7 +19,7 @@ fun main() {
 
     println(set)
 
-    val minBy = set.minBy { it.price ?: ZERO }
+    val minBy = set.minByOrNull { it.price ?: ZERO }
     println(minBy)
 
     val find: Article? = set.find { it.description == "CD" }

@@ -1,6 +1,6 @@
-package com.infosupport.demos.h3.functions
-
 // Creating collections
+
+package com.infosupport.demos.h3.functions
 
 val set = setOf(1, 7, 53)
 val hashSet = hashSetOf(1, 7, 53)
@@ -25,11 +25,10 @@ fun main() {
     println("------- METHODS --------")
     println(set.minus(1))
     println(hashSet.minus(arrayOf(1, 53)))
-    println(hashSet.max())
+    println(hashSet.maxByOrNull { it })
     println(list.asReversed())
     println(arrayList.last())
     println(hashMap.any())
-
     // ... and much more
 }
 

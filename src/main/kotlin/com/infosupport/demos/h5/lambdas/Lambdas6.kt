@@ -3,7 +3,7 @@ package com.infosupport.demos.h5.lambdas
 // Lambdas with receivers: with and apply
 
 // TODO show and tell
-fun main(args: Array<String>) {
+fun main() {
     println(alphabetVerboseStyle())
 
     println(alphabetUsingTheWithScopeFunctionVerboseStyle())
@@ -54,8 +54,8 @@ fun alphabetUsingTheApplyScopeFunction() = StringBuilder().apply {
 // 'apply' acts as a builder: initialize an object during creation
 fun buildPerson(name: String) = Person(name).apply {
     // 'this' is the receiver object, i.e. Person(name)
-    this.age = 42
-    this.instruments = List(name.length) { Instrument(it.toString()) }
+    age = 42 // (`this.` is omitted)
+    instruments = List(name.length) { index -> Instrument(index) } // for each index create an Instrument with name = index
     // returns 'this', i.e. the built person
 }
 

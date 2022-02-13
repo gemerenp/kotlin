@@ -15,7 +15,7 @@ fun main(args: Array<String>) {
 }
 
 fun processArray(args: Array<String>) {
-    if (args.size > 0) {
+    if (args.isNotEmpty()) {
         println(args[0])
         println(args.get(0))
         println(args.sortedArray())
@@ -31,10 +31,10 @@ fun processArray(args: Array<String>) {
     }
 
     for ((i, e) in args.withIndex()) {
-        println("""$i, $e""")
+        println("$i, $e")
     }
 
-    args.forEachIndexed { i, e -> println("""$i, $e""") }
+    args.forEachIndexed { i, e -> println("$i, $e") }
 }
 
 fun createAndPrintArray() {
@@ -53,9 +53,9 @@ fun createAndPrintArray() {
     val letters = Array(26) { ('a' + it).toString() }
     println(letters.joinToString(", "))
 
-    // 4. list.toTypedArray()
+    // 4. list.toTypedArray() and spread
     val strings = listOf("a", "b", "c").toTypedArray()
-    printVarargString(*strings) // spread (*) to pass as vararg
+    printVarargString(*strings) // spread strings to pass as vararg
 
     // 5. Array of primitives
     // Array<T> always becomes an array of a reference type.

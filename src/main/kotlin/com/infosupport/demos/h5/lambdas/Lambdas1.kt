@@ -6,8 +6,8 @@ package com.infosupport.demos.h5.lambdas
 fun main() {
     firstTaste()
 
-    // findClassicStyle(people)
-    // find(people)
+    // findOldestClassic(people)
+    // findOldestLambda(people)
 
     // syntax()
 
@@ -40,7 +40,7 @@ fun firstTaste() {
     button.click()
 }
 
-fun findClassicStyle(people: List<Person>) {
+fun findOldestClassic(people: List<Person>) {
     var maxAge = 0
     var theOldest: Person? = null
     for (person in people) {
@@ -52,11 +52,11 @@ fun findClassicStyle(people: List<Person>) {
     println(theOldest)
 }
 
-fun find(people: List<Person>) {
-    val theOldest = people.maxBy { it.age }
+fun findOldestLambda(people: List<Person>) {
+    val theOldest = people.maxByOrNull { it.age }
     println(theOldest)
 
-    val firstInAlphabet = people.minBy(Person::name) // member reference
+    val firstInAlphabet = people.minByOrNull(Person::name) // member reference
     println(firstInAlphabet)
 }
 
@@ -68,11 +68,11 @@ fun syntax() {
     println(result)
 
     // Removing verbosity
-    people.maxBy({ p: Person -> p.age })    // lambda argument should be moved out of method parentheses
-    people.maxBy() { p: Person -> p.age }   // remove parentheses
-    people.maxBy { p: Person -> p.age }     // infer type
-    people.maxBy { p -> p.age }             // remove parameter
-    people.maxBy { it.age }
+    people.maxByOrNull({ p: Person -> p.age })    // lambda argument should be moved out of method parentheses
+    people.maxByOrNull() { p: Person -> p.age }   // remove parentheses
+    people.maxByOrNull { p: Person -> p.age }     // infer type
+    people.maxByOrNull { p -> p.age }             // remove parameter
+    people.maxByOrNull { it.age }
 
     people.joinToString(",", transform = { p: Person -> p.name })
     people.joinToString(",", transform = { it.name })
@@ -124,15 +124,15 @@ fun printProblemCounts(responses: Collection<String>) {
 fun captureAndWrap() {
     class Ref<T>(var value: T)
 
-    var counter = 0           // var, so not final
-    val inc = { ++counter }() // immediately invoke lambda
-    println("$inc, $counter")
+    var counter = 0             // var, so not final
+    val inc = { ++counter }     // immediately invoke lambda
+    println("$inc(), $counter")
 
     // ... gets converted under the hood to:
 
     val counterRef = Ref(0)
-    val inc2 = run { ++(counterRef.value) } // immediately invoke lambda with run {}
-    println("$inc2, ${counterRef.value}")
+    val incRef = { ++(counterRef.value) } // immediately invoke lambda with run {}
+    println("$incRef(), ${counterRef.value}")
 }
 
 fun tryToCountButtonClicks(button: Button) {

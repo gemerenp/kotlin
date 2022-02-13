@@ -10,26 +10,34 @@ package com.infosupport.demos.h6.types
 
 // TODO show and tell
 fun main() {
-    printPersonNameSafe(Person("Bram"))
-    printPersonNameSafe("Bram")
-    printPersonNameSafe(Company("Info Support", null))
+    castPersonUnsafe(Person("Bram")) // OK
+    // castPersonUnsafe("Bram")      // Exception
 
-    printPersonNameUnsafe(person)
-    // printPersonNameUnsafe(null) // allowed, but will crash
+    castPersonSafe(Person("Bram"))   // OK
+    castPersonSafe("Bram")           // OK
+
+    printPersonNameUnsafe(person)    // OK
+    // printPersonNameUnsafe(null)   // Exception
 
     // id 1 exists, id 2 not:
     letPrintPersonName(id = 1)
     letPrintPersonName(id = 2) // does nothing
 
-    findPerson(id = 1).printPersonNameSafeExtFn()
-    findPerson(id = 2).printPersonNameSafeExtFn() // no safe call need, even though getPerson is of type Person?
+    findPerson(1).printPersonNameSafeExtFn()
+    findPerson(2).printPersonNameSafeExtFn() // no safe call needed, even though getPerson is of type Person?
 
-    printHashcodeGeneric(person)
+    whatsTheTypeOfGenericTypeParam(person)
 }
 
-fun printPersonNameSafe(o: Any?) {
-    val p = o as? Person // if o is Person then p is cast to Person, else p = null
-    // now p is smart cast to Person?
+fun castPersonUnsafe(o: Any) {
+    val p = o as Person  // if o !is Person: ClassCastException
+    // now p is a `Person`
+    println(p.name)
+}
+
+fun castPersonSafe(o: Any) {
+    val p = o as? Person // if o !is Person p = null, else p is cast to Person
+    // now p is smart cast to a `Person?`
     println(p?.name ?: "Unknown")
 }
 
@@ -41,19 +49,20 @@ fun printPersonNameUnsafe(p: Person?) {
 fun findPerson(id: Int): Person? = if (id == 1) person else null // person or null, so Person?
 
 fun letPrintPersonName(id: Int) {
+    // when you want to execute a block of code if an object != null, use let:
     val p = findPerson(id)
-    // when you want to execute a block of code if object is not null, use let
     p?.let {
+        // executes only if p != null
         println("Printing person name...")
         printPersonNameUnsafe(it)
-    } // executes only if p is not null
+    }
 }
 
 fun Person?.printPersonNameSafeExtFn() {
     println(this?.name ?: "Unknown")
 }
 
-fun <T> printHashcodeGeneric(t: T) {
+fun <T> whatsTheTypeOfGenericTypeParam(t: T) {
     // T is nullable, since it can be anything
     println(t?.hashCode() ?: "Unknown") // safe call needed
 }

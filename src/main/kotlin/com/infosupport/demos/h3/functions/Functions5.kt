@@ -4,9 +4,12 @@ package com.infosupport.demos.h3.functions
 
 // TODO show
 fun main() {
-    println("Kotlin".lastChar)
+    val string = "Kotlin?"
+    val sb = StringBuilder(string)
 
-    val sb = StringBuilder("Kotlin?")
+    println(string.lastChar)
+
+    println(sb.lastChar)
     sb.lastChar = '!'
     println(sb)
 }

@@ -1,41 +1,54 @@
 package com.infosupport.demos.h4.classes
 
-// Inner and nested classes: nested by default
+// Data classes
 
-// TODO show and tell
+class ClientVerbose(val name: String, val postalCode: Int) {
+    override fun toString() =
+        "Client(name=$name, postalCode=$postalCode)"
+
+    override fun equals(other: Any?) =
+        other != null &&
+                other is ClientVerbose && // smart casting Any -> Client
+                name == other.name && postalCode == other.postalCode
+
+    override fun hashCode(): Int =
+        name.hashCode() * 31 + postalCode
+
+    // getters / setters omitted...
+
+}
+
+// same but concise:
+data class Client(val name: String, val postalCode: Int)
+
 fun main() {
-    // See figure 4.1. Nested classes don’t reference their outer class, whereas inner classes do.
-    // See https://livebook.manning.com/book/kotlin-in-action/chapter-4/87
+    val kelly = ClientVerbose("Kelly", 90210)
+    val kellyToo = ClientVerbose("Kelly", 90210)
+    val kellySet = hashSetOf(kelly)
 
-    // Inner:
-    // val inner = Outer.Inner()        // Java:   inner is static
-    val outer = Outer()                 // Kotlin: inner is bound to instance of outer
-    val inner = outer.Inner()
+    println(kelly) // calls toString
+    println(kelly == kellyToo) // you must use == for equality
+    println(kelly === kellyToo) // you must use === for comparing reference
+    println(kellySet.contains(kellyToo)) // needs equals AND hashcode
 
-    println(outer.message)
-    inner.accessOuterReference()
-    println(outer.message)
+    // same for data class
 
-    // Nested:
-    // val nested = Outer().Nested()    // Java:   nested is bound to instance of outer
-    val nested = Outer.Nested()         // Kotlin: nested is static
+    val dylan = Client("Dylan", 90210)
+    val dylanToo = Client("Dylan", 90210)
+    val dylanSet = hashSetOf(dylan)
+
+    println(dylan)
+    println(dylan == dylanToo)
+    println(dylan === dylanToo)
+    println(dylanSet.contains(dylanToo))
+
+    // data class also contains fun copy()
+    val al = dylan.copy(name = "Al", postalCode = 60606)
+    println(al)
+    println(dylan == al)
+    println(dylan === al)
+    println(dylanSet.contains(al))
+
+    // ... and componentN functions for destructuring
+    val (name, postalCode) = dylan
 }
-
-class Outer(var message: String = "Hello") {
-
-    // Inner class (stores a reference to outer class via this@Outer)
-    inner class Inner {
-        fun accessOuterReference(): Outer {
-            val outer = this@Outer // access Outer class instance from Inner
-            outer.message += "World"
-
-            return outer
-        }
-    }
-
-    // Nested class: no reference to outer class
-    class Nested(var name: String = "") {
-
-    }
-}
-

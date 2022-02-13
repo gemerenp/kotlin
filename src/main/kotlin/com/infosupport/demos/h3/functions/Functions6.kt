@@ -14,12 +14,12 @@ fun main() {
 
 fun print(args: Array<Int>, vararg letters: String) { // declare vararg parameter; in Java: String...letters
 
-    // you can't pass the array, like in Java
-    println(listOf("args: ", args, "!"))
-    println(listOf("letters: ", letters, "!"))
+    // You can pass the array, like in Java, but that leads to other results than in Java:
+    println(listOf("args: ", args))
+    println(listOf("letters: ", letters))
 
-    // you have to use spread operator as vararg argument
-    println(listOf("args spread: ", *args, "!")) // spread unpacks the array contents
-    println(listOf("letters spread: ", *letters, "!"))
+    // Instead, use the spread operator to convert array to vararg argument
+    println(listOf("args spread: ", *args)) // spread unpacks the array contents
+    println(listOf("letters spread: ", *letters))
 }
 

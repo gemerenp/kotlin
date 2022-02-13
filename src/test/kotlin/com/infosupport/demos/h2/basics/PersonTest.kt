@@ -11,10 +11,10 @@ internal class PersonTest { // internal: visible everywhere in the same module
     @Test
     fun isFirst() {
         val bob = Person("Bob", true)
-        assertFalse(bob.isFirst)
+        assertFalse(bob.startsWithA)
 
         val alice = Person("Alice", true)
-        assertTrue(alice.isFirst)
+        assertTrue(alice.startsWithA)
     }
 
     @Test

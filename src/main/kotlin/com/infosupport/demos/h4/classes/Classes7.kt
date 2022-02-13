@@ -1,54 +1,42 @@
 package com.infosupport.demos.h4.classes
 
-// Data classes
+import com.infosupport.demos.h4.classes.ExprSealed.Num as NumSealed
+import com.infosupport.demos.h4.classes.ExprSealed.Sum as SumSealed
 
-class ClientVerbose(val name: String, val postalCode: Int) {
-    override fun toString() =
-        "Client(name=$name, postalCode=$postalCode)"
+// Sealed classes: defining restricted class hierarchies and smart casts
 
-    override fun equals(other: Any?) =
-        other != null &&
-                other is ClientVerbose && // smart casting Any -> Client
-                name == other.name && postalCode == other.postalCode
+// Suppose you have to implement expressions to sum a few numbers.
+// See demo unit test.
 
-    override fun hashCode(): Int =
-        name.hashCode() * 31 + postalCode
+// Solution 1: as interface implementations -------------------
+interface Expr
+class Num(val value: Int) : Expr
+class Sum(val left: Expr, val right: Expr) : Expr
 
-    // getters / setters omitted...
+fun eval(e: Expr): Int =
+    when (e) {
+        is Num -> e.value
+        is Sum -> eval(e.right) + eval(e.left)
+        else -> throw IllegalArgumentException("Unknown expression") // default branch required
 
+        /*  TODO tell
+            Always having to add a default branch isn’t convenient.
+            What’s more, if you add a new subclass, the compiler won’t detect
+            that something has changed. If you forget to add a new branch,
+            the default one will be chosen, which can lead to subtle bugs.
+        */
+    }
+
+// Solution 2: as sealed classes -------------------------------
+// See Figure 4.2. Sealed classes can’t have inheritors defined outside of the class: https://drek4537l1klr.cloudfront.net/jemerov/Figures/04fig02_alt.jpg
+sealed class ExprSealed {
+    class Num(val value: Int) : ExprSealed()
+    class Sum(val left: ExprSealed, val right: ExprSealed) : ExprSealed()
 }
 
-// same but concise:
-data class Client(val name: String, val postalCode: Int)
-
-fun main(args: Array<String>) {
-    val kelly = ClientVerbose("Kelly", 90210)
-    val kellyToo = ClientVerbose("Kelly", 90210)
-    val kellySet = hashSetOf(kelly)
-
-    println(kelly) // calls toString
-    println(kelly == kellyToo) // you must use == for equality
-    println(kelly === kellyToo) // you must use === for comparing reference
-    println(kellySet.contains(kellyToo)) // needs equals AND hashcode
-
-    // same for data class
-
-    val dylan = Client("Dylan", 90210)
-    val dylanToo = Client("Dylan", 90210)
-    val dylanSet = hashSetOf(dylan)
-
-    println(dylan)
-    println(dylan == dylanToo)
-    println(dylan === dylanToo)
-    println(dylanSet.contains(dylanToo))
-
-    // data class also contains fun copy()
-    val al = dylan.copy(name = "Al", postalCode = 60606)
-    println(al)
-    println(dylan == al)
-    println(dylan === al)
-    println(dylanSet.contains(al))
-
-    // ... and componentN functions for destructuring
-    val (name, postalCode) = dylan
-}
+fun evalSealed(e: ExprSealed): Int =
+    when (e) {
+        is NumSealed -> e.value // note the import alias
+        is SumSealed -> evalSealed(e.right) + evalSealed(e.left)
+        // ExprSealed is sealed: you don’t need to provide the default branch
+    }

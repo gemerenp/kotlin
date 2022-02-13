@@ -58,11 +58,11 @@ fun printAllCaps() {
 
 // safe call and elvis returns nonnullable type String:
 fun allCapsOrEmpty(s: String?): String =
-    s?.toUpperCase() ?: ""
+    s?.uppercase() ?: ""
 
 // safe call returns nullable type String?:
 fun allCapsOrNull(s: String?): String? =
-    s?.toUpperCase()
+    s?.uppercase()
 
 // More extensive examples
 
@@ -88,6 +88,8 @@ fun usingThrowWithElvis() {
 
 fun printShippingLabel(person: Person) {
     val address = person.company?.address ?: throw IllegalArgumentException("No address")
+
+    // by throwing, address is guaranteed to be `String` (not nullable) at this point
 
     with(address) {
         println(streetAddress)

@@ -1,43 +1,45 @@
 package com.infosupport.demos.h4.classes
 
-// Sealed classes: defining restricted class hierarchies and smart casts
+// Inheritance:
+// - Interfaces
 
-// TODO show: demo unit test
-
-// Assignment: implement expressions to sum a few numbers.
-
-// Solution 1: as interface implementations -------------------
-interface Expr
-class Num(val value: Int) : Expr
-class Sum(val left: Expr, val right: Expr) : Expr
-
-fun eval(e: Expr): Int =
-    when (e) {
-        is Num -> e.value
-        is Sum -> eval(e.right) + eval(e.left)
-        else -> throw IllegalArgumentException("Unknown expression") // default branch required
-
-        /*  TODO tell
-            Always having to add a default branch isn’t convenient.
-            What’s more, if you add a new subclass, the compiler won’t detect
-            that something has changed. If you forget to add a new branch,
-            the default one will be chosen, which can lead to subtle bugs.
-        */
-    }
-
-// Solution 2: as sealed classes -------------------------------
-// See Figure 4.2. Sealed classes can’t have inheritors defined outside of the class: https://drek4537l1klr.cloudfront.net/jemerov/Figures/04fig02_alt.jpg
-sealed class ExprSealed {
-    class Num(val value: Int) : ExprSealed()
-    class Sum(val left: ExprSealed, val right: ExprSealed) : ExprSealed()
+fun main() {
+    val button = Button()
+    button.showOff()        // from..?
+    button.setFocus(true)   // from..?
+    button.click()          // from..?
 }
 
-fun eval2(e: ExprSealed): Int =
-    when (e) {
-        is ExprSealed.Num -> e.value
-        is ExprSealed.Sum -> eval2(e.right) + eval2(e.left)
-        // Expr2 is sealed: you don’t need to provide the default branch
+interface Clickable {
+    abstract open fun click() // abstract open by default, final not allowed
+
+    // default implementation
+    open fun showOff() = println("I'm clickable!") // open by default, final not allowed
+
+    // In interfaces, you don’t use final, open, or abstract.
+}
+
+interface Focusable {
+    // default implementation
+    fun setFocus(b: Boolean) = println("I ${if (b) "got" else "lost"} focus.")
+
+    // default implementation
+    fun showOff() = println("I'm focusable!")
+}
+
+class Button : Clickable, Focusable {
+    // click has no default implementation, so you must implement it
+    // use the keyword override to explicitly indicate that you're overriding.
+    override fun click() = println("I was clicked.")
+
+    // setFocus has default implementation: no need to override it
+
+    // You MUST override default implementations here, since there are more than one.
+    override fun showOff() {
+        // e.g.:
+        super<Clickable>.showOff() // You MUST indicate which super method you want to call
+        super<Focusable>.showOff()
+        println("I'm ready!")
     }
-
-
+}
 

@@ -1,104 +1,42 @@
 package com.infosupport.demos.h4.classes
 
-import java.lang.Thread.sleep
+// Inner and nested classes: nested by default
 
-// Implementing properties declared in interfaces
-// Accessing a backing field from a getter or setter
+// TODO show and tell
+fun main() {
+    // See figure 4.1. Nested classes don’t reference their outer class, whereas inner classes do.
+    // See https://livebook.manning.com/book/kotlin-in-action/chapter-4/87
 
-private const val Delay = 1_000L
+    // Inner:
+    // val inner = Outer.Inner()        // Java:   inner is static
+    val outer = Outer()                 // Kotlin: inner is bound to instance of outer
+    val inner = outer.Inner()
 
-// TODO show
-fun main(args: Array<String>) {
-    // Implementing properties declared in interfaces: ---------------------------------
-    println("Initializing objects...")
-    val regularUser = RegularUser("Elon", "elon@tesla.com")
-    val privateUser = PrivateUser("private")
-    val subscribingUser = SubscribingUser("sub@kotlinlang.org")
-    val facebookUser = FacebookUser("face@kotlinlang.org", 2325675) // takes some time...
-    println("Proceeding...")
+    println(outer.message)
+    inner.accessOuterReference()
+    println(outer.message)
 
-    println(regularUser.nickname)   // nothing special
-    println(regularUser.email)
+    // Nested:
+    // val nested = Outer().Nested()    // Java:   nested is bound to instance of outer
+    val nested = Outer.Nested()         // Kotlin: nested is static
+    // println(nested.message)          // does not compile
+}
 
-    println(privateUser.nickname)   // nothing special
-    println(privateUser.email)
+class Outer(var message: String = "Hello") {
 
-    println(subscribingUser.nickname) // takes long every call
-    println(subscribingUser.nickname) // takes long every call
-    println(subscribingUser.email)
+    // Inner class (stores a reference to outer class via this@Outer)
+    inner class Inner {
+        fun accessOuterReference(): Outer {
+            val outer = this@Outer // access Outer class instance from Inner
+            outer.message += "World"
 
-    println(facebookUser.nickname) // fast call from cache
-    println(facebookUser.nickname) // fast call from cache
-    println(facebookUser.email)
+            return outer
+        }
+    }
 
-    // Accessing a backing field from a getter or setter: --------------
-    val user = Person("Alice")
-    user.address = "Elsenheimerstrasse 47, 80687 Muenchen"
+    // Nested class: no reference to outer class
+    class Nested(var name: String = "") {
 
-    println(user.age) // getter
-    // user.age = 42  // setter is private
-
-    repeat(42) { user.haveBirthday() }
-    println(user.age) // 42
-    repeat(88) { user.haveBirthday() }
-    println(user.age) // 130
-    try {
-        user.haveBirthday() // 131 --> Person died
-    } catch (e: Exception) {
-        println(e.message)
     }
 }
-
-interface IUser {
-    val email: String
-    val nickname: String
-        get() = email.substringBefore('@')
-}
-
-class RegularUser(override val email: String, override val nickname: String) : IUser
-
-class PrivateUser(override val nickname: String) : IUser {
-    override val email: String = "anonymous@mail.com"
-}
-
-class SubscribingUser(override val email: String) : IUser { // email has default getter
-    override val nickname: String // nickname gets custom getter; called on every access.
-        get() {
-            println("Getting SubscribingUser's nickname... ")
-            sleep(Delay) // expensive call
-            return email.substringBefore('@')
-        }
-}
-
-class FacebookUser(override val email: String, accountId: Int) : IUser {
-    // property initializer, no custom getter: nickname is set only once since it's an expensive call;
-    override val nickname = getFacebookNameFromWeb(accountId) // executed when ctor is called.
-}
-
-fun getFacebookNameFromWeb(accountId: Int): String {
-    println("getFacebookNameFromWeb... ")
-    sleep(Delay) // expensive call
-    return "fb:$accountId"
-}
-
-// Accessing a backing field from a getter or setter: --------------
-open class Person(val name: String) {
-
-    // Suppose we want to log every change to address:
-    var address: String = "unspecified"
-        set(newAddress) { // custom setter
-            // first: log
-            println("""Address was changed for $name: "$field" -> "$newAddress".""".trimIndent())
-
-            // then: set the backing field (like normal)
-            field = newAddress
-        }
-
-    var age: Int = 0
-        get() = if (field <= 130) field else throw RuntimeException("Person died") // custom getter accessing the backing field:
-        private set // hide setter; age can only be modified by fun haveBirthday() below:
-
-    fun haveBirthday() = age++
-}
-
 

@@ -3,12 +3,10 @@
 package com.infosupport.demos.h3.functions
 
 // TODO tell:
-//  - receiver type   = String
-//  - receiver object = this
-//  See https://drek4537l1klr.cloudfront.net/jemerov/Figures/03fig01_alt.jpg
+//  - receiver type and receiver object, see https://drek4537l1klr.cloudfront.net/jemerov/Figures/03fig01_alt.jpg
 fun String.lastChar(): Char = this.get(this.length - 1) // you can omit 'this'
 
-// TODO show: see Functions4b.kt
+// TODO use lastChar, show Functions4b.kt
 
 // TODO show
 fun main() {
@@ -17,38 +15,44 @@ fun main() {
     println(lettersJoined)
 
     // TODO tell: no overriding for extension functions
-    val view: View = Button()
-    view.click()   // on button
-    view.showOff() // on view
+    //  Member function always takes precedence over extension function
+    //  Extensions aren't part of a class. They're declared externally as static methods, not as members.
+    //  See https://drek4537l1klr.cloudfront.net/jemerov/Figures/03fig02.jpg:
+    //    - Button.click   overrides  View.click
+    //    - Button.showOff !overrides View.showOff
 
-    val button: Button = Button()
-    button.click()   // on button
-    button.showOff() // on button
+    val button = Button()
+    val buttonAsView: View = Button()
+
+    button.click()          // on Button, as expected
+    button.off()            // on Button, as expected
+
+    buttonAsView.click()    // on Button, as expected
+    buttonAsView.off()      // on View! Extension function does not override `super` extension function.
 }
 
-// TODO tell: join as extension function
+// TODO tell: myJoin as extension function
 fun List<String>.myJoin(
     separator: String = ", ",
     prefix: String = "",
     postfix: String = ""
 ): String = joinToStringClassic(this, separator, prefix, postfix)
 
-// TODO tell: the member function always takes precedence over extension function
-// See https://drek4537l1klr.cloudfront.net/jemerov/Figures/03fig02.jpg
-// Extensions aren't part of a class. They're declared externally as static methods.
 
-open class View {
+abstract class View {
     open fun click() = println("View clicked")
 }
+
+fun View.off() = println("View off")
 
 class Button : View() {
     override fun click() = println("Button clicked")
 }
 
-// fun Button.click() = println("Button ext. fun clicked")
+fun Button.off() = println("Button off")
 
-fun View.showOff() = println("I'm a view!")
-fun Button.showOff() = println("I'm a button!")
+// no overriding for extension functions
+fun Button.click() = println("Button clicked from ext. function")
 
 
 

@@ -4,7 +4,7 @@
 
 package com.infosupport.demos.h3.functions
 
-fun main(args: Array<String>) {
+fun main() {
     // TODO show
     val list = listOf(1, 2, 3)
 
@@ -47,9 +47,11 @@ fun <T> joinToStringClassic(
     return result.toString()
 }
 
-@JvmOverloads // TODO tell: @JvmOverloads is optional;
-//                          it generates Java overloaded methods instead of only one;
-//                          makes it easier to call this function from Java; see JvmOverloadsDemo.java.
+// TODO tell:
+//  @JvmOverloads is optional.
+//  It generates Java overloaded methods instead of only one.
+//  Makes it easier to call this function from Java; see JvmOverloadsDemo.java.
+@JvmOverloads
 fun <T> joinToStringDefaultParamValues(
     collection: Collection<T>,
     separator: String = ", ",

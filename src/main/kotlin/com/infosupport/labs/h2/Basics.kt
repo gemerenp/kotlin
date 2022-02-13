@@ -1,11 +1,12 @@
 package com.infosupport.labs.h2
 
-// 1. Create and (unit)test the following functions. Try to use:
-// - string template with expression
-// - expression body
-// - type inference
-// - default values
-// - named parameters
+// 1. Create and (unit)test the following functions.
+//    Try to use:
+//       - string template with expression
+//       - expression body
+//       - type inference
+//       - default values
+//       - named parameters
 
 // a) min - returns the smallest of the two numbers; when only one argument is given, assumes the second argument is 10
 // b) add - adds two numbers if the sum is lower than 1000 and

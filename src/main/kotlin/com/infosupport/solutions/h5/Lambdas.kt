@@ -1,27 +1,25 @@
 package com.infosupport.solutions.h5
 
 import com.infosupport.demos.h5.lambdas.fibonacci
-import com.infosupport.labs.h5.rewriteUsingWith
 
 // 1. Rewrite the following piece of code using a with {...} block.
 fun rewriteUsingWith() {
     val numbers = mutableListOf("one", "two", "three")
-    val firstAndLast = with(numbers) {
+    with(numbers) {
         "The first element is ${first()}," +
                 " the last element is ${last()}"
+        println(this)
     }
-    println(firstAndLast)
 }
 
 // 2. Rewrite the following using an apply {...} block.
 fun rewriteUsingApply() {
-    val numbers = mutableListOf<String>().apply {
+    mutableListOf<String>().apply {
         add("one")
         add("two")
         add("three")
+        println(this)
     }
-
-    println(numbers)
 }
 
 fun main() {

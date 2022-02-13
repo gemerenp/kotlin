@@ -11,11 +11,13 @@ public class JvmNameDemo {
         Util.reportOperationCount();
 
         // top level properties will get a getter and/or setter
-        Util.getOpCount();
+        int opCount1 = Util.getOpCount();
         Util.setOpCount(6);
-        Util.getI();
+        int opCount2 = Util.getOpCount();
 
-        // top level const will not get a getter
+        int i = Util.getI();
+
+        // top level const does not have a getter
         var unixLineSeparator = Util.UNIX_LINE_SEPARATOR;
     }
 }

@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 import com.infosupport.demos.h4.classes.ExprSealed.Num as Num2
 import com.infosupport.demos.h4.classes.ExprSealed.Sum as Sum2
 
-internal class Classes4KtTest {
+internal class Classes7KtTest {
 
     @Test
     fun eval() {
@@ -21,7 +21,7 @@ internal class Classes4KtTest {
 
     @Test
     fun eval2() {
-        val result = eval2(
+        val result = evalSealed(
             Sum2(
                 Sum2(Num2(1), Num2(2)), // 1 + 2
                 Num2(4)

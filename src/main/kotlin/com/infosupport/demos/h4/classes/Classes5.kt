@@ -1,103 +1,89 @@
 package com.infosupport.demos.h4.classes
 
-import javax.naming.Context
-import javax.naming.InitialContext
-import javax.print.attribute.AttributeSet
-import javax.print.attribute.HashAttributeSet
-import javax.print.attribute.HashDocAttributeSet
+// Inheritance:
+// Visibility modifiers: public by default
+// not allowed: animateTwice is not open but final by default
+// override fun animateTwice() {}
 
-// Nontrivial constructors or properties
-
+// TODO show
 fun main() {
-    // calling ctors:
-    val userVerbose = UserVerbose("BramBramBram") // Java style
-    val userVerboseNickname = userVerbose.getNickname()    // call getter function
-    userVerbose.setNickname("BramBram")                    // call setter function
+    val richButton = RichButton(1)
+    richButton.disable() // from...?
+    richButton.animate() // from...?
+    richButton.click()   // from...?
+    richButton.showOff() // from...?
 
-    val userLessVerbose = UserLessVerbose("BramBram")
-    val userLessVerboseNickname = userLessVerbose.nickname // call property
-    userLessVerbose.nickname = "Bram"
+    val gif = Gif(2)
+    gif.animate()
+    gif.animateTwice()
+    gif.stopAnimating()
 
-    val userLesserVerbose = UserLesserVerbose("BramBr")
-    val userLesserVerboseNickname = userLesserVerbose.nickname
-    userLesserVerbose.nickname = "BramB"
+    val talkativeButton = TalkativeButton()
+    talkativeButton.speech()
+    talkativeButton.giveSpeech()
+}
 
-    val user = User("Bram")
-    val nickname = user.nickname
-    user.nickname = "Mark"
+// - Open, final, and abstract
 
-    val jeff = TwitterUser("Jeff")
-    val besos = jeff.nickname
+//   See https://drek4537l1klr.cloudfront.net/jemerov/HighResolutionFigures/table_4-2.png
 
-    // calling subclass ctor
-    val radio = RadioButton()
+// TODO tell
+open class RichButton(val x: Int) : Clickable {     // open: can be overridden
+    public final fun disable() {}       // public final by default: can’t be overridden
+    open fun animate() {}               // open: can be overridden
+    /*final?*/ override fun click() {}  // overrides a member in a superclass or interface; open by default, if not marked final
+}
 
-    // calling private ctor not allowed:
-    // val s = Secretive()
-
-    // calling ctor overloads:
-    val myView1 = MyView(InitialContext())
-    val myView2 = MyView(InitialContext(), HashAttributeSet())
-    val myButt1 = MyButton(InitialContext())
-    val myButt2 = MyButton(InitialContext(), HashDocAttributeSet())
+class MyRichButton(myX: Int) : RichButton(myX) {
+    // override fun disable() {}        // not allowed
+    override fun showOff() {
+        TODO("Not yet implemented")
+    }
 }
 
 // TODO tell
+abstract class Animated(val a: Int) {
+    abstract fun animate()      // open by default, final not allowed
+    open fun stopAnimating() {}
+    fun animateTwice() {}
+}
 
-// Java style
-open class UserVerbose constructor(nickname: String) { // primary ctor declaration
+class Gif(anA: Int) : Animated(anA) {
 
-    private var _nickname: String // the internal (backing) field
-
-    init { // primary ctor implementation
-        this._nickname = nickname
+    override fun animate() {  // you have to implement abstract method, just as in Java
+        println("Animating...")
     }
 
-    fun getNickname() = _nickname // the getter makes the internal field available, making it a property
-
-    fun setNickname(value: String) {
-        this._nickname = value
+    // allowed: stopAnimating is open
+    override fun stopAnimating() {
+        println("Stopped")
     }
 }
 
-open class UserLessVerbose(_nickname: String) {
-    var nickname = _nickname // no private makes it a property
-        get() = field
-        set(value) {
-            field = value
-        }
+// TODO tell
+// internal: visible in a module, not outside it
+internal open class TalkativeButton : Focusable {
+    private fun yell() = println("Hey!")             // private
 
-    // In TS it would be:
-    // private _nickname: string
-
-    // get nickname(){
-    //    return this._nickname
-    // }
-
-
+    protected fun whisper() = println("Let's talk!") // protected
+    /*
+       PROTECTED:
+       In Kotlin, visibility rules are simple, and a protected member
+       is only visible in the class and its subclasses.
+       Also note that extension functions (like below) of a class don’t get
+       access to its private or protected members.
+    */
+    fun speech() {
+        // allowed:
+        yell()
+        whisper()
+    }
 }
 
-open class UserLesserVerbose(_nickname: String) {
-    var nickname = _nickname
-}
-
-// least verbose, most concise:
-open class User(var nickname: String) // primary constructor
-
-// subclass
-class TwitterUser(nickname: String) : User(nickname) // primary constructor and call to super (required)
-
-open class OpenButton
-class RadioButton : OpenButton() // call to super (required)
-
-class Secretive private constructor() {} // private ctor
-
-open class MyView { // no primary constructor, two secondary constructors
-    constructor(ctx: Context) {}
-    constructor(ctx: Context, attr: AttributeSet) {}
-}
-
-class MyButton : MyView { // no primary constructor, two secondary constructors
-    constructor(ctx: Context) : this(ctx, HashAttributeSet()) {} // delegate to this
-    constructor(ctx: Context, attr: AttributeSet) : super(ctx, attr) {} // delegate to super
+// must be internal too (or less visible): it's not allowed to reference internal TalkativeButton from a public function giveSpeech:
+internal fun TalkativeButton.giveSpeech() {
+    // Not allowed: reference private or protected members from an internal function
+    // yell()
+    // whisper()
+    this.speech()
 }

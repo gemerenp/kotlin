@@ -19,7 +19,7 @@ fun main() { // main without args
     println(person.name)        // default "getter" of val property
     println(person.isMarried)   // default "getter" of var property
     println(person.age)         // explicit default getter
-    println(person.isFirst)     // explicit custom getter
+    println(person.startsWithA)     // explicit custom getter
     println(person.eyesColor)
     println(person.firstLetter) // extension property
 
@@ -95,8 +95,9 @@ class Person( // implicitly public final
     var birthDate: LocalDate = LocalDate.MIN
         private set // hide setter for outside; only accessible inside class
 
-    val isFirst  // immutable prop with custom getter; type is inferred
-        get() = name.startsWith("A") // with expression body; no setter, since val
+    val startsWithA  // immutable prop with custom getter; type is inferred
+        get() = name.startsWith("A") // with expression body
+        // no setter: val
 
     // when expression
     fun getWarmth() =

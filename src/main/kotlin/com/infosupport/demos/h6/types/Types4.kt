@@ -1,5 +1,6 @@
 package com.infosupport.demos.h6.types
 
+// If time permits ⏲⏲⏲
 // Nullability and Java: platform types
 
 fun main() {

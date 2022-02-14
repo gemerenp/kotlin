@@ -22,18 +22,16 @@ fun main() {
 }
 
 private fun basics() {
-    println(1..9)
-    println(1 until 9)
-    println(1 downTo 9)
+    show(1..9)
+    show(1 until 9)
+    show(9 downTo 1)
+    show(1..9 step 2)
 
-    for (i in 1..4) {
-        println(i)
-    }
-
-    println(1..9 step 2)
     println((1..9 step 3).first)
     println((1..9 step 5).last)
 }
+
+private fun show(p: IntProgression) = p.forEach(::println)
 
 private fun combined(): TreeMap<String, Person> {
     val treeMap = TreeMap<String, Person>()

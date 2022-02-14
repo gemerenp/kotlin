@@ -6,6 +6,7 @@ val set = setOf(1, 7, 53)
 val hashSet = hashSetOf(1, 7, 53)
 val list = listOf(1, 7, 53)
 val arrayList = arrayListOf(1, 7, 53)
+val mutList = mutableListOf(1, 7, 53)
 val hashMap = hashMapOf(1 to "one", 7 to "seven", 53 to "fifty-three")  // Note: 'to' is a normal function!
 
 fun main() {
@@ -15,6 +16,7 @@ fun main() {
     println(hashSet.javaClass)        // class java.util.HashSet
     println(list.javaClass)           // class java.util.Arrays$ArrayList, immutable
     println(arrayList.javaClass)      // class java.util.ArrayList
+    println(mutList.javaClass)        // class java.util.ArrayList
     println(hashMap.javaClass)        // class java.util.HashMap
 
     // Interoperability:

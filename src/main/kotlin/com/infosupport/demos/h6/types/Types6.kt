@@ -6,8 +6,8 @@ fun main() {
     val i = 1
     // No implicit conversions (not widening nor narrowing), to avoid unexpected behaviour:
 
-    // val l: Long = i       // doesn't compile
-    val l: Long = i.toLong() // explicit conversion always needed
+    // val iToL: Long = i          // doesn't compile
+    val iToLong: Long = i.toLong() // explicit conversion always needed
 
     // Why?
     val xInt = 1
@@ -27,6 +27,7 @@ fun main() {
 
     val hex = 0xCaFeBaBe
     val bits = 0b0111_0101_0101_1111
+    // val oct = 0755 // Octal literals are not supported.
 
     // Numeric literals auto conversion
     val b: Byte = 1

@@ -1,15 +1,16 @@
 package com.infosupport.demos.h2.basics
 
-import com.infosupport.demos.h2.something.max // import single function
+import com.infosupport.demos.h2.something.max
 import com.infosupport.demos.h2.something.maxExpressionBody
-import org.junit.jupiter.api.Assertions.assertEquals // import static function
+import org.assertj.core.api.WithAssertions
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-internal class Basics1KtTest {
+internal class Basics1KtTest : WithAssertions {
 
     @Test
     fun testMax() {
-        assertEquals(max(1, 2), 2)
+        assertThat(max(1, 2)).isEqualTo(2)
         assertEquals(max(1), 1)
         assertEquals(max(-1), 0)
     }

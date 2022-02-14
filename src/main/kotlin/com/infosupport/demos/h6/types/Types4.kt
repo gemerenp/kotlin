@@ -1,6 +1,6 @@
 package com.infosupport.demos.h6.types
 
-// If time permits ⏲⏲⏲
+// If ⏲ permits
 // Nullability and Java: platform types
 
 fun main() {
@@ -33,14 +33,14 @@ fun main() {
 
 fun yellAtUnsafe(person: JavaPerson) {
     // You can treat "person.name: String!" as nullable or non nullable:
-    println(person.name?.toUpperCase() + "!!!") // safe
-    println(person.name.toUpperCase() + "!!!")  // unsafe, use only when you're sure the name is nonnull in java (e.g. @NonNull)
+    println(person.name?.uppercase() + "!!!") // safe
+    println(person.name.uppercase() + "!!!")  // unsafe, use only when you're sure the name is nonnull in java (e.g. @NonNull)
 }
 
 // parameter can be null
 fun yellAtSafe(person: JavaPerson?) {
     // println(person?.name.toUpperCase() + "!!!") // not allowed anymore
-    println(person?.name?.toUpperCase() + "!!!")              // safe call required
-    println((person?.name ?: "Anyone").toUpperCase() + "!!!") // .. with Elvis
+    println(person?.name?.uppercase() + "!!!")              // safe call required
+    println((person?.name ?: "Anyone").uppercase() + "!!!") // .. with Elvis
 }
 

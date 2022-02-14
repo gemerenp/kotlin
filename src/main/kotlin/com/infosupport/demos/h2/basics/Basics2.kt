@@ -88,8 +88,8 @@ class Person( // implicitly public final
         get() {
             return field // field is a keyword! backing field.
         }
-        set(value) {
-            field = value
+        set(newVal) {
+            field = newVal
         }
 
     var birthDate: LocalDate = LocalDate.MIN

@@ -2,7 +2,7 @@ package com.infosupport.demos.h6.types
 
 import java.io.File
 
-// If time permits ⏲⏲⏲
+// If ⏲ permits
 // Collections and arrays: Collections as platform types
 
 

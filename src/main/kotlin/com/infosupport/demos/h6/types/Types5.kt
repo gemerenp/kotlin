@@ -4,7 +4,7 @@ package com.infosupport.demos.h6.types
 
 fun main() {
     // In Java you have primitive and reference types.
-    // Primitives can be passed around more efficiently but you can't
+    // Primitives can be passed around more efficiently, but you can't
     // call methods on them or use them as generic type argument.
 
     // In Kotlin there's no distinction between primitive and reference, for example:
@@ -17,8 +17,8 @@ fun main() {
     println("i=${i}")
 
     // You can pass an Int to a method:
-    inc(i)
-    println("i=${i}") // passed by value???
+    inc(i) // passed by value???
+    println("i=${i}")
 
     repeat(42) { h = h.inc() }
     showProgress(h)
@@ -45,8 +45,7 @@ fun main() {
     val fuzzy: Boolean? = // true, false or null
         if (person.company != null) person.company.name.length > 10 else null
 
-    // Nullable types must be converted to java's wrapper, since primitive can't hold null.
-
+    // Nullable types are converted to java's wrapper under the hood, since primitives can't hold null.
 }
 
 fun inc(i: Int) {

@@ -54,8 +54,8 @@ fun createAndPrintArray() {
     println(letters.joinToString(", "))
 
     // 4. list.toTypedArray() and spread
-    val strings = listOf("a", "b", "c").toTypedArray()
-    printVarargString(*strings) // spread strings to pass as vararg
+    val typedArray = listOf("a", "b", "c").toTypedArray()
+    printVarargString(*typedArray) // spread strings to pass as vararg
 
     // 5. Array of primitives
     // Array<T> always becomes an array of a reference type.

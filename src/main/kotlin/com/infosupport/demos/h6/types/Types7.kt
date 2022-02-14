@@ -9,22 +9,24 @@ fun main() {
 }
 
 private fun any() {
-    // Any is like java's object
+    // Any is like Java's object
     val i: Any = 42
     val toString = i.toString()
     val equals = i.equals(43)
     val hashCode = i.hashCode()
 
     // Other methods from java.lang.Object are not available on i, so:
-    // val o = i as java.lang.Object
-    // o.notify()
-    // o.wait()
+    // i.notify()
+    // i.wait()
     // etc.
 
     // Any can be nullable
-    var j: Any? = null
+    var j: Any?
+    j = null
+    val equals1 = j?.equals(42) // == not possible on nullable type
     j = 43
-    val equals1 = j?.equals(42)
+    val equals2 = j.equals(42)
+    val equals3 = j == 42 // idiomatic
 }
 
 private fun unit() {

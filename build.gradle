@@ -1,0 +1,29 @@
+plugins {
+    id 'org.jetbrains.kotlin.jvm' version '1.6.10'
+}
+
+group 'com.infosupport'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    implementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    implementation 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    implementation 'org.assertj:assertj-core:3.21.0'
+}
+
+def jvmTarget = "11"
+
+compileKotlin {
+    kotlinOptions.jvmTarget = jvmTarget
+}
+compileTestKotlin {
+    kotlinOptions.jvmTarget = jvmTarget
+}
+test {
+    useJUnitPlatform()
+}

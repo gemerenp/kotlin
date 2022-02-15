@@ -14,7 +14,7 @@ package com.infosupport.labs.h4
 //    Object-Oriented Programming       Exercise
 //      - Complex Constructors          1
 //      - Secondary Constructors        2
-//      - Sealed Classes                1, 2
+//      - Sealed Classes                2
 //      - Class Delegation              1
 //      - Objects                       3 (use the main function below: )
 

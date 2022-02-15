@@ -11,7 +11,9 @@ fun main() {
         .filter { it.age == 27 }        // 2. perform intermediate operations
         .map { it.instruments }
         .flatten()
-        .filter { it.name.length <= 6 }
+        .filter { it.name.length <= 6 } //      stateless
+        .take(5)                        //      a bit stateful
+        .sortedBy { it.name }           //      stateful
         .forEachIndexed { i, inst ->    // 3. perform ONE terminal operation
             println("Instrument $i = ${inst.name}")
         }

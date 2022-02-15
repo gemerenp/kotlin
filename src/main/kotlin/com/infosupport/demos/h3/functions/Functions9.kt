@@ -64,5 +64,5 @@ fun User.validate() {
         }
     }
     validate(name, "Name")
-    validate(address, "Address")
+    validate(address, ::address.name) // or using reflection
 }

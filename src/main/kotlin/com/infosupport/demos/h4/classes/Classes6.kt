@@ -12,8 +12,11 @@ fun main() {
     val outer = Outer()                 // Kotlin: inner is bound to instance of outer
     val inner = outer.Inner()
 
+    println(inner.message)
     println(outer.message)
-    inner.accessOuterReference()
+    inner.thisInnerMessage()
+    inner.thisOuterMessage()
+    println(inner.message)
     println(outer.message)
 
     // Nested:
@@ -22,16 +25,20 @@ fun main() {
     // println(nested.message)          // does not compile
 }
 
-class Outer(var message: String = "Hello") {
+class Outer(var message: String = "Hello ") {
 
     // Inner class (stores a reference to outer class via this@Outer)
     inner class Inner {
-        fun accessOuterReference(): Outer {
-            val outer = this@Outer // access Outer class instance from Inner
-            outer.message += "World"
+        val message = "Hello "
 
-            return outer
+        fun thisInnerMessage(): String {
+            return this.message + "World"
         }
+
+        fun thisOuterMessage(): String {
+            return this@Outer.message + "World" // access Outer class instance from Inner
+        }
+
     }
 
     // Nested class: no reference to outer class

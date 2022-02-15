@@ -52,13 +52,13 @@ internal class Classes9KtTest {
         val accountId = 473457654
         val name = "myname"
 
-        val userOfAccountId = User2.of(accountId) // like call to static method in Java
-        val userOfEmail = User2.of("${name}@email.com")
+        val userOfAccountId = CompanionUser.of(accountId) // like call to static method in Java
+        val userOfEmail = CompanionUser.of("${name}@email.com")
 
         assertThat(userOfAccountId.nickname).isEqualTo("fb:$accountId")
         assertThat(userOfEmail.nickname).isEqualTo(name)
 
-        assertThrows<IllegalArgumentException> { User2.of("${name}_at_email.com") }
+        assertThrows<IllegalArgumentException> { CompanionUser.of("${name}_at_email.com") }
     }
 
     @Test
@@ -88,7 +88,7 @@ internal class Classes9KtTest {
     @Test
     fun callExtensionFunctionOfCompanionObject() {
         // call someExtFunction (named or unnamed) just like a static method in Java
-        assertThat(PermEmployee.Companion.someExtFunction()).isEqualTo("Nice...!")
-        assertThat(PermEmployee.someExtFunction()).isEqualTo("Nice...!")
+        assertThat(PermEmployee.Companion.staticExtFunction()).isEqualTo("Nice...!")
+        assertThat(PermEmployee.staticExtFunction()).isEqualTo("Nice...!")
     }
 }

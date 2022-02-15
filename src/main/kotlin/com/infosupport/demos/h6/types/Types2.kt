@@ -20,13 +20,16 @@ fun main() {
     // printPersonNameUnsafe(null)   // Exception
 
     // id 1 exists, id 2 not:
+    printPersonName(1)
+    printPersonName(2)
+
     letPrintPersonName(id = 1)
     letPrintPersonName(id = 2) // does nothing
 
     findPerson(1).printPersonNameSafeExtFn()
     findPerson(2).printPersonNameSafeExtFn() // no safe call needed, even though getPerson is of type Person?
 
-    whatsTheTypeOfGenericTypeParam(person)
+    whatsTheHashcodeOfGenericTypeParam(person)
 }
 
 fun castPersonUnsafe(o: Any) {
@@ -48,12 +51,18 @@ fun printPersonNameUnsafe(p: Person?) {
 
 fun findPerson(id: Int): Person? = if (id == 1) person else null // person or null, so Person?
 
+fun printPersonName(id: Int) {
+    val findPerson = findPerson(id)
+    if (findPerson != null) {
+        println("Printing person name...")
+        printPersonNameUnsafe(findPerson)
+    }
+}
+
 fun letPrintPersonName(id: Int) {
     // when you want to execute a block of code if an object != null, use let:
-    val p = findPerson(id)
-    p?.let {
-        // executes only if p != null
-        println("Printing person name...")
+    findPerson(id)?.let {
+        println("Let printing person name...")
         printPersonNameUnsafe(it)
     }
 }
@@ -62,7 +71,7 @@ fun Person?.printPersonNameSafeExtFn() {
     println(this?.name ?: "Unknown")
 }
 
-fun <T> whatsTheTypeOfGenericTypeParam(t: T) {
+fun <T> whatsTheHashcodeOfGenericTypeParam(t: T) {
     // T is nullable, since it can be anything
     println(t?.hashCode() ?: "Unknown") // safe call needed
 }

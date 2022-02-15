@@ -33,6 +33,8 @@ fun firstTaste() {
 
     button.onClick {
         println("Click!")
+        println("Clack!")
+        println("Clock!")
     }
 
     button.click()

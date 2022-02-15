@@ -2,8 +2,8 @@ package com.infosupport.demos.h4.classes
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
-import com.infosupport.demos.h4.classes.ExprSealed.Num as Num2
-import com.infosupport.demos.h4.classes.ExprSealed.Sum as Sum2
+import com.infosupport.demos.h4.classes.ExprSealed.Num as NumSealed
+import com.infosupport.demos.h4.classes.ExprSealed.Sum as SumSealed
 
 internal class Classes7KtTest {
 
@@ -22,12 +22,11 @@ internal class Classes7KtTest {
     @Test
     fun eval2() {
         val result = evalSealed(
-            Sum2(
-                Sum2(Num2(1), Num2(2)), // 1 + 2
-                Num2(4)
-            )                           //   + 4
+            SumSealed(
+                SumSealed(NumSealed(1), NumSealed(2)), // 1 + 2
+                NumSealed(4) //                             + 4
+            ) //                                                 = 7
         )
-
-        assertThat(result).isEqualTo(7); //           = 7
+        assertThat(result).isEqualTo(7)
     }
 }

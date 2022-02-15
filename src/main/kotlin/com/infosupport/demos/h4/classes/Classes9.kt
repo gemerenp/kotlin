@@ -9,9 +9,13 @@ import com.infosupport.demos.h3.functions.lastChar
 
 // Declare an 'object'
 object Payroll {
+    init {
+        println("Payroll instantiated")
+    }
+
     val allEmployees = arrayListOf<Employee>()
 
-    fun calculateSalary() = allEmployees.sumBy { it.salary }
+    fun calculateSalary() = allEmployees.sumOf { it.salary }
 }
 
 //  Implementing Comparator with an 'object'
@@ -29,17 +33,19 @@ open class Employee(name: String, val salary: Int) : Person(name) {
 // 2. Companion objects: a place for factory methods and static members -------------------
 
 // Companion object for a factory method
-class User2 private constructor(val nickname: String) {
+open class CompanionUser constructor(val nickname: String) {
     companion object { // this is Kotlin's 'static'
+        const val STATICFIELD = 42
+
         // instead of using inheritance, put creation logic here
         fun of(email: String) =
             if (email.contains('@'))
-                User2(email.substringBefore('@')) // we can access the private constructor here
+                CompanionUser(email.substringBefore('@')) // we can access the private constructor here
             else
                 throw IllegalArgumentException("E-mail $email doesn't contain an '@'!")
 
         fun of(accountId: Int) =
-            User2(getFacebookNameFromWeb(accountId))
+            CompanionUser(getFacebookNameFromWeb(accountId))
     }
 }
 
@@ -66,11 +72,26 @@ class PermEmployee(name: String, salary: Int, val scale: Int) : Employee(name, s
 }
 
 // Add extension function to companion
-fun PermEmployee.Companion.someExtFunction() = "Nice...!"
+fun PermEmployee.Companion.staticExtFunction() = "Nice...!"
 
 // 3. Object expression is used instead of Java’s anonymous inner class -------------------
-val comp = object : Comparator<PermEmployee> {
-    override fun compare(p1: PermEmployee?, p2: PermEmployee?): Int {
-        return p1?.salary?.minus(p2?.salary ?: 0) ?: 1
+val iterator = object : Iterator<PermEmployee> {
+    override fun hasNext(): Boolean {
+        TODO()
     }
+
+    override fun next(): PermEmployee {
+        TODO()
+    }
+}
+
+fun main() {
+    println("main")
+    Payroll.calculateSalary() // instantiate Payroll once
+    Payroll.calculateSalary() // already instantiated
+
+    println(CompanionUser.STATICFIELD)
+    println(CompanionUser.of("1234"))
+
+    PermEmployee.staticExtFunction()
 }

@@ -16,7 +16,7 @@ fun main() {
 
 fun alphabetVerboseStyle(): String {
     val result = StringBuilder() // the 'receiver'
-    ('A'..'Z').forEach { result.append(it) }    // repeat 'result' every time...
+    (('A'..'Z').minus('O').plus("omikron")).forEach { result.append(it) }    // repeat 'result' every time...
     result.append("\nNow I know the alphabet!")
     return result.toString()
 }

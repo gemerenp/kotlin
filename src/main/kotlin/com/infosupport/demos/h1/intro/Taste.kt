@@ -11,9 +11,7 @@ fun main() {
         Person("Bob", age = 29)
     )
 
-    val oldest = persons.maxByOrNull {
-        it.age ?: 0
-    }
+    val oldest = persons.maxOf { it.age ?: 0 }
 
     println("""The "oldest" is: $oldest.""")
 }

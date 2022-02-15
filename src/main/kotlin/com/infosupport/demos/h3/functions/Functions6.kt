@@ -15,6 +15,9 @@ fun main() {
     // You cannot spread the contents of a list like this:
     // println(listOf("list spread: ", *numbers))
     // You do it like this:
+    println(listOf("list spread", *list.toTypedArray()))
+
+    // Better is:
     println(listOf("list spread") + list)
 }
 

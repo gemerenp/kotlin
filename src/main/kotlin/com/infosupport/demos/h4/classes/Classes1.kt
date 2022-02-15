@@ -18,9 +18,9 @@ fun main() {
     val userLessVerboseNickname = userLessVerbose.nickname // call property
     userLessVerbose.nickname = "Bram"
 
-    val userLesserVerbose = UserLesserVerbose("BramBr")
-    val userLesserVerboseNickname = userLesserVerbose.nickname
-    userLesserVerbose.nickname = "BramB"
+    val userEvenLessVerbose = UserEvenLessVerbose("BramBr")
+    val userEvenLessVerboseNickname = userEvenLessVerbose.nickname
+    userEvenLessVerbose.nickname = "BramB"
 
     val user = User("Bram")
     val nickname = user.nickname
@@ -74,10 +74,9 @@ open class UserLessVerbose(_nickname: String) {
     //    return this._nickname
     // }
 
-
 }
 
-open class UserLesserVerbose(_nickname: String) {
+open class UserEvenLessVerbose(_nickname: String) {
     var nickname = _nickname
 }
 

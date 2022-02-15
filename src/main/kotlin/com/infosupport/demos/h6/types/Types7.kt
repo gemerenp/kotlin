@@ -55,8 +55,10 @@ private fun unit() {
 private fun nothing() {
     // Useful usage of Nothing:
     val addrNullable = person.company?.address
-    val addrNonNullable = person.company?.address ?: fail("No address found")
-    // The second val is nonnullable because either it is an Address, or Nothing.
+    println(addrNullable?.city ?: "Unknown")
+
+    val addrNonNullable = person.company?.address ?: fail("No address found") // if no fail, address is non nullable!
+    println(addrNonNullable.city)
 }
 
 // used in testing libraries

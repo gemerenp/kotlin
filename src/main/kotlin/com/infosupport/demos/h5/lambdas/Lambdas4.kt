@@ -6,14 +6,13 @@ package com.infosupport.demos.h5.lambdas
 fun main() {
 
     // use generateSequence
-    val naturalNumbers = generateSequence(0) { it + 1 }
-    val numbersTo100 = naturalNumbers.takeWhile { it <= 100 }
-    val sum = numbersTo100.sum()
+    val naturalNumbers = generateSequence(50) { it + 1 }        // 1
+    val numbersTo100 = naturalNumbers.takeWhile { it <= 100 }   // 2
+    val sum = numbersTo100.sum()                                // 3
     println(sum)
 
-    // we can reuse a sequence:
-    val sum1 = numbersTo100.sum()
-    println(sum1)
+    // we can reuse a sequence to o something else with it:
+    numbersTo100.forEach { println(it) }
 
     // use sequence {...}
     val fiboTo100 = fibonacci().takeWhile { it <= 100 }.toList()

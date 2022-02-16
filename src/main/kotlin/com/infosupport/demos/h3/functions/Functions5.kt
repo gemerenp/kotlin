@@ -2,7 +2,6 @@
 
 package com.infosupport.demos.h3.functions
 
-// TODO show
 fun main() {
     val string = "Kotlin?"
     val sb = StringBuilder(string)

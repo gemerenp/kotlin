@@ -8,7 +8,6 @@ package com.infosupport.demos.h6.types
 //      - extension functions
 //      - generic type parameters
 
-// TODO show and tell
 fun main() {
     castPersonUnsafe(Person("Bram")) // OK
     // castPersonUnsafe("Bram")      // Exception

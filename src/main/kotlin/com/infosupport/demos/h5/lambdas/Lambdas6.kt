@@ -2,7 +2,6 @@ package com.infosupport.demos.h5.lambdas
 
 // Lambdas with receivers: with and apply
 
-// TODO show and tell
 fun main() {
     println(alphabetVerboseStyle())
 

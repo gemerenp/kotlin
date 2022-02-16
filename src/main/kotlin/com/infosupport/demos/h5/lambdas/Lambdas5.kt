@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent.ACTION_PERFORMED as ap
 // Q: How to call a Java API with functional interfaces from Kotlin?
 // A: Kotlin lambda's are fully compatible with Java functional interfaces.
 
-// TODO show and tell
 fun main() {
     val javaAwtButton = Button("OK") // note the imports
 

@@ -2,7 +2,6 @@ package com.infosupport.demos.h5.lambdas
 
 // Functional APIs for collections
 
-// TODO show and tell
 fun main() {
     // These operations are different from Java streams: not lazy, no terminal operation.
     // Kotlin's sequence is like Java's stream.

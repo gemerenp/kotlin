@@ -4,17 +4,15 @@ import com.infosupport.demos.h1.intro.Person
 
 // Nullability: lateinit
 
-// TODO show and tell: see LateinitTest
+// See LateinitTest
 
 class Lateinit {
     fun performAction(): String = "foo"
 }
 
-// to lazy init a property, do:
+// To lazy init a property, do:
 
-val lazyPerson
-    get() = lazyPersonVal
-
+val lazyPerson get() = lazyPersonVal
 lateinit var lazyPersonVal: Person
 
 fun init() {

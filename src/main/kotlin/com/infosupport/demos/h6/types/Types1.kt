@@ -7,7 +7,6 @@ package com.infosupport.demos.h6.types
 
 // Avoid NullPointerExceptions at runtime: convert these problems from runtime errors into compile-time errors.
 
-// TODO show and tell
 fun main() {
     printStrLen()
     printAllCaps()

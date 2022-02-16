@@ -7,7 +7,6 @@ import java.lang.Thread.sleep
 
 private const val Delay = 1_000L
 
-// TODO show
 fun main() {
     // Implementing properties declared in interfaces: ---------------------------------
     println("Initializing objects...")

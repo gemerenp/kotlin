@@ -42,8 +42,6 @@ fun main() {
     val myButt2 = MyButton(InitialContext(), HashDocAttributeSet())
 }
 
-// TODO tell
-
 // Java style
 open class UserVerbose constructor(nickname: String) { // primary ctor declaration
 

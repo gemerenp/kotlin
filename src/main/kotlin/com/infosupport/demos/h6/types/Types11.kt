@@ -4,7 +4,6 @@ import kotlin.math.pow
 
 // Collections and arrays: arrays
 
-// TODO show and tell
 fun main(args: Array<String>) {
     // An array is a class with a type parameter.
     // Working with them is as simple as working with collections.

@@ -2,7 +2,6 @@
 
 package com.infosupport.demos.h3.functions
 
-// TODO show
 fun main() {
     // --------------------------------
     // 1. Splitting strings

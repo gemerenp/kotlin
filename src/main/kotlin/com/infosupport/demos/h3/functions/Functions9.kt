@@ -2,11 +2,9 @@
 
 package com.infosupport.demos.h3.functions
 
-// TODO show: see test
-
+// See Functions9KtTest
 class User(val id: Int, val name: String, val address: String)
 
-// TODO show
 fun saveUserNotDRY(user: User): User {
     if (user.name.isEmpty()) {                          // | not DRY
         throw IllegalArgumentException(
@@ -25,7 +23,6 @@ fun saveUserNotDRY(user: User): User {
     return user
 }
 
-// TODO tell
 fun saveUser(user: User): User {
 
     fun validate(value: String, fieldName: String) { // local function
@@ -45,7 +42,6 @@ fun saveUser(user: User): User {
     return user
 }
 
-// TODO show
 fun saveUserExtFn(user: User): User {
     user.validate()
 
@@ -54,7 +50,6 @@ fun saveUserExtFn(user: User): User {
     return user
 }
 
-// TODO tell
 fun User.validate() {
     fun validate(value: String, fieldName: String) {
         if (value.isEmpty()) {

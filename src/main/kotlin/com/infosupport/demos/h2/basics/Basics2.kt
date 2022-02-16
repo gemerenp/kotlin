@@ -1,9 +1,8 @@
 package com.infosupport.demos.h2.basics
 
+// You have to import extension function and properties in order to use them:
 import com.infosupport.demos.h2.basics.Color.*
 import java.time.LocalDate
-
-// TODO show and tell
 
 fun main() { // main without args
 
@@ -19,7 +18,7 @@ fun main() { // main without args
     println(person.name)        // default "getter" of val property
     println(person.isMarried)   // default "getter" of var property
     println(person.age)         // explicit default getter
-    println(person.startsWithA)     // explicit custom getter
+    println(person.startsWithA) // explicit custom getter
     println(person.eyesColor)
     println(person.firstLetter) // extension property
 
@@ -97,7 +96,7 @@ class Person( // implicitly public final
 
     val startsWithA  // immutable prop with custom getter; type is inferred
         get() = name.startsWith("A") // with expression body
-        // no setter: val
+    // no setter: val
 
     // when expression
     fun getWarmth() =

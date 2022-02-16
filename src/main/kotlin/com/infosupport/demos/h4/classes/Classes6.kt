@@ -2,7 +2,6 @@ package com.infosupport.demos.h4.classes
 
 // Inner and nested classes: nested by default
 
-// TODO show and tell
 fun main() {
     // See figure 4.1. Nested classes don’t reference their outer class, whereas inner classes do.
     // See https://livebook.manning.com/book/kotlin-in-action/chapter-4/87

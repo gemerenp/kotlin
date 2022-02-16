@@ -10,7 +10,7 @@ val mutList = mutableListOf(1, 7, 53)
 val hashMap = hashMapOf(1 to "one", 7 to "seven", 53 to "fifty-three")  // Note: 'to' is a normal function!
 
 fun main() {
-    // TODO show
+
     println("------- TYPES --------") // .javaClass == getClass() from Java
     println(set.javaClass)            // class java.util.LinkedHashSet
     println(hashSet.javaClass)        // class java.util.HashSet

@@ -2,7 +2,6 @@ package com.infosupport.demos.h5.lambdas
 
 // Creating sequences
 
-// TODO show and tell
 fun main() {
 
     // use generateSequence
@@ -11,7 +10,7 @@ fun main() {
     val sum = numbersTo100.sum()                                // 3
     println(sum)
 
-    // we can reuse a sequence to o something else with it:
+    // we can reuse a sequence to do something else with it:
     numbersTo100.forEach { println(it) }
 
     // use sequence {...}

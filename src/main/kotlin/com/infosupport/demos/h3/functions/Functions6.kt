@@ -2,7 +2,6 @@
 
 package com.infosupport.demos.h3.functions
 
-// TODO show and tell
 fun main() {
     val array = arrayOf(1, 2, 3)
     val list = listOf(1, 2, 3)

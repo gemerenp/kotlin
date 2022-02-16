@@ -1,5 +1,3 @@
-// TODO show and tell
-
 //  Your package hierarchy doesn’t need to follow the directory hierarchy
 package com.infosupport.demos.h2.something
 

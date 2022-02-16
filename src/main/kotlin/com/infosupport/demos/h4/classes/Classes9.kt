@@ -3,10 +3,9 @@ package com.infosupport.demos.h4.classes
 import com.infosupport.demos.h3.functions.lastChar
 
 // The object keyword, companion objects -------------------------------------------------
+// See also Classes9KtTest
 
 // 1. Object declaration is a way to define a singleton. -------------------
-// TODO show (unit tests) and tell
-
 // Declare an 'object'
 object Payroll {
     init {

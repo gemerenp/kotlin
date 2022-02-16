@@ -5,7 +5,6 @@ package com.infosupport.demos.h4.classes
 // not allowed: animateTwice is not open but final by default
 // override fun animateTwice() {}
 
-// TODO show
 fun main() {
     val richButton = RichButton(1)
     richButton.disable() // from...?
@@ -27,7 +26,6 @@ fun main() {
 
 //   See https://drek4537l1klr.cloudfront.net/jemerov/HighResolutionFigures/table_4-2.png
 
-// TODO tell
 open class RichButton(val x: Int) : Clickable {     // open: can be overridden
     public final fun disable() {}       // public final by default: can’t be overridden
     open fun animate() {}               // open: can be overridden
@@ -41,7 +39,6 @@ class MyRichButton(myX: Int) : RichButton(myX) {
     }
 }
 
-// TODO tell
 abstract class Animated(val a: Int) {
     abstract fun animate()      // open by default, final not allowed
     open fun stopAnimating() {}
@@ -60,7 +57,6 @@ class Gif(anA: Int) : Animated(anA) {
     }
 }
 
-// TODO tell
 // internal: visible in a module, not outside it
 internal open class TalkativeButton : Focusable {
     private fun yell() = println("Hey!")             // private

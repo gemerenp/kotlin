@@ -2,7 +2,6 @@ package com.infosupport.demos.h5.lambdas
 
 // Lambda expressions and member references
 
-// TODO show and tell
 fun main() {
     firstTaste()
 

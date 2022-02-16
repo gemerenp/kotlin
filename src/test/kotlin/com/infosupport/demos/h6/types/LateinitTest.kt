@@ -1,15 +1,10 @@
 package com.infosupport.demos.h6.types
 
-import org.junit.jupiter.api.Assertions
-import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Test
-
 // lateinit is useful when using frameworks like JUnit's @BeforeEach, DI, Android's onCreate
 
 internal class LateinitTest {
 
-
-    // TODO uncomment all and make compile using either:
+    // Uncomment all and make it compile using either:
     //   - private var target: Lateinit? = null
     //   - private lateinit var target: Lateinit
 

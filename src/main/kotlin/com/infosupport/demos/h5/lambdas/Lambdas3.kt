@@ -2,7 +2,6 @@ package com.infosupport.demos.h5.lambdas
 
 // Sequences
 
-// TODO show and tell
 fun main() {
     // Sequences are like Java streams: lazy, terminal operation needed.
 

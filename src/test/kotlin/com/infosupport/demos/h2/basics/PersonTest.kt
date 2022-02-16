@@ -1,12 +1,12 @@
 package com.infosupport.demos.h2.basics
 
 import com.infosupport.demos.h2.basics.Color.*
-import org.assertj.core.api.Assertions.assertThat
+import org.assertj.core.api.WithAssertions
 import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 
-internal class PersonTest { // internal: visible everywhere in the same module
+internal class PersonTest : WithAssertions { // internal: visible everywhere in the same module
 
     @Test
     fun isFirst() {

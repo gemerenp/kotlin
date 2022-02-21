@@ -7,6 +7,6 @@ fun main() {
     val r = MyRichButton(3)
 
     // NOK: internal
-    // r.internals()
+    // r.moduleInternals()
     // val t = TalkativeButton()
 }

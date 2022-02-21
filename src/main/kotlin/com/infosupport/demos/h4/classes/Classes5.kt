@@ -5,11 +5,12 @@ package com.infosupport.demos.h4.classes
 // See resources/img/buttons.png
 
 fun main() {
-    val richButton = RichButton(1)
-    richButton.disable() // from...?
-    richButton.animate() // from...?
-    richButton.click()   // from...?
-    richButton.showOff() // from...?
+    val richButton = MyRichButton(1)
+    richButton.disable()         // from...?
+    richButton.animate()         // from...?
+    richButton.click()           // from...?
+    richButton.showOff()         // from...?
+    richButton.moduleInternals() // from...?
 
     val gif = Gif(2)
     gif.animate()

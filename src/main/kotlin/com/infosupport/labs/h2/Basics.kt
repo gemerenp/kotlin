@@ -18,6 +18,10 @@ package com.infosupport.labs.h2
 // Hint: use String.padStart(...) to right align the strings.
 
 // 2. Now, install the exercises for the Atomic Kotlin book, see: https://www.atomickotlin.com/exercises/
+//
+//      1. Install the EduTools plugin from JetBrains: Preferences -> Plugins -> Marketplace -> EduTools
+//      2. Start the Atomic Kotlin course: File -> Learn & teach -> Browse courses -> Marketplace -> Atomic Kotlin
+//
 //    Select some of the following exercises from Atomic Kotlin (start with one of each subject):
 //    Programming Basics    Exercise
 //      - Functions:        1, 3

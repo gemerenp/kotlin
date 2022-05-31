@@ -51,4 +51,6 @@ fun main() {
 
     // ... and componentN functions for destructuring
     val (name, postalCode) = dylan
+    println(name)
+    println(postalCode)
 }

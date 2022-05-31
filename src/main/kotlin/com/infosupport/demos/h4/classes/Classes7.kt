@@ -1,8 +1,5 @@
 package com.infosupport.demos.h4.classes
 
-import com.infosupport.demos.h4.classes.ExprSealed.Num as NumSealed
-import com.infosupport.demos.h4.classes.ExprSealed.Sum as SumSealed
-
 // Sealed classes: defining restricted class hierarchies and smart casts
 
 // Suppose you have to implement expressions to sum a few numbers.
@@ -36,7 +33,7 @@ sealed class ExprSealed {
 
 fun evalSealed(e: ExprSealed): Int =
     when (e) {
-        is NumSealed -> e.value // note the import alias
-        is SumSealed -> evalSealed(e.right) + evalSealed(e.left)
+        is ExprSealed.Num -> e.value // note the import alias
+        is ExprSealed.Sum -> evalSealed(e.right) + evalSealed(e.left)
         // ExprSealed is sealed: you don’t need to provide the default branch
     }

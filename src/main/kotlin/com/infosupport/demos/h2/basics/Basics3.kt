@@ -23,9 +23,13 @@ fun main() {
 
 private fun basics() {
     show(1..9)
+    println("---")
     show(1 until 9)
+    println("---")
     show(9 downTo 1)
+    println("---")
     show(1..9 step 2)
+    println("---")
 
     println((1..9 step 3).first)
     println((1..9 step 5).last)
@@ -72,13 +76,15 @@ private fun destructuring(treeMap: TreeMap<String, Person>) {
     }
 }
 
-private fun tryCatch() {
+private fun tryCatch(): Int? {
     // try as a statement, similar to Java:
-    try {
+    return try {
         val n1 = readNumber(null)
         println(n1)
-    } catch (e: IllegalArgumentException) {
+        n1
+    } catch (e: Exception) {
         println("""Exception occurred: ${e.message}.""")
+        null
     } finally {
         println("Done")
     }

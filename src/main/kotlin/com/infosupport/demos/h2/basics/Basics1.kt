@@ -8,7 +8,12 @@ import com.infosupport.demos.h2.basics.lastLetter
 // main function (first class citizen)
 fun main(args: Array<String>) {
     // if expression
-    val s = if (args.size > 0) args[0] else "world"
+    val s = if (args.size > 0) {
+        println("hello")
+        args[0]
+    } else {
+        "world"
+    }
 
     // string template
     println("Hello, $s!")
@@ -18,7 +23,7 @@ fun main(args: Array<String>) {
     // val: immutable reference, must be initialized
     val max1 = max(1)        // b has default value; type inference
     val max2 = max(1, b = 2) // named arguments
-    val max3 = maxExpressionBody(a = 3, b = 4)
+    val max3 = maxExpressionBody(b = 3, a = 4)
 
     // var
     // mutable reference
@@ -34,10 +39,13 @@ fun main(args: Array<String>) {
 }
 
 // functions
-fun max(a: Int, b: Int = 0): Int { // b has default value
+fun max(a: Int, b: Int = 500, c: Int = 0): Int { // b has default value
     return if (a > b) a else b
 }
 
 // expression body
-fun maxExpressionBody(a: Int, b: Int) =
-    if (a > b) a else b // return type is inferred
+fun maxExpressionBody(a: Int, b: Int) = if (a > b) {
+        a
+    } else {
+        b // return type is inferred
+    }

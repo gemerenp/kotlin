@@ -34,6 +34,36 @@ fun main() {
     //
     // .. and fire an event
     javaAwtButton.dispatchEvent(ActionEvent(javaAwtButton, ap, "click!"))
+
+
+
+    // Kotlin has functional interfaces as well
+    //
+    // With a normal interface, no SAM conversion is possible
+    printNonFunctionalValue(object : NonFunctionalValue<Int> {
+        override fun get() = 42
+    })
+
+    // With a functional interface, SAM conversion is available
+    printFunctionalValue { 42 }
+}
+
+// Interface with a single abstract method, not marked as functional
+interface NonFunctionalValue<T> {
+    fun get(): T
+}
+
+// Functional interface with a single abstract method
+fun interface FunctionalValue<T> {
+    fun get(): T
+}
+
+fun printNonFunctionalValue(value: NonFunctionalValue<*>) {
+    println("Non-functional value is ${value.get()}")
+}
+
+fun printFunctionalValue(value: FunctionalValue<*>) {
+    println("Functional value is ${value.get()}")
 }
 
 private fun action(i: Int, e: ActionEvent) = "Action $i says: ${e.actionCommand}"

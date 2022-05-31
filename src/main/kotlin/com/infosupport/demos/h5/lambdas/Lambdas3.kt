@@ -14,7 +14,7 @@ fun main() {
         .map { it.instruments }
         .flatten()
         .filter { it.name.length <= 6 } //      stateless
-        .take(5)                        //      a bit stateful
+        .take(5)                     //      a bit stateful
         .sortedBy { it.name }           //      stateful
         .forEachIndexed { i, inst ->    // 3. perform ONE terminal operation
             println("Instrument $i = ${inst.name}")

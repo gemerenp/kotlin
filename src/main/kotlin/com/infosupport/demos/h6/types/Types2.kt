@@ -48,6 +48,10 @@ fun printPersonNameUnsafe(p: Person?) {
     println(p!!.name) // !! is the not null assertion
 }
 
+fun printPersonNameNonNull(p: Person) {
+    println(p.name)
+}
+
 fun findPerson(id: Int): Person? = if (id == 1) person else null // person or null, so Person?
 
 fun printPersonName(id: Int) {
@@ -62,7 +66,7 @@ fun letPrintPersonName(id: Int) {
     // when you want to execute a block of code if an object != null, use let:
     findPerson(id)?.let {
         println("Let printing person name...")
-        printPersonNameUnsafe(it)
+        printPersonNameNonNull(it)
     }
 }
 

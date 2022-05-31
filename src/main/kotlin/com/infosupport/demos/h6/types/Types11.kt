@@ -42,7 +42,7 @@ fun createAndPrintArray() {
     arrayOf.forEachIndexed { index, element -> println("Argument $index is: $element") }
 
     // 2. arrayOfNulls
-    val arrayOfNulls = arrayOfNulls<Int?>(3)
+    val arrayOfNulls = arrayOfNulls<Int>(3)
     for (i in arrayOfNulls.indices) {
         arrayOfNulls[i] = if (i % 2 != 0) i else null
     }

@@ -127,13 +127,13 @@ fun captureAndWrap() {
 
     var counter = 0             // var, so not final
     val inc = { ++counter }     // immediately invoke lambda
-    println("$inc(), $counter")
+    println("${inc()}, $counter")
 
     // ... gets converted under the hood to:
 
     val counterRef = Ref(0)
     val incRef = { ++(counterRef.value) } // immediately invoke lambda with run {}
-    println("$incRef(), ${counterRef.value}")
+    println("${incRef()}, ${counterRef.value}")
 }
 
 fun tryToCountButtonClicks(button: Button) {

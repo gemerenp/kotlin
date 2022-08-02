@@ -7,16 +7,22 @@ import com.infosupport.demos.h2.basics.lastLetter
 
 // main function (first class citizen)
 fun main(args: Array<String>) {
-    // if expression
-    val s = if (args.size > 0) {
-        println("hello")
+    // if expressions
+
+    // - oneliner
+    val s = if (args.isNotEmpty()) args[0] else "world"
+
+    // - with body
+    val s2 = if (args.isNotEmpty()) {
+        println("Nederlands")
         args[0]
     } else {
-        "world"
+        "wereld"
     }
 
     // string template
     println("Hello, $s!")
+    println("Hello, ${s2}!")
     // string template with expression and unescaped quotes
     println("Hello, ${if (args.isNotEmpty()) args[0] else "world"}!")
 

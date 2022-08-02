@@ -82,8 +82,8 @@ private fun tryCatch(): Int? {
         val n1 = readNumber(null)
         println(n1)
         n1
-    } catch (e: Exception) {
-        println("""Exception occurred: ${e.message}.""")
+    } catch (e: IllegalArgumentException) {
+        println("""IllegalArgumentException occurred: ${e.message}.""")
         null
     } finally {
         println("Done")

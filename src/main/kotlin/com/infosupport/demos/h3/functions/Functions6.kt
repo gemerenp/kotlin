@@ -1,4 +1,4 @@
-// vararg
+// vararg and spread operator
 
 package com.infosupport.demos.h3.functions
 
@@ -7,16 +7,17 @@ fun main() {
     val list = listOf(1, 2, 3)
 
     // use vararg
-    print(array)
+    // print(array)
     print(array, "A", "B")
-    print(array, "A", "B", "C", "D")
+    // print(array, "A", "B", "C", "D")
 
-    // You cannot spread the contents of a list like this:
-    // println(listOf("list spread: ", *numbers))
-    // You do it like this:
+    // You can spread the contents of a vararg with *, see fun print below.
+    // But, you cannot spread the contents of a _list_ like this:
+    //   println(listOf("list spread: ", *list))
+    // Instead you do it like this:
     println(listOf("list spread", *list.toTypedArray()))
 
-    // Better is:
+    // More idiomatic is:
     println(listOf("list spread") + list)
 }
 
@@ -33,3 +34,4 @@ fun print(array: Array<Int>, vararg varargString: String) { // declare vararg pa
     println()
 }
 
+// Lab 3.2d

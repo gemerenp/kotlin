@@ -172,4 +172,4 @@ val foo2: Int
         return 42
     }
 
-// See Basics3 for more...
+// Lab 2.2 (select some)

@@ -111,3 +111,5 @@ private fun readNumber(reader: BufferedReader?): Int? { // optional Int, i.e. nu
         null
     }
 }
+
+// Lab 2.2 (select some)

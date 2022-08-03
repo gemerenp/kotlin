@@ -5,15 +5,17 @@ package com.infosupport.demos.h3.functions
 fun main() {
     // --------------------------------
     // 1. Splitting strings
-    // The split method in Java doesn’t work with a dot, because the string arg is considered a regex.
+    // The split method in Java doesn't work with a dot, because the string arg is considered a regex.
     // In Java: "12.345-6.A".split(".") != [12, 345-6, A]; see SplitDemo.java
 
-    // Kotlin does a better job: split works with a literal string
+    // Kotlin does a better job: split works with a literal string (and multiple delimiters)
     println("12.345-6.A".split(".", "-"))
 
     // --------------------------------
     // 2. Regular expressions and triple-quoted strings
+    //    - parsing using String's functions:
     parsePath("/Users/yole/kotlin-book/chapter.adoc")
+    //    - vs. parsing using regular expressions:
     parsePathRegEx("/Users/yole/kotlin-book/chapter.adoc")
 
     // --------------------------------
@@ -23,7 +25,6 @@ fun main() {
 }
 
 fun parsePath(path: String) {
-    // using String's functions
     val directory = path.substringBeforeLast("/")
     val fullFileName = path.substringAfterLast("/")
 
@@ -43,6 +44,9 @@ fun parsePathRegEx(path: String) {
         println("Dir: $directory, name: $filename, ext: $extension")
     }
 }
+
+// Lab 3.1cd
+//     3.2e
 
 val author = "Jens Reissenweber"
 val aardVark = """

@@ -50,8 +50,6 @@ fun max(a: Int, b: Int = 500, c: Int = 0): Int { // b has default value
 }
 
 // expression body
-fun maxExpressionBody(a: Int, b: Int) = if (a > b) {
-        a
-    } else {
-        b // return type is inferred
-    }
+fun maxExpressionBody(a: Int, b: Int) = if (a > b) a else b // return type is inferred
+
+// Lab 2.1

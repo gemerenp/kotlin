@@ -61,3 +61,5 @@ fun User.validate() {
     validate(name, "Name")
     validate(address, ::address.name) // or using reflection
 }
+
+// Lab 3.2f

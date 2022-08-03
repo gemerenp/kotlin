@@ -11,10 +11,10 @@ package com.infosupport.labs.h3
 
 // 2. Select some (or all) of the following exercises from Atomic Kotlin:
 //    Introduction to objects       Exercise
-//      - Lists:                    3
-//      - Sets:                     2
-//      - Maps:                     3
-//      - Variable Argument Lists:  2
-//      - Summary:                  5
+//      a) Lists:                    3
+//      b) Sets:                     2
+//      c) Maps:                     3
+//      d) Variable Argument Lists:  2
+//      e) Summary:                  5
 //    Functional programming
-//      - Local Functions:          2
+//      f) Local Functions:          2

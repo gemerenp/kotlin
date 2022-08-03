@@ -22,3 +22,4 @@ var StringBuilder.lastChar: Char
         this.setCharAt(length - 1, value)
     }
 
+// Lab 3.1ab

@@ -5,4 +5,4 @@ package com.infosupport.labs.h1
 // - pretty print the set of articles
 // - show that duplicates are not allowed in the set
 // - show the cheapest article
-// - show the articleId with a certain description, or "not found" otherwise
+// - show the ids of the articles with a given description, or "not found" otherwise

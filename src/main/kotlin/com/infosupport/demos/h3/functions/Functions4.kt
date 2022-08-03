@@ -3,6 +3,7 @@
 package com.infosupport.demos.h3.functions
 
 //  Terminology, see https://drek4537l1klr.cloudfront.net/jemerov/Figures/03fig01_alt.jpg
+//  String is "receiver type"|this is "receiver object"
 fun String.lastChar(): Char = this.get(this.length - 1) // you can omit 'this'
 
 // How to use lastChar: see Functions4b.kt
@@ -51,6 +52,3 @@ fun Button.off() = println("Button off")
 
 // no overriding for extension functions
 fun Button.click() = println("Button clicked from ext. function")
-
-
-

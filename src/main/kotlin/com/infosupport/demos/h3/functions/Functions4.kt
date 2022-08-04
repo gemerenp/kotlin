@@ -20,7 +20,7 @@ fun main() {
     //    - Button.click   overrides  View.click
     //    - Button.showOff !overrides View.showOff
 
-    val button = Button()
+    val button: Button = Button()
     val buttonAsView: View = Button()
 
     button.click()          // on Button, as expected

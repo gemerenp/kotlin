@@ -5,7 +5,7 @@ import java.lang.Thread.sleep
 // Implementing properties declared in interfaces
 // Accessing a backing field from a getter or setter
 
-private const val Delay = 1_000L
+private const val DELAY = 1_000L
 
 fun main() {
     // Implementing properties declared in interfaces: ---------------------------------
@@ -61,11 +61,11 @@ class PrivateUser(override val nickname: String) : IUser {
 }
 
 class SubscribingUser(override val email: String) : IUser { // email has default getter
-    override val nickname: String // nickname gets custom getter; called on every access.
+    override val nickname: String = "" // nickname gets custom getter; called on every access.
         get() {
-            println("Getting SubscribingUser's nickname... ")
-            sleep(Delay) // expensive call
-            return email.substringBefore('@')
+            println("Getting SubscribingUser's nickname from db... ")
+            sleep(DELAY) // call to backend
+            return field
         }
 }
 
@@ -76,7 +76,7 @@ class FacebookUser(override val email: String, accountId: Int) : IUser {
 
 fun getFacebookNameFromWeb(accountId: Int): String {
     println("getFacebookNameFromWeb... ")
-    sleep(Delay) // expensive call
+    sleep(DELAY) // expensive call
     return "fb:$accountId"
 }
 
@@ -94,7 +94,7 @@ open class Person(val name: String) {
         }
 
     var age: Int = 0
-        get() = if (field <= 130) field else throw RuntimeException("Person died") // custom getter accessing the backing field:
+        get() = if (field <= 130) field else throw RuntimeException("Person deceased") // custom getter accessing the backing field:
         private set // hide setter; age can only be modified by fun haveBirthday() below:
 
     fun haveBirthday() = age++ // getter is called here too

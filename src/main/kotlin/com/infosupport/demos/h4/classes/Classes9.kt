@@ -54,6 +54,8 @@ class TempEmployee(name: String, salary: Int, val level: Int) : Employee(name, s
         override fun toJSON(e: TempEmployee) =
             """{ salary: ${e.salary}, level: ${e.level} }"""
     }
+
+    fun toJSON() = Loader.toJSON(this)
 }
 
 fun <T> saveToJSON(t: T, factory: JSONFactory<T>): String = factory.toJSON(t)

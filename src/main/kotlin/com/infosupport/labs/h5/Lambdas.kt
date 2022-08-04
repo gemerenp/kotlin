@@ -35,9 +35,9 @@ fun fibo(n: Int): Int = if (n <= 2) n else fibo(n - 1) + fibo(n - 2)
 // 4. Create a sequence for the following series of numbers: [0, 1, 4, 9, 16, 25, ..., n^2].
 
 // 5. Select some (or all) of the following exercises from Atomic Kotlin (start with one of each subject):
-//    Functional Programming            Exercise
-//      - Lambdas                       1, 2, 3
-//      - The Importance of Lambdas     1, 2, 3
-//      - Operations on Collections     1, 2, 3
-//      - Member References             1, 2
-//      - Sequences                     1, 2, 7
+//    Functional Programming             Exercise
+//      a) Lambdas                       1, 2, 3
+//      b) The Importance of Lambdas     1, 2, 3
+//      c) Operations on Collections     1, 2, 3
+//      d) Member References             1, 2
+//      e) Sequences                     1, 2, 7

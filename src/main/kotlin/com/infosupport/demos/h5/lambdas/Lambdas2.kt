@@ -65,3 +65,5 @@ fun main() {
     println(numbers.shuffled())
     println(numbers.reversed())
 }
+
+// Lab 5.5c

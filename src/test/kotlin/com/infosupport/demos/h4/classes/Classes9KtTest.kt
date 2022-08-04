@@ -9,8 +9,10 @@ internal class Classes9KtTest {
     private val employees = listOf(Employee("Bram", 1000), Employee("Sjaak", 50))
 
     init {
+        println("Classes9KtTest init")
         Payroll.allEmployees.clear()
         Payroll.allEmployees.addAll(employees)
+        println("Classes9KtTest init end")
     }
 
     @Test
@@ -68,6 +70,7 @@ internal class Classes9KtTest {
         // call can be named or unnamed
         TempEmployee.Loader.toJSON(t)
         TempEmployee.toJSON(t)
+        t.toJSON()
     }
 
     @Test

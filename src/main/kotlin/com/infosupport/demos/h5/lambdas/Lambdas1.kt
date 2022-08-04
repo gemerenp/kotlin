@@ -3,14 +3,14 @@ package com.infosupport.demos.h5.lambdas
 // Lambda expressions and member references
 
 fun main() {
-    firstTaste()
+    // firstTaste()
 
     // findOldestClassic(people)
     // findOldestLambda(people)
 
     // syntax()
 
-    // captureLocalVariables()
+    captureLocalVariables()
 
     // functionReferences()
 
@@ -28,17 +28,17 @@ fun firstTaste() {
     */
 
     // Kotlin
-    val button = Button()
+    val beredenPolitie = Button()
 
-    button.onClick {
+    beredenPolitie.onClick {
         println("Click!")
         println("Clack!")
         println("Clock!")
     }
 
-    button.click()
-    button.click()
-    button.click()
+    beredenPolitie.click()
+    beredenPolitie.click()
+    beredenPolitie.click()
 }
 
 fun findOldestClassic(people: List<Person>) {
@@ -79,7 +79,7 @@ fun syntax() {
     people.joinToString(",", transform = { it.name })
     people.joinToString(",") { it.name }
 
-    // Multiline lambda body; last statement is return value; no {}-block needed
+    // Multiline lambda body; last expression is return value; no {}-block needed
     val logAndSum = { x: Int, y: Int ->
         println("Computing the sum of $x and $y...")
         x + y
@@ -159,6 +159,7 @@ fun countButtonClicks(button: Button) {
     repeat(10) { button.click() }
     println(clicks) // 10?
 }
+// Lab 5.5ab
 
 fun functionReferences() {
     // member reference (i.e. getter)
@@ -199,6 +200,8 @@ fun sendEmail(person: Person, message: String) {
 }
 
 fun salute(s: String) = println("Salute $s!")
+
+// Lab 5.5d
 
 fun creatingCollectionsRevisited() {
     // Use immutable collections if you can: thread safe.

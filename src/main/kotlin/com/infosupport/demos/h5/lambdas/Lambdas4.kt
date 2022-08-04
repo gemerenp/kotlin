@@ -31,3 +31,7 @@ fun fibonacci() = sequence {
         terms = Pair(terms.second, terms.first + terms.second)
     }
 }
+
+// Lab 5.3
+// Lab 5.4
+// Lab 5.5e

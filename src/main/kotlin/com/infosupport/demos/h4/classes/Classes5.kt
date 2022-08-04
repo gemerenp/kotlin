@@ -9,7 +9,7 @@ fun main() {
     richButton.disable()         // from...?
     richButton.animate()         // from...?
     richButton.click()           // from...?
-    richButton.showOff()         // from...?
+    richButton.info()            // from...?
     richButton.moduleInternals() // from...?
 
     val gif = Gif(2)
@@ -33,7 +33,7 @@ open class RichButton(val x: Int) : Clickable { // open: can be overridden
 
 class MyRichButton(myX: Int) : RichButton(myX) {
     // override fun disable() {}        // not allowed
-    override fun showOff() {}
+    override fun info() {}
     internal fun moduleInternals() {}
 }
 

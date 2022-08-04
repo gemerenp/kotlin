@@ -37,3 +37,6 @@ fun evalSealed(e: ExprSealed): Int =
         is ExprSealed.Sum -> evalSealed(e.right) + evalSealed(e.left)
         // ExprSealed is sealed: you don’t need to provide the default branch
     }
+
+// Lab 1
+// Lab 2c

@@ -34,4 +34,4 @@ fun print(array: Array<Int>, vararg varargString: String) { // declare vararg pa
     println()
 }
 
-// Lab 3.2d
+// Lab 2d

@@ -30,4 +30,4 @@ fun main() {
     reportOperationCount()
 }
 
-// Lab 3.2abc
+// Lab 2abc

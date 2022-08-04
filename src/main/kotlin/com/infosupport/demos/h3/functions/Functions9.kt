@@ -62,4 +62,4 @@ fun User.validate() {
     validate(address, ::address.name) // or using reflection
 }
 
-// Lab 3.2f
+// Lab 2f

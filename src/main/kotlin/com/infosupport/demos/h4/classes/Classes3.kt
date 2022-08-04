@@ -54,3 +54,5 @@ fun main() {
     println(name)
     println(postalCode)
 }
+
+// Lab 2a

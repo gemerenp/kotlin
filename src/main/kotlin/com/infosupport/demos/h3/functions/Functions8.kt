@@ -45,8 +45,8 @@ fun parsePathRegEx(path: String) {
     }
 }
 
-// Lab 3.1cd
-//     3.2e
+// Lab 1cd
+//     2e
 
 val author = "Jens Reissenweber"
 val aardVark = """

@@ -94,3 +94,5 @@ fun main() {
 
     PermEmployee.staticExtFunction()
 }
+
+// Lab 2e

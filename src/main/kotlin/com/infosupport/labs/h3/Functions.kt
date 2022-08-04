@@ -10,7 +10,7 @@ package com.infosupport.labs.h3
 //   d) Can you create an infix variant of 'headTail'? (on two lists, e.g.: listOf(1,2) headTail listOf(3,4) = [1, 4])
 
 // 2. Select some (or all) of the following exercises from Atomic Kotlin:
-//    Introduction to objects       Exercise
+//    Introduction to objects        Exercise
 //      a) Lists:                    3
 //      b) Sets:                     2
 //      c) Maps:                     3

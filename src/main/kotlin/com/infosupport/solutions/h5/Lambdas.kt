@@ -26,8 +26,8 @@ fun main() {
     rewriteUsingWith()
     rewriteUsingApply()
 
-    println(createFibo(11).joinToString())
-    println(createFibo2(100).joinToString())
+    println(createFiboSlow(11).joinToString())
+    println(createFiboFaster(100).joinToString())
 
     println(squares().takeWhile { it <= 100 }.toList())
 }
@@ -36,18 +36,18 @@ fun main() {
 fun fibo(n: Int): Int = if (n <= 2) n else fibo(n - 1) + fibo(n - 2)
 
 // Option 1:
-fun createFibo(n: Int): Array<Int?> =
+fun createFiboSlow(n: Int): Array<Int?> =
     Array(n) {
         val fibo = fibo(it)
         if (fibo % 2 != 0) fibo else null
     }
 
 // Option 2, much better performance:
-fun createFibo2(max: Int): Array<Int?> {
-    val fibos = fibonacci().takeWhile { it < max }.toList()
-
-    return Array(fibos.size) { if (fibos.get(it) % 2 != 0) fibos.get(it) else null }
-}
+fun createFiboFaster(max: Int) =
+    fibonacci()
+        .takeWhile { it < max }
+        .toList()
+        .map { if (it % 2 != 0) it else null }
 
 // 4.
 fun squares() = sequence {

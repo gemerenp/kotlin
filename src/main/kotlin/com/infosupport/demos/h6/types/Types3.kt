@@ -24,3 +24,5 @@ fun main() {
     init()
     println(lazyPerson)
 }
+
+// Lab 6.1e

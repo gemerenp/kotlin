@@ -65,3 +65,5 @@ private fun nothing() {
 fun fail(message: String): Nothing { // this function never returns anything
     throw IllegalStateException(message)
 }
+
+// Lab 6.1g

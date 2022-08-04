@@ -5,37 +5,41 @@ package com.infosupport.demos.h5.lambdas
 fun main() {
     println(alphabetVerboseStyle())
 
-    println(alphabetUsingTheWithScopeFunctionVerboseStyle())
-    println(alphabetUsingTheWithScopeFunction())
+    println(alphabetVerboseStyleUsingTheWithScopeFunction())
+    println(alphabetUsingTheWithScopeFunctionConcise())
 
     println(alphabetUsingTheApplyScopeFunction())
 
     println(buildPerson("Bram"))
 }
 
+val alpha = ('A'..'Z').minus('O').plus("omikron")
+
 fun alphabetVerboseStyle(): String {
-    val result = StringBuilder() // the 'receiver'
-    (('A'..'Z').minus('O').plus("omikron")).forEach { result.append(it) }    // repeat 'result' every time...
-    result.append("\nNow I know the alphabet!")
-    return result.toString()
+    val sb = StringBuilder() // the 'receiver'
+    alpha.forEach { sb.append(it) }    // repeat 'result' every time...
+    sb.append("\nNow I know the alphabet!")
+    return sb.toString()
 }
 
-fun alphabetUsingTheWithScopeFunctionVerboseStyle(): String {
+fun alphabetVerboseStyleUsingTheWithScopeFunction(): String {
     val sb = StringBuilder()
 
     // the 'receiver' is passed to with(...){...}
     return with(sb) {
         // 'this' is the receiver, i.e. sb
-        ('A'..'Z').forEach { append(it) }
+        alpha.forEach { this.append(it) }
         append("\nNow I know the alphabet!")
+
+        // return whatever you want
         toString() // last line is return value
     }
 }
 
 // more concise
-fun alphabetUsingTheWithScopeFunction() = with(StringBuilder()) {
-    // 'this' is the receiver here, i.e. StringBuilder()
-    ('A'..'Z').forEach { append(it) }
+fun alphabetUsingTheWithScopeFunctionConcise() = with(StringBuilder()) {
+    // 'this' is the receiver, i.e. StringBuilder()
+    alpha.forEach { this.append(it) }
     append("\nNow I know the alphabet!")
 
     // return whatever you want
@@ -46,7 +50,7 @@ fun alphabetUsingTheWithScopeFunction() = with(StringBuilder()) {
 // the only difference is that apply returns 'this' by default
 fun alphabetUsingTheApplyScopeFunction() = StringBuilder().apply {
     // 'this' is the receiver, i.e. StringBuilder()
-    ('A'..'Z').forEach { append(it) }
+    alpha.forEach { this.append(it) }
     append("\nNow I know the alphabet!")
 }.toString()
 
@@ -55,6 +59,7 @@ fun buildPerson(name: String) = Person(name).apply {
     // 'this' is the receiver object, i.e. Person(name)
     age = 42 // (`this.` is omitted)
     instruments = List(name.length) { index -> Instrument(index) } // for each index create an Instrument with name = index
+
     // returns 'this', i.e. the built person
 }
 

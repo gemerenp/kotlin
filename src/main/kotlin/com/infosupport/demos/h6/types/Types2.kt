@@ -9,14 +9,14 @@ package com.infosupport.demos.h6.types
 //      - generic type parameters
 
 fun main() {
-    castPersonUnsafe(Person("Bram")) // OK
-    // castPersonUnsafe("Bram")      // Exception
+    castToPersonUnsafe(Person("Mark")) // OK
+    // castPersonUnsafe("OnTheEdge")   // Exception
 
-    castPersonSafe(Person("Bram"))   // OK
-    castPersonSafe("Bram")           // OK
+    castToPersonSafe(Person("Bram"))   // OK
+    castToPersonSafe("Bram")           // OK
 
-    printPersonNameUnsafe(person)    // OK
-    // printPersonNameUnsafe(null)   // Exception
+    printPersonNameUnsafe(person)      // OK
+    // printPersonNameUnsafe(null)     // Exception
 
     // id 1 exists, id 2 not:
     printPersonName(1)
@@ -31,13 +31,13 @@ fun main() {
     whatsTheHashcodeOfGenericTypeParam(person)
 }
 
-fun castPersonUnsafe(o: Any) {
+fun castToPersonUnsafe(o: Any) {
     val p = o as Person  // if o !is Person: ClassCastException
     // now p is a `Person`
     println(p.name)
 }
 
-fun castPersonSafe(o: Any) {
+fun castToPersonSafe(o: Any) {
     val p = o as? Person // if o !is Person p = null, else p is cast to Person
     // now p is smart cast to a `Person?`
     println(p?.name ?: "Unknown")
@@ -79,3 +79,4 @@ fun <T> whatsTheHashcodeOfGenericTypeParam(t: T) {
     println(t?.hashCode() ?: "Unknown") // safe call needed
 }
 
+// Lab 6.1abcd

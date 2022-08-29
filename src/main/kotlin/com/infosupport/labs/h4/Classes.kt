@@ -1,21 +1,23 @@
 package com.infosupport.labs.h4
 
-// 0. Create a class C with:
-//  - a private field `_f`
+// 1. Create a class C with:
 //  - a primary constructor declaring:
-//      - one property `prop`
-//      - one private field `priv`
-//      - one separate param `p`
+//      - one Int property `prop`
+//      - one private Int property `privProp1`
+//      - one separate String parameter `param`
+//  - a private String property `privProp2`
 //  - an implementation of the primary constructor:
-//      - save `param` in `_f`
-//  - a method `m` that modifies and returns `_f`
-//  - a custom getter and setter for `prop`
-//  - a secondary constructor
+//      - store `param` in `privProp2`
+//  - a method `m` that modifies and returns `privProp2`
+//  - a custom getter and setter for `privProp2`
+//  - a secondary constructor with
+//      - an Int `param2` which is stored in `prop`
+//      - default values for the primary constructor parameters
 //  - a subclass S with:
-//      - a primary constructor which reuses the primary ctor of C
+//      - a primary constructor which reuses the secondary constructor of C
 //      - an override for `m` which calls `C.m` twice
 
-// 1. Study the file UnSealed.kt in this package.
+// 2. Study the file UnSealed.kt in this package.
 //    Now, modify it:
 //      - add a new subclass Tram with its own property route: String
 //      - add a tram to the list in main and show that a tram isn't printed correctly yet
@@ -25,7 +27,7 @@ package com.infosupport.labs.h4
 //      - fix and refactor fun travel; prevent code duplication
 //      - add a new subclass Plane with its own property flightNumber: String and make everything work
 
-// 2. Select some (or all) of the following exercises from Atomic Kotlin:
+// 3. Select some (or all) of the following exercises from Atomic Kotlin:
 //    Object-Oriented Programming        Exercise
 //      a) Complex Constructors          1
 //      b) Secondary Constructors        2

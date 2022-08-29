@@ -38,5 +38,5 @@ fun evalSealed(e: ExprSealed): Int =
         // ExprSealed is sealed: you don’t need to provide the default branch
     }
 
-// Lab 1
-// Lab 2c
+// Lab 2
+// Lab 3c

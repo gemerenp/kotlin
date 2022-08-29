@@ -15,7 +15,7 @@ internal class Functions9KtTest {
     fun saveUser() {
         assertThrows(::saveUser, userNoStreet)
         assertThrows(::saveUser, userNoName)
-        assertThrows(::saveUser, userNoStreetNoName)
+        assertThrows(::saveUserShorter, userNoStreetNoName)
 
         assertEquals(saveUser(user).id, 1)
     }
@@ -36,6 +36,11 @@ internal class Functions9KtTest {
         assertThrows(::saveUserExtFn, userNoStreetNoName)
 
         assertEquals(saveUserExtFn(user).id, 1)
+    }
+
+    @Test
+    internal fun createUserIllegalId() {
+        assertThrows<IllegalStateException> { User(-42, "Bram", "Straat") }
     }
 
     private fun assertThrows(saveFunction: (User) -> User, user: User) {

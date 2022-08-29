@@ -3,7 +3,12 @@
 package com.infosupport.demos.h3.functions
 
 // See Functions9KtTest
-class User(val id: Int, val name: String, val address: String)
+class User(val id: Int, val name: String, val address: String) {
+    init {
+        // example usage of `check(..)`
+        check(id > 0) { "Id must be positive." }
+    }
+}
 
 fun saveUserNotDRY(user: User): User {
     if (user.name.isEmpty()) {                          // | not DRY
@@ -32,6 +37,21 @@ fun saveUser(user: User): User {
                 "Can't save user ${user.id}: empty $fieldName"
             )
         }
+    }
+
+    validate(user.name, "Name")                     // call local function
+    validate(user.address, "Address")
+
+    // Save user to the database . . .
+
+    return user
+}
+
+fun saveUserShorter(user: User): User {
+
+    fun validate(value: String, fieldName: String) { // local function
+        // use the standard function require(...) here, which acts on an illegal argument
+        require(value.isNotEmpty()) { "Can't save user ${user.id}: empty $fieldName" }
     }
 
     validate(user.name, "Name")                     // call local function

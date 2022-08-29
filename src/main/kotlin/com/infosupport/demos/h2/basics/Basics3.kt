@@ -76,14 +76,31 @@ private fun destructuring(treeMap: TreeMap<String, Person>) {
     }
 }
 
-private fun tryCatch(): Int? {
-    // try as a statement, similar to Java:
+private fun tryCatch() {
+    tryAsAStatement()
+    tryAsAnExpression()
+}
+
+private fun tryAsAStatement(): Int? {
+    // similar to Java:
+    try {
+        val n1 = readNumber(null)
+        println(n1)
+        return n1
+    } catch (e: IllegalArgumentException) {
+        println("""Exception occurred: ${e.message}.""")
+        return null
+    } finally {
+        println("Done")
+    }
+}
+private fun tryAsAnExpression(): Int? {
     return try {
         val n1 = readNumber(null)
         println(n1)
         n1
     } catch (e: IllegalArgumentException) {
-        println("""IllegalArgumentException occurred: ${e.message}.""")
+        println("""Exception occurred: ${e.message}.""")
         null
     } finally {
         println("Done")

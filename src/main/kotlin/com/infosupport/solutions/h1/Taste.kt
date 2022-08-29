@@ -7,13 +7,7 @@ data class Article(
     val id: Long,
     val description: String,
     val price: BigDecimal? = ZERO,
-    private var pr2: Double = 0.0
-){
-    operator fun plus(book: Article): Any? {
-        return pr2 + book.pr2
-    }
-
-}
+)
 
 fun main() {
     val tv = Article(1, "TV")
@@ -26,9 +20,9 @@ fun main() {
 
     println(set)
 
-    val minBy = set.minByOrNull { it.price ?: ZERO }
-    println(minBy)
+    val cheapestArticle = set.minByOrNull { it.price ?: ZERO }
+    println(cheapestArticle)
 
-    val find: Article? = set.find { it.description == "CD" }
-    println(find?.id ?: "not found")
+    val cds: Article? = set.find { it.description == "CD" }
+    println(cds?.id ?: "not found")
 }

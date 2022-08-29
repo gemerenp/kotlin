@@ -10,8 +10,8 @@ private const val DELAY = 1_000L
 fun main() {
     // Implementing properties declared in interfaces: ---------------------------------
     println("Initializing objects...")
-    val regularUser = RegularUser("Elon", "elon@tesla.com")
-    val privateUser = PrivateUser("private")
+    val regularUser = RegularUser("elon@tesla.com", "muskie")
+    val privateUser = PrivateUser("mrAnonymous")
     val subscribingUser = SubscribingUser("sub@kotlinlang.org")
     val facebookUser = FacebookUser("face@kotlinlang.org", 2325675) // takes some time...
     println("Proceeding...")
@@ -100,4 +100,4 @@ open class Person(val name: String) {
     fun haveBirthday() = age++ // getter is called here too
 }
 
-
+// Lab 1

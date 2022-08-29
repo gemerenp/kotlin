@@ -58,24 +58,16 @@ open class UserVerbose constructor(nickname: String) { // primary ctor declarati
     }
 }
 
-open class UserLessVerbose(_nickname: String) {
-    var nickname = _nickname // no private makes it a property
+open class UserLessVerbose(nickname: String) {
+    var nickname = nickname // no private makes it a property
         get() = field
         set(value) {
             field = value
         }
-
-    // In TS it would be:
-    // private _nickname: string
-
-    // get nickname(){
-    //    return this._nickname
-    // }
-
 }
 
-open class UserEvenLessVerbose(_nickname: String) {
-    var nickname = _nickname
+open class UserEvenLessVerbose(nickname: String) {
+    var nickname = nickname
 }
 
 // least verbose, most concise:

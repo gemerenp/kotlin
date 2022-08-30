@@ -4,7 +4,7 @@ package com.infosupport.demos.h4.classes
 
 fun main() {
     // See figure 4.1. Nested classes don’t reference their outer class, whereas inner classes do.
-    // See https://livebook.manning.com/book/kotlin-in-action/chapter-4/87
+    // See https://drek4537l1klr.cloudfront.net/jemerov/HighResolutionFigures/figure_4-1.png
 
     // Inner:
     // val inner = Outer.Inner()        // Java:   inner is static

@@ -52,9 +52,11 @@ class Gif(anA: Int) : Animated(anA) {
 }
 
 // Internal: visible in a module, not outside it, see CallInternals.kt
-// A module is a set of Kotlin files compiled at the same time in a given project, e.g.:
-//  - Maven module
-//  -
+// A module is a set of Kotlin files compiled together, for example:
+//  - an IntelliJ IDEA module
+//  - a Maven project
+//  - a Gradle source set
+//  - a set of files compiled with one invocation of the <kotlinc> Ant task.
 // See https://kotlinlang.org/docs/visibility-modifiers.html#modules,
 internal open class TalkativeButton : Focusable {
     private fun yell() = println("Hey!")             // private

@@ -15,6 +15,11 @@ fun main() {
     val hitchhikerCollection = HitchhikerCollection(list)
     println(hitchhikerCollection.isEmpty())
     println(hitchhikerCollection.contains(42))
+
+    // other example:
+    val cset = CountingSet<Int>()
+    cset.addAll(listOf(1, 1, 2, 2, 2)) // does 5 inserts but results in a set containing only 2 elements
+    println("${cset.numberOfInserts} attempts to add, ${cset.size} remain")
 }
 
 // Delegation design pattern
@@ -46,6 +51,23 @@ class HitchhikerCollection(
 
     // all others are automatically overridden and they delegate to innerList!
 
+}
+
+// Behaves like a normal set, but also keeps track of the number of add-attempts.
+// Proxies (i.e. wraps) a hashset and overrides add.
+class CountingSet<T>(
+    private val innerSet: MutableCollection<T> = HashSet()
+) : MutableCollection<T> by innerSet {
+    var numberOfInserts = 0
+    override fun add(element: T): Boolean {
+        numberOfInserts++
+        return innerSet.add(element)
+    }
+
+    override fun addAll(c: Collection<T>): Boolean {
+        numberOfInserts += c.size
+        return innerSet.addAll(c)
+    }
 }
 
 // Lab 3d

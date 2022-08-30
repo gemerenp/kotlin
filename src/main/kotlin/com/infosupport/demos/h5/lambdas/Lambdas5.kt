@@ -31,11 +31,8 @@ fun main() {
     // More concise
     javaAwtButton.addActionListener { println(action(4, it)) }
 
-    //
-    // .. and fire an event
+    // ... and fire an event
     javaAwtButton.dispatchEvent(ActionEvent(javaAwtButton, ap, "click!"))
-
-
 
     // Kotlin has functional interfaces as well
     //

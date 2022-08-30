@@ -3,65 +3,71 @@ package com.infosupport.demos.h5.lambdas
 // Lambdas with receivers: with and apply
 
 fun main() {
-    println(alphabetVerboseStyle())
+    println(abcVerboseStyle())
 
-    println(alphabetVerboseStyleUsingTheWithScopeFunction())
-    println(alphabetUsingTheWithScopeFunctionConcise())
+    println(abcUsingWith())
+    println(abcUsingWithConcise())
 
-    println(alphabetUsingTheApplyScopeFunction())
+    println(abcUsingApply())
 
     println(buildPerson("Bram"))
 }
 
-val alpha = ('A'..'Z').minus('O').plus("omikron")
-
-fun alphabetVerboseStyle(): String {
+fun abcVerboseStyle(): String {
     val sb = StringBuilder() // the 'receiver'
-    alpha.forEach { sb.append(it) }    // repeat 'result' every time...
-    sb.append("\nNow I know the alphabet!")
+
+    sb.append('A')           // we have to repeat 'sb' every time...
+    sb.append('B')
+    sb.append('C')
+
     return sb.toString()
 }
 
-fun alphabetVerboseStyleUsingTheWithScopeFunction(): String {
+fun abcUsingWith(): String {
     val sb = StringBuilder()
 
-    // the 'receiver' is passed to with(...){...}
+    // the 'receiver' is passed to with(...) {...}
     return with(sb) {
         // 'this' is the receiver, i.e. sb
-        alpha.forEach { this.append(it) }
-        append("\nNow I know the alphabet!")
+        append('A')          // repeating 'sb' is gone
+        append('B')
+        append('C')
 
         // return whatever you want
         toString() // last line is return value
     }
 }
 
-// more concise
-fun alphabetUsingTheWithScopeFunctionConcise() = with(StringBuilder()) {
-    // 'this' is the receiver, i.e. StringBuilder()
-    alpha.forEach { this.append(it) }
-    append("\nNow I know the alphabet!")
+fun abcUsingWithConcise() =
+    with(StringBuilder()) {
+        // 'this' is the receiver, i.e. StringBuilder()
+        append('A') // 'sb' is gone
+        append('B')
+        append('C')
 
-    // return whatever you want
-    toString()
-}
+        // return whatever you want
+        toString()
+    }
 
 // alternative to 'with' is 'apply'
 // the only difference is that apply returns 'this' by default
-fun alphabetUsingTheApplyScopeFunction() = StringBuilder().apply {
-    // 'this' is the receiver, i.e. StringBuilder()
-    alpha.forEach { this.append(it) }
-    append("\nNow I know the alphabet!")
-}.toString()
+fun abcUsingApply() =
+    StringBuilder().apply {
+        // 'this' is the receiver, i.e. StringBuilder()
+        append('A') // 'sb' is gone
+        append('B')
+        append('C')
+    }.toString()
 
 // 'apply' acts as a builder: initialize an object during creation
-fun buildPerson(name: String) = Person(name).apply {
-    // 'this' is the receiver object, i.e. Person(name)
-    age = 42 // (`this.` is omitted)
-    instruments = List(name.length) { index -> Instrument(index) } // for each index create an Instrument with name = index
+fun buildPerson(name: String) =
+    Person(name).apply {
+        // 'this' is the receiver, i.e. Person(name)
+        age = 42 // (`this.` is omitted)
+        instruments = List(name.length) { index -> Instrument(index) } // for each index create an Instrument with name = index
 
-    // returns 'this', i.e. the built person
-}
+        // returns 'this', i.e. the built person
+    }
 
 // There's also a convenience function to build strings, which is even more concise:
 fun alphabet() = buildString {

@@ -3,14 +3,14 @@ package com.infosupport.demos.h5.lambdas
 // Lambda expressions and member references
 
 fun main() {
-    // firstTaste()
+    firstTaste()
 
     // findOldestClassic(people)
     // findOldestLambda(people)
 
     // syntax()
 
-    captureLocalVariables()
+    // captureLocalVariables()
 
     // functionReferences()
 
@@ -18,27 +18,40 @@ fun main() {
 }
 
 fun firstTaste() {
+    val mountedPolice = Button()
+
     /* Java, classic style with anonymous inner class:
-    new Button().onClick(new OnClickListener() {
+    mountedPolice.onClick(new OnClickListener() {
         @Override
         public void onClick(View view) {
             System.out.println("Click!")
+            System.out.println("Clack!")
+            System.out.println("Clock!")
         }
     });
+    // ...
+    */
+
+    /* Java, lambda style:
+    mountedPolice.onClick( view -> {
+            System.out.println("Click!")
+            System.out.println("Clack!")
+            System.out.println("Clock!")
+        }
+    });
+    // ...
     */
 
     // Kotlin
-    val beredenPolitie = Button()
-
-    beredenPolitie.onClick {
+    mountedPolice.onClick {
         println("Click!")
         println("Clack!")
         println("Clock!")
     }
 
-    beredenPolitie.click()
-    beredenPolitie.click()
-    beredenPolitie.click()
+    mountedPolice.click()
+    mountedPolice.click()
+    mountedPolice.click()
 }
 
 fun findOldestClassic(people: List<Person>) {

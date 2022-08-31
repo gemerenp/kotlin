@@ -1,6 +1,6 @@
 package com.example
 
-import com.infosupport.demos.h4.classes.MyRichButton
+import com.infosupport.demos.ch4.classes.MyRichButton
 
 fun main() {
     // OK: public

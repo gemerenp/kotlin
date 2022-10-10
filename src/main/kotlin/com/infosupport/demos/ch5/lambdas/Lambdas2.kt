@@ -66,4 +66,4 @@ fun main() {
     println(numbers.reversed())
 }
 
-// Lab 5.5c
+// Lab 5c

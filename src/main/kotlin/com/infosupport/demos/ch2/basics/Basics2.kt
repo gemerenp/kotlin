@@ -172,4 +172,4 @@ val foo2: Int
         return 42
     }
 
-// Lab 2.2 (select some)
+// Lab 2 (select some)

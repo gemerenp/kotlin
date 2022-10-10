@@ -79,4 +79,4 @@ fun <T> whatsTheHashcodeOfGenericTypeParam(t: T) {
     println(t?.hashCode() ?: "Unknown") // safe call needed
 }
 
-// Lab 6.1abcd
+// Lab 1abcd

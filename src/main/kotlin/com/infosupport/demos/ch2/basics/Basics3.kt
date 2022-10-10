@@ -129,4 +129,4 @@ private fun readNumber(reader: BufferedReader?): Int? { // optional Int, i.e. nu
     }
 }
 
-// Lab 2.2 (select some)
+// Lab 2 (select some)

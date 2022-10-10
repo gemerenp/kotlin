@@ -214,7 +214,7 @@ fun sendEmail(person: Person, message: String) {
 
 fun salute(s: String) = println("Salute $s!")
 
-// Lab 5.5d
+// Lab 5d
 
 fun creatingCollectionsRevisited() {
     // Use immutable collections if you can: thread safe.

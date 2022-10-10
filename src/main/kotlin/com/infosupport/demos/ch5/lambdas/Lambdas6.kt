@@ -75,5 +75,5 @@ fun alphabet() = buildString {
     append("\nNow I know the alphabet!")
 }
 
-// Lab 5.1
-// Lab 5.2
+// Lab 1
+// Lab 2

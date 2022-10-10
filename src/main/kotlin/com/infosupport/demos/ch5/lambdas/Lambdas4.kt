@@ -32,6 +32,6 @@ fun fibonacci() = sequence {
     }
 }
 
-// Lab 5.3
-// Lab 5.4
-// Lab 5.5e
+// Lab 3
+// Lab 4
+// Lab 5e

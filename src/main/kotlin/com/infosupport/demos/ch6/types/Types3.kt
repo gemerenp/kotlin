@@ -25,4 +25,4 @@ fun main() {
     println(lazyPerson)
 }
 
-// Lab 6.1e
+// Lab 1e

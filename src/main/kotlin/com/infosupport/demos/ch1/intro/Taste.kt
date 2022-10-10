@@ -17,8 +17,9 @@ fun main() {
 }
 
 // Compiling manually:
+// - download the kotlinc and put in on the PATH
 // - open a terminal
 // - cd into a dir where a source resides:  $ cd src\main\kotlin\com\infosupport\demos\ch1\intro
-// - compilation to one class:              $ kotlinc Taste.kt
-// - compilation to one runnable jar:       $ kotlinc Taste.kt -include-runtime -d taste.jar
+//   - compilation to one class:            $ kotlinc Taste.kt
+//   - compilation to one runnable jar:     $ kotlinc Taste.kt -include-runtime -d taste.jar
 // - run the jar:                           $ java -jar taste.jar

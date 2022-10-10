@@ -36,6 +36,7 @@ private fun printInUpperCase(list: List<String>) {
 }
 
 private fun printInUpperCaseSafer(mutableList: MutableList<String>) { // note MutableList here
+    // MutableList is thread safe.
     JavaCollectionUtils.uppercaseAll(mutableList)
     println(mutableList)
 }

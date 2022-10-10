@@ -11,4 +11,8 @@ public class JavaPerson {
     public String getName() {
         return name;
     }
+
+    public static JavaPerson of(String name){
+        return new JavaPerson(name);
+    }
 }

@@ -25,6 +25,10 @@ fun main() {
     val double1 = 0.42
     val double2 = 0.42e-100
 
+    // not allowed:
+    // val doubled = 0.42d
+    // val longl = 54673890l
+
     val hex = 0xCaFeBaBe
     val bits = 0b0111_0101_0101_1111
     // val oct = 0755 // Octal literals are not supported.

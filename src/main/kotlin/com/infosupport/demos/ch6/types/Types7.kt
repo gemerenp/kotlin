@@ -1,3 +1,5 @@
+@file:Suppress("KotlinConstantConditions")
+
 package com.infosupport.demos.ch6.types
 
 // Primitives and other basic types: any, unit, nothing

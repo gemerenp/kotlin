@@ -29,11 +29,12 @@ fun processArray(args: Array<String>) {
         println(i)
     }
 
-    for ((i, e) in args.withIndex()) {
-        println("$i, $e")
+    for ((i, arg) in args.withIndex()) {
+        println("$i, $arg")
     }
 
-    args.forEachIndexed { i, e -> println("$i, $e") }
+    args.forEach { arg -> println(arg) }
+    args.forEachIndexed { i, arg -> println("$i, $arg") }
 }
 
 fun createAndPrintArray() {

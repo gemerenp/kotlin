@@ -3,7 +3,7 @@ package com.infosupport.demos.ch6.types
 // Primitives and other basic types: primitives
 
 fun main() {
-    // In Java you have primitive and reference types.
+    // In Java, you have primitive and reference types.
     // Primitives can be passed around more efficiently, but you can't
     // call methods on them or use them as generic type argument.
 

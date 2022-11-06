@@ -31,8 +31,7 @@ fun main(args: Array<String>) {
     val max2 = max(1, b = 2) // named arguments
     val max3 = maxExpressionBody(b = 3, a = 4)
 
-    // var
-    // mutable reference
+    // var: mutable reference
     var y: Double // no init value, type cannot be inferred
     y = 5.67e6 // with exp
     y += 1

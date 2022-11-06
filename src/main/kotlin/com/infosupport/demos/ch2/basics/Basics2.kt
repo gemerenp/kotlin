@@ -47,7 +47,7 @@ class B constructor(val x: String) // primary ctor with one property
 // simple class like B but less concise
 class C(anX: String) { // primary ctor with one param (If the primary constructor does not have any annotations or visibility modifiers, the constructor keyword can be omitted)
 
-    val x: String // field
+    val x: String // property
 
     init { // primary ctor implementation
         this.x = anX

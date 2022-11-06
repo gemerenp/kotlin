@@ -73,6 +73,9 @@ internal open class TalkativeButton : Focusable {
 internal fun TalkativeButton.giveSpeech() {
     // Not allowed: reference private or protected members from an internal function
     // yell(); whisper()
+
+    // Allowed: call internal or public
+    moduleInternals()
     speech()
 }
 // Lab 3b

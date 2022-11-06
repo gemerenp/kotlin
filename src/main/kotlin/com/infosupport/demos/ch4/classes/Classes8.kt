@@ -24,29 +24,29 @@ fun main() {
 
 // Delegation design pattern
 class HitchhikerCollectionClassicStyle(
-    private val inner: Collection<Int> = arrayListOf() // wrapped arraylist
+    private val innerList: Collection<Int> = arrayListOf() // wrapped arraylist
 ) : Collection<Int> {
 
     // only this method is really overridden with additional behaviour
     override fun contains(element: Int): Boolean {
         println("Checking if ${this.javaClass.simpleName} contains $element ...")
-        return if (element == 42) true else inner.contains(element)
+        return if (element == 42) true else innerList.contains(element)
     }
 
     // these methods have to be explicitly overridden, and they simply delegate to innerList; boilerplate code :-(
-    override val size: Int get() = inner.size
-    override fun isEmpty() = inner.isEmpty()
-    override fun iterator() = inner.iterator()
-    override fun containsAll(elements: Collection<Int>) = inner.containsAll(elements)
+    override val size: Int get() = innerList.size
+    override fun isEmpty() = innerList.isEmpty()
+    override fun iterator() = innerList.iterator()
+    override fun containsAll(elements: Collection<Int>) = innerList.containsAll(elements)
 }
 
 class HitchhikerCollection(
-    private val inner: Collection<Int> = arrayListOf() // wrapped arraylist
-) : Collection<Int> by inner { // note the `by` keyword
+    private val innerList: Collection<Int> = arrayListOf() // wrapped arraylist
+) : Collection<Int> by innerList { // note the `by` keyword
 
     override fun contains(element: Int): Boolean {
         println("Checking if ${this.javaClass.simpleName} contains $element ...")
-        return if (element == 42) true else inner.contains(element)
+        return if (element == 42) true else innerList.contains(element)
     }
 
     // all others are automatically overridden and they delegate to innerList!

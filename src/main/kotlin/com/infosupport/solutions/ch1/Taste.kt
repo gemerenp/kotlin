@@ -23,6 +23,6 @@ fun main() {
     val cheapestArticle = set.minByOrNull { it.price ?: ZERO }
     println(cheapestArticle)
 
-    val cds: Article? = set.find { it.description == "CD" }
-    println(cds?.id ?: "not found")
+    val cds = set.filter { it.description == "CD" }
+    println(cds)
 }

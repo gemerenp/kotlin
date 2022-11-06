@@ -136,22 +136,20 @@ fun printProblemCounts(responses: Collection<String>) {
 }
 
 fun captureAndWrap() {
-    class Ref<T>(var value: T)
-
     var counter = 0             // var, so not final
-    val inc = { ++counter }     // immediately invoke lambda
+    val inc = { ++counter }
     println("${inc()}, $counter")
 
     // ... gets converted under the hood to:
-
+    class Ref<T>(var value: T)
     val counterRef = Ref(0)
     val incRef = { ++(counterRef.value) } // immediately invoke lambda with run {}
     println("${incRef()}, ${counterRef.value}")
 }
 
 fun tryToCountButtonClicks(button: Button) {
-    val count = trackClicks(button)
-    repeat(10) { button.click() }
+    var count = trackClicks(button)
+    repeat(10) { count++ }
     println(count) // 10?
 }
 

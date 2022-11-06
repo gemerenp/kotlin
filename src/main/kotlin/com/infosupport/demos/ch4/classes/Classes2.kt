@@ -69,8 +69,9 @@ class SubscribingUser(override val email: String) : IUser { // email has default
         }
 }
 
-class FacebookUser(override val email: String, accountId: Int) : IUser {
-    // property initializer, no custom getter: nickname is set only once since it's an expensive call;
+class FacebookUser(override val email: String, accountId: Int) : IUser { // email has default getter
+    // nickname has property initializer:
+    // no custom getter, nickname is set only once since it's an expensive call;
     override val nickname = getFacebookNameFromWeb(accountId) // executed when ctor is called.
 }
 

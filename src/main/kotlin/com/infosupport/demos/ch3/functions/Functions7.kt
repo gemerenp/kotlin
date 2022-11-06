@@ -2,7 +2,6 @@
 
 package com.infosupport.demos.ch3.functions
 
-
 fun main() {
     // Creating pairs
     val zero = Pair(0, "zero")               // regular ctor call

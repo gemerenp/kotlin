@@ -6,6 +6,7 @@ package com.infosupport.demos.ch2.basics
 // nullableTypes
 
 import java.io.BufferedReader
+import java.io.FileWriter
 import java.io.StringReader
 import java.util.*
 
@@ -79,6 +80,12 @@ private fun destructuring(treeMap: TreeMap<String, Person>) {
 private fun tryCatch() {
     tryAsAStatement()
     tryAsAnExpression()
+
+    // try with resources:
+    val writer = FileWriter("test.txt")
+    writer.use {
+        writer.write("something")
+    }
 }
 
 private fun tryAsAStatement(): Int? {

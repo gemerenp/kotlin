@@ -45,8 +45,8 @@ fun main() {
     // data class also contains fun copy()
     val al = dylan.copy(name = "Al", postalCode = 60606)
     println(al)
-    println(dylan == al)
-    println(dylan === al)
+    println(dylan == al)  // equals
+    println(dylan === al) // ==
     println(dylanSet.contains(al))
 
     // ... and componentN functions for destructuring

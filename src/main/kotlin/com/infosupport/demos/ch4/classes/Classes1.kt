@@ -45,13 +45,13 @@ fun main() {
 // Java style
 open class UserVerbose constructor(nickname: String) { // primary ctor declaration
 
-    private var _nickname: String // the internal (backing) field
+    private var _nickname: String // private property, a bit like a field
 
     init { // primary ctor implementation
         this._nickname = nickname
     }
 
-    fun getNickname() = _nickname // the getter makes the internal field available, making it a property
+    fun getNickname() = _nickname // the getter makes the private prop available
 
     fun setNickname(value: String) {
         this._nickname = value
@@ -59,7 +59,7 @@ open class UserVerbose constructor(nickname: String) { // primary ctor declarati
 }
 
 open class UserLessVerbose(nickname: String) {
-    var nickname = nickname // no private makes it a property
+    var nickname = nickname  // public property
         get() = field
         set(value) {
             field = value
@@ -67,11 +67,11 @@ open class UserLessVerbose(nickname: String) {
 }
 
 open class UserEvenLessVerbose(nickname: String) {
-    var nickname = nickname
+    var nickname = nickname  // public property
 }
 
 // least verbose, most concise:
-open class User(var nickname: String) // primary constructor
+open class User(var nickname: String) // primary constructor with public property
 
 // subclass
 class TwitterUser(nickname: String) : User(nickname) // primary constructor and call to super (required)

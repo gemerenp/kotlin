@@ -26,8 +26,8 @@ fun main() {
     val double2 = 0.42e-100
 
     // not allowed:
-    // val doubled = 0.42d
-    // val longl = 54673890l
+    // val doubleWithPostfix = 0.42d
+    // val longWithPostfix = 54673890l
 
     val hex = 0xCaFeBaBe
     val bits = 0b0111_0101_0101_1111

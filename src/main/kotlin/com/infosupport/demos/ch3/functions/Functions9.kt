@@ -1,11 +1,12 @@
-// Local functions and extension functions
+// - Local functions and extension functions
+// - `check` and `require`
 
 package com.infosupport.demos.ch3.functions
 
 // See Functions9KtTest
 class User(val id: Int, val name: String, val address: String) {
     init {
-        // example usage of `check(..)`
+        // example usage of `check(..)`, which acts on illegal state of our object
         check(id > 0) { "Id must be positive." }
     }
 }
@@ -50,7 +51,7 @@ fun saveUser(user: User): User {
 fun saveUserShorter(user: User): User {
 
     fun validate(value: String, fieldName: String) { // local function
-        // use the standard function require(...) here, which acts on an illegal argument
+        // example usage of `require(...)`, which acts on an illegal argument
         require(value.isNotEmpty()) { "Can't save user ${user.id}: empty $fieldName" }
     }
 
@@ -71,15 +72,15 @@ fun saveUserExtFn(user: User): User {
 }
 
 fun User.validate() {
-    fun validate(value: String, fieldName: String) {
+    fun validate(propertyName: String, value: String) {
         if (value.isEmpty()) {
             throw IllegalArgumentException(
-                "Can't save user $id: empty $fieldName"
+                "Can't save user $id: empty $propertyName"
             )
         }
     }
-    validate(name, "Name")
-    validate(address, ::address.name) // or using reflection
+    validate(propertyName = "name", value = name)
+    validate(propertyName = this::address.name, value = address) // here we get property using reflection
 }
 
 // Lab 2f

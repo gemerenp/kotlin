@@ -50,7 +50,7 @@ fun parsePathRegEx(path: String) {
 
 val author = "Jens Reissenweber"
 val aardVark = """
-            |								  _                 _        
+            |							      _                 _        
             |			   __ _  __ _ _ __ __| |_   ____ _ _ __| | __ 
             |			  / _` |/ _` | '__/ _` \ \ / / _` | '__| |/ / 
             |			 | (_| | (_| | | | (_| |\ V / (_| | |  |   <

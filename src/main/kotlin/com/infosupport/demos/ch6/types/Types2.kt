@@ -10,7 +10,7 @@ package com.infosupport.demos.ch6.types
 
 fun main() {
     castToPersonUnsafe(Person("Mark")) // OK
-    // castPersonUnsafe("OnTheEdge")   // Exception
+    // castToPersonUnsafe("OnTheEdge") // Exception
 
     castToPersonSafe(Person("Bram"))   // OK
     castToPersonSafe("Bram")           // OK
@@ -58,7 +58,7 @@ fun printPersonName(id: Int) {
     val findPerson = findPerson(id)
     if (findPerson != null) {
         println("Printing person name...")
-        printPersonNameUnsafe(findPerson)
+        println(findPerson.name)
     }
 }
 
@@ -66,7 +66,7 @@ fun letPrintPersonName(id: Int) {
     // when you want to execute a block of code if an object != null, use let:
     findPerson(id)?.let {
         println("Let printing person name...")
-        printPersonNameNonNull(it)
+        println(it.name)
     }
 }
 

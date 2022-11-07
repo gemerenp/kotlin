@@ -5,8 +5,6 @@ import java.lang.Thread.sleep
 // Implementing properties declared in interfaces
 // Accessing a backing field from a getter or setter
 
-private const val DELAY = 1_000L
-
 fun main() {
     // Implementing properties declared in interfaces: ---------------------------------
     println("Initializing objects...")
@@ -54,14 +52,22 @@ interface IUser {
         get() = email.substringBefore('@')
 }
 
-class RegularUser(override val email: String, override val nickname: String) : IUser
+class RegularUser(
+    override val email: String,
+    override val nickname: String
+) : IUser
 
-class PrivateUser(override val nickname: String) : IUser {
+class PrivateUser(
+    override val nickname: String
+) : IUser {
     override val email: String = "anonymous@mail.com"
 }
 
-class SubscribingUser(override val email: String) : IUser { // email has default getter
-    override val nickname: String = "" // nickname gets custom getter; called on every access.
+class SubscribingUser(
+    override val email: String
+) : IUser {
+    // nickname has custom getter: executed on every access
+    override val nickname: String = ""
         get() {
             println("Getting SubscribingUser's nickname from db... ")
             sleep(DELAY) // call to backend
@@ -69,15 +75,17 @@ class SubscribingUser(override val email: String) : IUser { // email has default
         }
 }
 
-class FacebookUser(override val email: String, accountId: Int) : IUser { // email has default getter
-    // nickname has property initializer:
-    // no custom getter, nickname is set only once since it's an expensive call;
-    override val nickname = getFacebookNameFromWeb(accountId) // executed when ctor is called.
+class FacebookUser(
+    override val email: String,
+    accountId: Int
+) : IUser {
+    // nickname has property initializer: executed only once, at construction time
+    override val nickname = getFacebookNameFromWeb(accountId)
 }
 
 fun getFacebookNameFromWeb(accountId: Int): String {
     println("getFacebookNameFromWeb... ")
-    sleep(DELAY) // expensive call
+    sleep(DELAY * 2) // expensive call
     return "fb:$accountId"
 }
 
@@ -100,5 +108,7 @@ open class Person(val name: String) {
 
     fun haveBirthday() = age++ // getter is called here too
 }
+
+private const val DELAY = 1_000L
 
 // Lab 1

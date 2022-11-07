@@ -1,8 +1,8 @@
 package com.infosupport.demos.ch4.classes
 
-// Inheritance
-//  Visibility modifiers: public by default
-// See resources/img/buttons.png
+// Inheritance: open, override
+//  - See resources/img/buttons.png
+// Visibility modifiers: public by default
 
 fun main() {
     val richButton = MyRichButton(1)

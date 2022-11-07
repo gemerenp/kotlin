@@ -132,6 +132,7 @@ class Person( // implicitly public final
                 val rgb = a.rgb()
                 rgb.toString()
             }
+
             else -> "unknown"
         }
 }

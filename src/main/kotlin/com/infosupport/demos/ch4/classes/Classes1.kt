@@ -7,6 +7,7 @@ import javax.print.attribute.HashAttributeSet
 import javax.print.attribute.HashDocAttributeSet
 
 // Nontrivial constructors or properties
+// Inheritance and calling super
 
 fun main() {
     // calling ctors:

@@ -10,7 +10,6 @@ val mutList = mutableListOf(1, 7, 53)
 val hashMap = hashMapOf(1 to "one", 7 to "seven", 53 to "fifty-three")  // Note: 'to' is a normal function!
 
 fun main() {
-
     println("------- TYPES --------") // .javaClass == getClass() from Java
     println(set.javaClass)            // class java.util.LinkedHashSet
     println(hashSet.javaClass)        // class java.util.HashSet
@@ -20,9 +19,9 @@ fun main() {
     println(hashMap.javaClass)        // class java.util.HashMap
 
     // Interoperability:
-    // Kotlin doesn’t have its own set of collection classes.
-    // All of your existing knowledge about Java collections still applies here.
-    // But, you can do a lot more with kotlin collections than java collections:
+    // - Kotlin doesn’t have its own set of collection classes.
+    // - All of your existing knowledge about Java collections still applies here.
+    // - But, you can do a lot more with kotlin collections than java collections:
 
     println("------- METHODS --------")
     println(set.minus(1))

@@ -1,4 +1,5 @@
 // Extension functions
+// No overriding for extension functions
 
 package com.infosupport.demos.ch3.functions
 
@@ -37,17 +38,15 @@ fun List<String>.myJoin(
     postfix: String = ""
 ): String = joinToStringClassic(this, separator, prefix, postfix)
 
+// No overriding for extension functions
 abstract class View {
     open fun click() = println("View clicked")
 }
-
-fun View.off() = println("View off")
 
 class Button : View() {
     override fun click() = println("Button clicked")
 }
 
-fun Button.off() = println("Button off")
-
-// no overriding for extension functions
+fun View.off() = println("View off from ext. function")
+fun Button.off() = println("Button off from ext. function")
 fun Button.click() = println("Button clicked from ext. function")

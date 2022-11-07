@@ -24,12 +24,12 @@ private fun any() {
 
     // Any can be nullable also
     var j: Any? = null
-    val equals0 = j?.equals(42)
-    val equals1 = j == 42 // idiomatic equals, also possible on nullable type, gets translated to j?.equals(42)
+    val equals1 = j?.equals(42)
+    val equals2 = j == 42 // idiomatic equals, also possible on nullable type, gets translated to j?.equals(42)
     
     j = 43
-    val equals2 = j.equals(42)
-    val equals3 = j == 42 // idiomatic
+    val equals3 = j.equals(42)
+    val equals4 = j == 42 // idiomatic
 }
 
 private fun unit() {

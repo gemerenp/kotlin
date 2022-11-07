@@ -7,6 +7,7 @@ package com.infosupport.demos.ch2.basics
 
 import java.io.BufferedReader
 import java.io.FileWriter
+import java.io.IOException
 import java.io.StringReader
 import java.util.*
 
@@ -30,6 +31,8 @@ private fun basics() {
     show(9 downTo 1)
     println("---")
     show(1..9 step 2)
+    println("---")
+    show(9 downTo 1 step 2)
     println("---")
 
     println((1..9 step 3).first)
@@ -80,12 +83,7 @@ private fun destructuring(treeMap: TreeMap<String, Person>) {
 private fun tryCatch() {
     tryAsAStatement()
     tryAsAnExpression()
-
-    // try with resources:
-    val writer = FileWriter("test.txt")
-    writer.use {
-        writer.write("something")
-    }
+    tryWithResources()
 }
 
 private fun tryAsAStatement(): Int? {
@@ -101,6 +99,7 @@ private fun tryAsAStatement(): Int? {
         println("Done")
     }
 }
+
 private fun tryAsAnExpression(): Int? {
     return try {
         val n1 = readNumber(null)
@@ -111,6 +110,14 @@ private fun tryAsAnExpression(): Int? {
         null
     } finally {
         println("Done")
+    }
+}
+
+@Throws(IOException::class) // for other JVM-languages like Java
+fun tryWithResources() {
+    val writer = FileWriter("test.txt")
+    writer.use {
+        it.write("something")
     }
 }
 

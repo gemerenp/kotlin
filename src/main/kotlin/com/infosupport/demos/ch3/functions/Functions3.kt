@@ -1,11 +1,12 @@
-// Top-level functions and properties
+// Top-level properties
+// Top-level functions
 
 @file:JvmName("Util") //  See JvmNameDemo.java
 
 package com.infosupport.demos.ch3.functions
 
 // Top level properties:
-var opCount = 0       // Java: private with getter/setter; decompile Util.class with external Java decompiler e.g. jd-gui.exe
+var opCount = 0       // Java: private static with getter/setter; decompile Util.class with external Java decompiler e.g. jd-gui.exe
 val i = 4             // Java: private static final with getter
     get() = field * 3 // field is a keyword and represents the backing field
 

@@ -1,10 +1,6 @@
 //  Your package hierarchy doesn’t need to follow the directory hierarchy
 package com.infosupport.demos.ch2.something
 
-import com.infosupport.demos.ch2.basics.Person
-import com.infosupport.demos.ch2.basics.firstLetter
-import com.infosupport.demos.ch2.basics.lastLetter
-
 // main function (first class citizen)
 fun main(args: Array<String>) {
     // if expressions
@@ -35,12 +31,6 @@ fun main(args: Array<String>) {
     var y: Double // no init value, type cannot be inferred
     y = 5.67e6 // with exp
     y += 1
-
-    val p = Person("A", true)
-    val firstLetter = p.firstLetter
-    val lastLetter = p.lastLetter()
-
-    // See unit test for more
 }
 
 // functions

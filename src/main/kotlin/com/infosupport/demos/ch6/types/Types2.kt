@@ -38,7 +38,7 @@ fun castToPersonUnsafe(o: Any) {
 }
 
 fun castToPersonSafe(o: Any) {
-    val p = o as? Person // if o !is Person p = null, else p is cast to Person
+    val p = o as? Person // if o !is Person, p = null, else p is cast to Person
     // now p is smart cast to a `Person?`
     println(p?.name ?: "Unknown")
 }

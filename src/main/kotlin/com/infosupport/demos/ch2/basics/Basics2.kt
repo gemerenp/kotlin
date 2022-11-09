@@ -20,7 +20,6 @@ fun main() { // main without args
     println(person.age)         // explicit default getter
     println(person.startsWithA) // explicit custom getter
     println(person.eyesColor)
-    println(person.firstLetter) // extension property
 
     person.age = 90 // setter call
 
@@ -135,15 +134,6 @@ class Person( // implicitly public final
 
             else -> "unknown"
         }
-}
-
-// Extension property --------------------------------------------------------------------
-val Person.firstLetter: Char
-    get() = this.name[0]
-
-// Extension function --------------------------------------------------------------------
-fun Person.lastLetter(): Char {
-    return this.name.last()
 }
 
 // ENUMS --------------------------------------------------------------------

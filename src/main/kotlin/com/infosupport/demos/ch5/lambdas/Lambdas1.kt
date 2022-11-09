@@ -142,6 +142,7 @@ fun captureAndWrap() {
 
     // ... gets converted under the hood to:
     class Ref<T>(var value: T)
+
     val counterRef = Ref(0)
     val incRef = { ++(counterRef.value) } // immediately invoke lambda with run {}
     println("${incRef()}, ${counterRef.value}")

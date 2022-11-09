@@ -77,13 +77,8 @@ fun PermEmployee.Companion.staticExtFunction() = "Nice...!"
 
 // 3. Object expression is used instead of Java’s anonymous inner class -------------------
 val iterator = object : Iterator<PermEmployee> {
-    override fun hasNext(): Boolean {
-        TODO()
-    }
-
-    override fun next(): PermEmployee {
-        TODO()
-    }
+    override fun hasNext() = TODO()
+    override fun next() = TODO()
 }
 
 fun main() {

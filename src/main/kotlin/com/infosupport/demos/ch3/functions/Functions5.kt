@@ -14,7 +14,11 @@ fun main() {
 }
 
 val String.lastChar: Char
-    get() = get(length - 1)
+    get() = get(length - 1) // `field` not available; why?
+
+// Basically like:
+fun String.lastCharToo() =
+    this.get(length - 1)
 
 var StringBuilder.lastChar: Char
     get() = get(length - 1)

@@ -5,7 +5,7 @@ package com.infosupport.demos.ch5.lambdas
 fun main() {
 
     // use generateSequence
-    val naturalNumbers = generateSequence(50) { it + 1 }        // 1
+    val naturalNumbers = generateSequence(1) { it + 1 }        // 1
     val numbersTo100 = naturalNumbers.takeWhile { it <= 100 }   // 2
     val sum = numbersTo100.sum()                                // 3
     println(sum)

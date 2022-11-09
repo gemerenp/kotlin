@@ -54,7 +54,7 @@ interface IUser {
 
 class RegularUser(
     override val email: String,
-    override val nickname: String
+    override val nickname: String,
 ) : IUser
 
 class PrivateUser(

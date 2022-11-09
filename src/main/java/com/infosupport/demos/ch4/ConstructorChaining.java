@@ -8,10 +8,10 @@ public class ConstructorChaining {
     }
 
     ConstructorChaining(int i) {
-        // this();
+        if(i % 2 == 0) System.out.println("...");
     }
 
     ConstructorChaining(int i, String s) {
-        // this(i);
+        this(i);
     }
 }

@@ -5,6 +5,8 @@ package com.infosupport.demos.ch5.lambdas
 fun main() {
     firstTaste()
 
+    secondTaste()
+
     // findOldestClassic(people)
     // findOldestLambda(people)
 
@@ -18,40 +20,41 @@ fun main() {
 }
 
 fun firstTaste() {
-    val mountedPolice = Button()
+    val printNumber = { n: Int -> println(n) }
+    val printHello = { -> println("Hello") }
+    val printHelloToo = { println("Hello too") }
 
-    /* Java, classic style with anonymous inner class:
-    mountedPolice.onClick(new OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            System.out.println("Click!")
-            System.out.println("Clack!")
-            System.out.println("Clock!")
-        }
-    });
-    // ...
-    */
+    printNumber(42)
+    printHello()
+    printHelloToo()
 
-    /* Java, lambda style:
-    mountedPolice.onClick( view -> {
-            System.out.println("Click!")
-            System.out.println("Clack!")
-            System.out.println("Clock!")
-        }
-    });
-    // ...
-    */
+    val sum2a = { a: Int, b: Int -> a + b }
+    val sum2b: (Int, Int) -> Int = { a, b -> a + b }
+    val sum3: (Int, Int, Int) -> Int = { a, b, c -> a + b + c }
 
-    // Kotlin
-    mountedPolice.onClick {
-        println("Click!")
-        println("Clack!")
-        println("Clock!")
+    println(sum2a(1, 2))
+    println(sum2b(1, 2))
+    println(sum3(1, 2, 3))
+}
+
+fun secondTaste() {
+    val okButton = Button()
+
+    // We can pass some behaviour to the onClick function
+    okButton.onClick {
+        println("Ok button clicked.")
+        println("Navigating to home page...")
     }
 
-    mountedPolice.click()
-    mountedPolice.click()
-    mountedPolice.click()
+    // We can let another function execute the lambda
+    okButton.click()
+
+    // We can pass some different behaviour to the onClick function
+    okButton.onClick {
+        println("Ignoring clicks...")
+    }
+
+    okButton.click()
 }
 
 fun findOldestClassic(people: List<Person>) {

@@ -1,20 +1,12 @@
 package com.infosupport.labs.ch5
 
 fun main() {
-    rewriteUsingWith()
     rewriteUsingApply()
+    rewriteUsingWith()
+    rewriteUsingNestedWith()
 }
 
-// 1. Rewrite the following piece of code using a with {...} block.
-fun rewriteUsingWith() {
-    val numbers = mutableListOf("one", "two", "three")
-    var firstAndLast = ""
-    firstAndLast += "The first element is ${numbers.first()},"
-    firstAndLast += " the last element is ${numbers.last()}"
-    println(firstAndLast)
-}
-
-// 2. Rewrite the following using an apply {...} block.
+// 1a. Rewrite the following using an apply {...} block.
 fun rewriteUsingApply() {
     val numbers = mutableListOf<String>()
     numbers.add("one")
@@ -24,8 +16,27 @@ fun rewriteUsingApply() {
     println(numbers)
 }
 
-// 3. Create and show an array of fibonaccinumbers, but when the number is even, put null in the array.
-//    Example: [null, 1, 1, null, 3, 5, null, 13, 21, null, 55, 89] for al fibo's <= 100.
+// 1b. Rewrite the following using a with {...} block.
+fun rewriteUsingWith() {
+    val numbers = mutableListOf<String>()
+    numbers.add("one")
+    numbers.add("two")
+    numbers.add("three")
+
+    println(numbers)
+}
+
+// 2. Rewrite the following using nested with {...} blocks.
+fun rewriteUsingNestedWith() {
+    val numbers = mutableListOf("one", "two", "three")
+    val firstAndLast = StringBuilder()
+    firstAndLast.append("The first element is ${numbers.first()},")
+    firstAndLast.append(" the last element is ${numbers.last()}")
+    println(firstAndLast)
+}
+
+// 3. Create and show an array of fibonacci numbers, but when the number is even, put null in the array.
+//    Example: [null, 1, 1, null, 3, 5, null, 13, 21, null, 55, 89] for all numbers <= 100.
 //    To find the n-th fibonacci number, you can use the previously given sequence
 //    com.infosupport.demos.h5.lambdas.fibonacci() or use the recursive function below.
 //    Please think about the efficiency of your algorithm!

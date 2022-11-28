@@ -2,17 +2,18 @@ package com.infosupport.solutions.ch5
 
 import com.infosupport.demos.ch5.lambdas.fibonacci
 
-// 1. Rewrite the following piece of code using a with {...} block.
-fun rewriteUsingWith() {
-    val numbers = mutableListOf("one", "two", "three")
-    with(numbers) {
-        "The first element is ${first()}," +
-                " the last element is ${last()}"
-        println(this)
-    }
+fun main() {
+    rewriteUsingWith()
+    rewriteUsingApply()
+    rewriteUsingNestedWith()
+
+    println(createFiboSlow(11).joinToString())
+    println(createFiboFaster(100).joinToString())
+
+    println(squares().takeWhile { it <= 100 }.toList())
 }
 
-// 2. Rewrite the following using an apply {...} block.
+// 1a. Rewrite the following using an apply {...} block.
 fun rewriteUsingApply() {
     mutableListOf<String>().apply {
         add("one")
@@ -22,14 +23,41 @@ fun rewriteUsingApply() {
     }
 }
 
-fun main() {
-    rewriteUsingWith()
-    rewriteUsingApply()
+// 1b. Rewrite the following using a with {...} block.
+fun rewriteUsingWith() {
+    with(mutableListOf<String>()) {
+        add("one")
+        add("two")
+        add("three")
+        println(this)
+    }
+}
 
-    println(createFiboSlow(11).joinToString())
-    println(createFiboFaster(100).joinToString())
+// 2. Rewrite the following piece of code using nested with {...} blocks.
+fun rewriteUsingNestedWith() {
+    // Option 1: sb -> list
+    // In this order, it works by coincidence.
+    with(StringBuilder()) {
+        with(mutableListOf("one", "two", "three")) {
+            append("The first element is ${first()},")
+            append(" the last element is ${last()}")
+            println(this)
+        }
+    }
 
-    println(squares().takeWhile { it <= 100 }.toList())
+    // Option 2: list -> sb
+    // In this order, you have to use label(s).
+    with(mutableListOf("one", "two", "three")) list@{
+        with(StringBuilder()) sb@{
+            append("The first element is ${this@list.first()},") // without label, it takes .first() from the inner with, i.e. StringBuilder.first()
+            append(" the last element is ${this@list.last()}")
+            println(this) // the closest `this`, so the StringBuilder
+        }
+    }
+
+
+
+
 }
 
 // 3.

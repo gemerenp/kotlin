@@ -1,9 +1,6 @@
 package com.infosupport.solutions.ch3
 
 // 1.
-// See Atomic Kotlin
-
-// 2.
 // a)
 fun <T> List<T>.appendAndSort(other: List<T>) where T : Comparable<T> =
     this.plus(other).sorted() //  or one of these ways:
@@ -49,3 +46,6 @@ fun main() {
     // 2d
     println(listOf("p", "q", "r") headTail listOf("f", "e", "d"))
 }
+
+// 2.
+// See Atomic Kotlin

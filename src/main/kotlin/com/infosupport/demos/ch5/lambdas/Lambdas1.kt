@@ -174,7 +174,7 @@ fun countButtonClicks(button: Button) {
     repeat(10) { button.click() }
     println(clicks) // 10?
 }
-// Lab 5.5ab
+// Lab 5ab
 
 fun functionReferences() {
     // member reference (i.e. getter)

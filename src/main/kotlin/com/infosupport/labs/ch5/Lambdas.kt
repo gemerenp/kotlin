@@ -27,6 +27,8 @@ fun rewriteUsingWith() {
 }
 
 // 2. Rewrite the following using nested with {...} blocks.
+//    Hint: you'll need label(s) to refer to the correct `this` reference, e.g.:
+//    with(...) mylabel@ { ... this@mylabel.function() ... }
 fun rewriteUsingNestedWith() {
     val numbers = mutableListOf("one", "two", "three")
     val firstAndLast = StringBuilder()

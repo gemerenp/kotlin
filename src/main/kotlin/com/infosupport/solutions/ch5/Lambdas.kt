@@ -3,8 +3,8 @@ package com.infosupport.solutions.ch5
 import com.infosupport.demos.ch5.lambdas.fibonacci
 
 fun main() {
-    rewriteUsingWith()
     rewriteUsingApply()
+    rewriteUsingWith()
     rewriteUsingNestedWith()
 
     println(createFiboSlow(11).joinToString())
@@ -36,27 +36,22 @@ fun rewriteUsingWith() {
 // 2. Rewrite the following piece of code using nested with {...} blocks.
 fun rewriteUsingNestedWith() {
     // Option 1: sb -> list
-    // In this order, it works by coincidence.
-    with(StringBuilder()) {
+    with(StringBuilder()) sb@{
         with(mutableListOf("one", "two", "three")) {
-            append("The first element is ${first()},")
+            append("The first element is ${first()},") // the closest `this`, so the list
             append(" the last element is ${last()}")
-            println(this)
+            println(this@sb)
         }
     }
 
     // Option 2: list -> sb
-    // In this order, you have to use label(s).
     with(mutableListOf("one", "two", "three")) list@{
-        with(StringBuilder()) sb@{
+        with(StringBuilder()) {
             append("The first element is ${this@list.first()},") // without label, it takes .first() from the inner with, i.e. StringBuilder.first()
             append(" the last element is ${this@list.last()}")
             println(this) // the closest `this`, so the StringBuilder
         }
     }
-
-
-
 
 }
 

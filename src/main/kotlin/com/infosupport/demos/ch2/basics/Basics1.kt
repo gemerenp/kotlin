@@ -1,5 +1,5 @@
 //  Your package hierarchy doesn’t need to follow the directory hierarchy
-package com.infosupport.demos.ch2.something
+package com.infosupport.demos.ch2.basics
 
 // main function (first class citizen)
 fun main(args: Array<String>) {

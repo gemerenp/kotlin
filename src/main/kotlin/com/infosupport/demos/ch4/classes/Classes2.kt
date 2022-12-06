@@ -79,7 +79,7 @@ class FacebookUser(
     override val email: String,
     accountId: Int
 ) : IUser {
-    // nickname has property initializer: executed only once, at construction time
+    // nickname has a property initializer: executed only once, at construction time
     override val nickname = getFacebookNameFromWeb(accountId)
 }
 

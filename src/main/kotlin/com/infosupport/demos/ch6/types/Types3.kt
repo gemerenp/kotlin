@@ -6,7 +6,7 @@ import com.infosupport.demos.ch1.intro.Person
 
 // See LateinitTest
 
-class Lateinit {
+class FooService {
     fun performAction(): String = "foo"
 }
 

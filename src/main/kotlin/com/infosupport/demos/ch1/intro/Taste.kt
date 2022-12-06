@@ -1,23 +1,23 @@
 package com.infosupport.demos.ch1.intro
 
-data class Person(
-    val name: String,
-    val age: Int? = null
-)
+class Person(val name: String, val age: Int? = null)
 
 fun main() {
-    val persons = listOf(
-        Person("Alice"),
-        Person("Bob", age = 29)
-    )
+    val alice = Person("Alice")
+    val bob = Person("Bob", age = 29)
 
-    val oldest = persons.maxOf { it.age ?: 0 }
+    val persons = listOf(alice, bob)
 
-    println("""The "oldest" is: $oldest.""")
+    val highestAge = persons.maxOf { it.age ?: 0 }
+    val oldest = persons.maxByOrNull { it.age ?: 0 }
+
+    println(persons)
+    println("""The "highest age" is: $highestAge.""")
+    println("The oldest person is: ${oldest?.name}.")
 }
 
 // Compiling manually:
-// - download the kotlinc and put in on the PATH
+// - download the kotlinc and put it on the PATH
 // - open a terminal
 // - cd into a dir where a source resides:  $ cd src\main\kotlin\com\infosupport\demos\ch1\intro
 //   - compilation to one class:            $ kotlinc Taste.kt

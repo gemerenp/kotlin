@@ -27,8 +27,10 @@ fun main() { // main without args
 
     // standalone val with/without accessor
     println("foo:")
-    println("$foo1 $foo1") // run executed once
-    println("$foo2 $foo2") // get executed each time
+    println("$foo1") // run { } is executed once: when?
+    println("$foo1")
+    println("$foo2") // get() is executed each time: when?
+    println("$foo2")
 }
 
 // CLASS --------------------------------------------------------------------
@@ -160,7 +162,7 @@ val foo1 = run {
 val foo2: Int
     get() {
         println("Calculating get...")
-        return 42
+        return 43
     }
 
 // Lab 2 (select some)

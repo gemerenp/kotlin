@@ -12,69 +12,96 @@ import java.io.StringReader
 import java.util.*
 
 fun main() {
-    // loops, ranges and map
-    basics()
-    val treeMap = combined()
-
+    loopsAndRanges()
+    val treeMap = loopsRangesAndMap()
     destructuring(treeMap)
-
     tryCatch()
-
     nullableTypes()
 }
 
-private fun basics() {
-    show(1..9)
-    println("---")
-    show(1 until 9)
-    println("---")
-    show(9 downTo 1)
-    println("---")
-    show(1..9 step 2)
-    println("---")
-    show(9 downTo 1 step 2)
-    println("---")
+private fun loopsAndRanges() {
+    // a..b is called a "range": something with a start and an end value.
+    val intRange = 0..42 // from 0 to (and including) 42
+    println(intRange.first)
+    println(intRange.last)
 
-    println((1..9 step 3).first)
-    println((1..9 step 5).last)
+    val charRange = 'a'..'z'
+    println(charRange.first)
+    println(charRange.last)
+
+    // We can use a range to iterate over, or to check something:
+    // - Check:
+    val x = Random().nextInt(0, 100)
+    if (x in intRange) {
+        println("$x is between 0 and 42!")
+    }
+
+    // - Iterate:
+    //   In kotlin we have only one type of for loop, and it goes like this:
+    for (i in 1..9) {
+        print(i)
+    }
+
+    // We iterate over a `progression`, which is a "range" with a "step" (default step is 1)
+    for (i in 1..9 step 2) {
+        print(i)
+    }
+
+    // other progressions:
+    show(1 until 9) // excluding 9
+    show(9 downTo 1)
+    show(9 downTo 1 step 2)
 }
 
-private fun show(p: IntProgression) = p.forEach(::println)
+private fun show(ip: IntProgression) {
+    for (i in ip) {
+        println(i)
+    }
+}
 
-private fun combined(): TreeMap<String, Person> {
+private fun loopsRangesAndMap(): TreeMap<String, Person> {
+    // Example combining loops, ranges, `in`, and map creation:
+
     val treeMap = TreeMap<String, Person>()
     for (c in 'A'..'Z') // range of Char
         for (i in 6 downTo 1 step 2) { // range of Int
-            // use in for range check
+            // use `in` for range check with `if`
             if (c in 'A'..'D') {
-                val s = c.toString() + i
-                treeMap[s] = Person(name = s, isMarried = i % 3 == 0) // like put(c, p) in java
+                val name = c.toString() + i // some random string
+                val p = Person(name, isMarried = i % 3 == 0) // some random person
+                treeMap[name] = p // like treeMap.put(name, p) in java
             }
 
-            // use in for range check
-            val letters: CharRange = 'A'..'Z'
-            val digits = '0'..'9'
+            // use `in` for range check with `when`
             when (c) {
-                in letters -> println("It's a letter.")
-                in digits -> println("It's a digit.")
+                in 'A'..'Z' -> println("It's a letter.")
+                in '0'..'9' -> println("It's a digit.")
                 else -> println("It's something else.")
             }
         }
+
     return treeMap
 }
 
-private fun destructuring(treeMap: TreeMap<String, Person>) {
-    for (entry in treeMap) {
-        val (c, person) = entry
-        println("$c = $person")
+data class Course(val id: Int, val name: String)
+
+private fun destructuring(map: TreeMap<String, Person>) {
+    // In Kotlin, we can do the inverse of constructing.
+    val k = Course(10, "Kotlin") // constructing: put values into object
+    val (id, cName) = k          // destructuring: extract values from object
+
+    // We can do the same with map entries:
+    for (entry in map) {
+        val (name, person) = entry
+        println("$name = $person")
     }
 
     // ... or shorter:
-    for ((c, person) in treeMap) {
-        println("$c = $person")
+    for ((name, person) in map) {
+        println("$name = $person")
     }
 
-    // or in a loop using .withIndex on collection:
+    // ... or in a loop using .withIndex on a collection:
     for ((index, i) in listOf(42, 43, 44).withIndex()) {
         println("list[$index] = $i.")
     }
@@ -87,38 +114,42 @@ private fun tryCatch() {
 }
 
 private fun tryAsAStatement(): Int? {
-    // similar to Java:
+    // similar to Java, can become cumbersome...
+    var result: Int?
     try {
         val n1 = readNumber(null)
         println(n1)
-        return n1
+        result = n1
     } catch (e: IllegalArgumentException) {
         println("""Exception occurred: ${e.message}.""")
-        return null
+        result = null
     } finally {
         println("Done")
     }
+    return result
 }
 
 private fun tryAsAnExpression(): Int? {
+    // more concise:
     return try {
         val n1 = readNumber(null)
         println(n1)
-        n1
+        n1   // return value of try
     } catch (e: IllegalArgumentException) {
         println("""Exception occurred: ${e.message}.""")
-        null
+        null // return value of catch
     } finally {
         println("Done")
     }
 }
 
-@Throws(IOException::class) // for other JVM-languages like Java
+@Throws(IOException::class) // for other JVM-languages using "checked" exceptions, like Java
 fun tryWithResources() {
     val writer = FileWriter("test.txt")
     writer.use {
         it.write("something")
     }
+    // writer automatically closed
 }
 
 private fun nullableTypes() {
@@ -127,7 +158,6 @@ private fun nullableTypes() {
     println(dec ?: "no number found...") // elvis operator
 }
 
-// Basically similar to Java
 private fun readNumber(reader: BufferedReader?): Int? { // optional Int, i.e. nullable
     if (reader == null) {
         // how to throw an exception:
@@ -139,6 +169,7 @@ private fun readNumber(reader: BufferedReader?): Int? { // optional Int, i.e. nu
         val readLine = reader.readLine() // throws IOException, but all exceptions are unchecked in kotlin
         Integer.parseInt(readLine)
     } catch (e: NumberFormatException) {
+        e.printStackTrace()
         null
     }
 }

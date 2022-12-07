@@ -80,7 +80,7 @@ class TwitterUser(nickname: String) : User(nickname) // primary constructor and 
 open class OpenButton
 class RadioButton : OpenButton() // call to super (required)
 
-class Secretive private constructor() {} // private ctor
+class Secretive private constructor() // private ctor
 
 open class MyView { // no primary constructor, two secondary constructors
     constructor(ctx: Context) {}

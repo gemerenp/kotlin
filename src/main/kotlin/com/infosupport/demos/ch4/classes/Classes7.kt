@@ -26,16 +26,16 @@ fun eval(e: Expr): Int =
 
 // Solution 2: as sealed classes -------------------------------
 // See Figure 4.2. Sealed classes can’t have inheritors defined outside of the class: https://drek4537l1klr.cloudfront.net/jemerov/Figures/04fig02_alt.jpg
-sealed class ExprSealed {
-    class Num(val value: Int) : ExprSealed()
-    class Sum(val left: ExprSealed, val right: ExprSealed) : ExprSealed()
+sealed interface ExprSealed {
+    class Num(val value: Int) : ExprSealed
+    class Sum(val left: ExprSealed, val right: ExprSealed) : ExprSealed
 }
 
 fun evalSealed(e: ExprSealed): Int =
     when (e) {
         is ExprSealed.Num -> e.value // note the import alias
         is ExprSealed.Sum -> evalSealed(e.right) + evalSealed(e.left)
-        // ExprSealed is sealed: you don’t need to provide the default branch
+        // ExprSealed is sealed: you don’t need to provide the else branch
     }
 
 // Lab 2

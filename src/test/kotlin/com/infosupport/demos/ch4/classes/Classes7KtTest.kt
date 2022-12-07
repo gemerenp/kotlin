@@ -12,8 +12,8 @@ internal class Classes7KtTest {
         val result = eval(
             Sum(
                 Sum(Num(1), Num(2)),     // 1 + 2
-                Num(4)
-            )                            //   + 4
+                Min(Num(4), Num(0))      // 4 - 0
+            )
         )
 
         assertThat(result).isEqualTo(7); //           = 7

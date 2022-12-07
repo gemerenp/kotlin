@@ -10,7 +10,7 @@ fun main() {
     // In Kotlin there's no distinction between primitive and reference, for example:
     val i: Int = 1
     val list: List<Int> = listOf(1, 2, 3) // use Int as type argument
-
+       
     // You can always call methods on Ints:
     var h = i.dec()
     println("h=${h}")

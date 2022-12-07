@@ -52,20 +52,13 @@ interface IUser {
         get() = email.substringBefore('@')
 }
 
-class RegularUser(
-    override val email: String,
-    override val nickname: String,
-) : IUser
+class RegularUser(override val email: String, override val nickname: String) : IUser
 
-class PrivateUser(
-    override val nickname: String
-) : IUser {
+class PrivateUser(override val nickname: String) : IUser {
     override val email: String = "anonymous@mail.com"
 }
 
-class SubscribingUser(
-    override val email: String
-) : IUser {
+class SubscribingUser(override val email: String) : IUser {
     // nickname has custom getter: executed on every access
     override val nickname: String = ""
         get() {

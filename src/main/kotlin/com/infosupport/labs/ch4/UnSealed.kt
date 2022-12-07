@@ -16,12 +16,12 @@ fun travel(transport: Transport) =
         is Train -> "Train ${transport.line} "
         is Bus -> "Bus ${transport.number} " +
                 "has size ${transport.capacity} "
+
         else -> "$transport is in limbo!"
     }
 
 fun main() {
     println(
-        listOf(Train("S1"), Bus("11", 90))
-            .map(::travel).toString()
+        listOf(Train("S1"), Bus("11", 90)).map { travel(it) }
     )
 }
